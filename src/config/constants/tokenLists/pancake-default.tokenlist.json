@@ -1,5 +1,5 @@
 {
-  "name": "PancakeSwap Default List",
+  "name": "GravySwap Default List",
   "timestamp": "2021-05-06T00:00:00Z",
   "version": {
     "major": 3,
@@ -7,8 +7,8 @@
     "patch": 0
   },
   "tags": {},
-  "logoURI": "https://pancakeswap.finance/logo.png",
-  "keywords": ["pancake", "default"],
+  "logoURI": "https://i.imgur.com/whdG7su.png",
+  "keywords": ["gravy", "default"],
   "tokens": [
     {
       "name": "WBNB Token",
@@ -49,6 +49,14 @@
       "chainId": 56,
       "decimals": 18,
       "logoURI": "https://pancakeswap.finance/images/tokens/0x55d398326f99059ff775485246999027b3197955.png"
+    },
+    {
+      "name": "GravySwap Token",
+      "symbol": "GRAVY",
+      "address": "0x5eA26D0d36EAF02d63a3023521A7924e19c34454",
+      "chainId": 56,
+      "decimals": 18,
+      "logoURI": "https://i.imgur.com/whdG7su.png"
     },
     {
       "name": "PancakeSwap Token",

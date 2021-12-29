@@ -23,6 +23,14 @@ export const mainnetTokens = {
   ),
   // bnb here points to the wbnb contract. Wherever the currency BNB is required, conditional checks for the symbol 'BNB' can be used
   bnb: new Token(MAINNET, '0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c', 18, 'BNB', 'BNB', 'https://www.binance.com/'),
+  gravy: new Token(
+    MAINNET,
+    '0x5eA26D0d36EAF02d63a3023521A7924e19c34454',
+    18,
+    'GRAVY',
+    'GravySwap Token',
+    'https://gravyswap.finance/',
+  ),
   cake: new Token(
     MAINNET,
     '0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82',
