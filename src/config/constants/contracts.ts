@@ -16,7 +16,7 @@ export default {
     97: '0x8F3273Fb89B075b1645095ABaC6ed17B2d4Bc576',
   },
   pancakeProfile: {
-    56: '0xDf4dBf6536201370F95e06A0F8a7a70fE40E388a',
+    56: '0x3ac4f1049096d7904825C749731018AC80699608',
     97: '0x4B683C7E13B6d5D7fd1FeA9530F451954c1A7c8A',
   },
   pancakeRabbits: {
@@ -32,7 +32,7 @@ export default {
     97: '',
   },
   pointCenterIfo: {
-    56: '0x3C6919b132462C1FEc572c6300E83191f4F0012a',
+    56: '0x61f8876a320B2C46b7ec0d36544E23e91BbE1698',
     97: '0xd2Ac1B1728Bb1C11ae02AB6e75B76Ae41A2997e3',
   },
   bunnySpecial: {
@@ -84,7 +84,7 @@ export default {
     97: '0x981aE96378e770DE44F89cD9175E708f9EDB70a9',
   },
   nftMarket: {
-    56: '0x17539cCa21C7933Df5c980172d22659B8C345C5A',
+    56: '0x202b0d0aBFbBA0Cfe9Cf80BBFE46a54ec67aD2FF',
     97: '0x7f9f37ddcaa33893f9beb3d8748c8d6bfbde6ab2',
   },
   nftSale: {
