@@ -1,4 +1,4 @@
-import { Currency } from '@pancakeswap/sdk'
+import { Currency } from '@liquidslabs/gravyswap-sdk'
 import { Box, BunnyPlaceholderIcon, Flex, Text } from '@pancakeswap/uikit'
 import TradingView, { useTradingViewEvent } from 'components/TradingView'
 import { useTranslation } from 'contexts/Localization'
