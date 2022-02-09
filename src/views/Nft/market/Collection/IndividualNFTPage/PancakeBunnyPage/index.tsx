@@ -11,7 +11,7 @@ import PageLoader from 'components/Loader/PageLoader'
 import usePreviousValue from 'hooks/usePreviousValue'
 import useRefresh from 'hooks/useRefresh'
 import useIsWindowVisible from 'hooks/useIsWindowVisible'
-import { PANCAKE_BUNNIES_UPDATE_FREQUENCY } from 'config'
+import { PANGRAVY_BUNNIES_UPDATE_FREQUENCY } from 'config'
 import { useGetCollectionDistributionPB } from 'views/Nft/market/hooks/useGetCollectionDistribution'
 import MainPancakeBunnyCard from './MainPancakeBunnyCard'
 import ManagePancakeBunniesCard from './ManagePancakeBunniesCard'
@@ -55,7 +55,7 @@ const IndividualPancakeBunnyPage: React.FC<IndividualPancakeBunnyPageProps> = ({
     // (it can't be reasonably wrapper in useCallback because the tokens are updated every time you call it, which is the whole point)
     // Since fastRefresh is 10 seconds and FETCH_NEW_NFTS_INTERVAL_MS is 8 seconds it fires every 10 seconds
     // The difference in 2 seconds is just to prevent some edge cases when request takes too long
-    if (msSinceLastUpdate > PANCAKE_BUNNIES_UPDATE_FREQUENCY && !isUpdatingPancakeBunnies && isWindowVisible) {
+    if (msSinceLastUpdate > PANGRAVY_BUNNIES_UPDATE_FREQUENCY && !isUpdatingPancakeBunnies && isWindowVisible) {
       fetchMorePancakeBunnies(priceSort)
     }
   }, [

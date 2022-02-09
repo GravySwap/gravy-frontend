@@ -45,7 +45,7 @@ const UserPrizeGrid: React.FC<{ userTradingInformation?: UserTradingInformationP
         <tr>
           <BoldTd>
             <Flex flexDirection="column">
-              <Text bold>{cakeReward.toFixed(2)} CAKE</Text>
+              <Text bold>{cakeReward.toFixed(2)} GRAVY</Text>
               <Text bold>{lazioReward.toFixed(2)} LAZIO</Text>
               <Text bold>{portoReward.toFixed(2)} PORTO</Text>
               <Text bold>{santosReward.toFixed(2)} SANTOS</Text>

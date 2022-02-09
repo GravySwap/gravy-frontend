@@ -48,13 +48,13 @@ export const earnSectionData: SalesSectionProps = {
 }
 
 export const cakeSectionData: SalesSectionProps = {
-  headingText: 'CAKE makes our world go round.',
+  headingText: 'GRAVY makes our world go round.',
   bodyText:
-    'CAKE token is at the heart of the GravySwap ecosystem. Buy it, win it, farm it, spend it, stake it... heck, you can even vote with it!',
+    'GRAVY token is at the heart of the GravySwap ecosystem. Buy it, win it, farm it, spend it, stake it... heck, you can even vote with it!',
   reverse: false,
   primaryButton: {
     to: '/swap?outputCurrency=0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82',
-    text: 'Buy CAKE',
+    text: 'Buy GRAVY',
     external: false,
   },
   secondaryButton: {
@@ -66,7 +66,7 @@ export const cakeSectionData: SalesSectionProps = {
   images: {
     path: '/images/home/cake/',
     attributes: [
-      { src: 'coin', alt: 'CAKE token' },
+      { src: 'coin', alt: 'GRAVY token' },
     ],
   },
 }
