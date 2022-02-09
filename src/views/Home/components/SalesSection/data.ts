@@ -17,9 +17,7 @@ export const swapSectionData: SalesSectionProps = {
   images: {
     path: '/images/home/trade/',
     attributes: [
-      { src: 'BNB', alt: 'BNB token' },
-      { src: 'BTC', alt: 'BTC token' },
-      { src: 'CAKE', alt: 'CAKE token' },
+      { src: 'GRAVY', alt: 'GRAVY token' },
     ],
   },
 }
@@ -43,7 +41,6 @@ export const earnSectionData: SalesSectionProps = {
     attributes: [
       { src: 'pie', alt: 'Pie chart' },
       { src: 'stonks', alt: 'Stocks chart' },
-      { src: 'folder', alt: 'Folder with cake token' },
     ],
   },
 }
