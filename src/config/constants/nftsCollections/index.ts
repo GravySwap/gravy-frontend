@@ -11,7 +11,7 @@ const collections: Collections = {
   },
   [CollectionKey.SQUAD]: {
     name: 'Pancake Squad',
-    description: "PancakeSwap's first official generative NFT collection.. Join the squad.",
+    description: "GravySwap's first official generative NFT collection.. Join the squad.",
     slug: 'pancake-squad',
     address: {
       56: '0x0a8901b0E25DEb55A87524f0cC164E9644020EBA',
