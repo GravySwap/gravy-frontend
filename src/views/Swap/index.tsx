@@ -11,7 +11,7 @@ import {
   IconButton,
   BottomDrawer,
   useMatchBreakpoints,
-} from '@pancakeswap/uikit'
+} from '@gravyswap/uikit'
 import { useIsTransactionUnsupported } from 'hooks/Trades'
 import UnsupportedCurrencyFooter from 'components/UnsupportedCurrencyFooter'
 import Footer from 'components/Menu/Footer'

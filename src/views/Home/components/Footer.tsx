@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Flex, Heading, Text, Link } from '@pancakeswap/uikit'
+import { Flex, Heading, Text, Link } from '@gravyswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import Container from 'components/Layout/Container'
@@ -92,14 +92,6 @@ const Footer = () => {
           <StyledSunburst />
         </Flex>
       </BgWrapper>
-      <FloatingPancakesWrapper>
-        <TopLeftImgWrapper>
-          <CompositeImage {...topLeftImage} maxHeight="256px" />
-        </TopLeftImgWrapper>
-        <BottomRightImgWrapper>
-          <CompositeImage {...bottomRightImage} maxHeight="256px" />
-        </BottomRightImgWrapper>
-      </FloatingPancakesWrapper>
       <Wrapper>
         <Heading mb="24px" scale="xl" color="white">
           {t('Start in seconds.')}

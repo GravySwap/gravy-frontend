@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react'
 import styled from 'styled-components'
 import { Trade, TradeType } from '@liquidslabs/gravyswap-sdk'
-import { Button, Text, AutoRenewIcon } from '@pancakeswap/uikit'
+import { Button, Text, AutoRenewIcon } from '@gravyswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 import { Field } from 'state/swap/actions'
 import {

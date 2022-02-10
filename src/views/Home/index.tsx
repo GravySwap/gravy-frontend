@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Flex } from '@pancakeswap/uikit'
+import { Flex } from '@gravyswap/uikit'
 import PageSection from 'components/PageSection'
 import { useWeb3React } from '@web3-react/core'
 import useTheme from 'hooks/useTheme'
@@ -53,11 +53,7 @@ const Home: React.FC = () => {
       <PageMeta />
       <StyledHeroSection
         innerProps={{ style: { margin: '0', width: '100%' } }}
-        background={
-          theme.isDark
-            ? 'radial-gradient(103.12% 50% at 50% 50%, #21193A 0%, #191326 100%)'
-            : '#F4D8AA'
-        }
+        background={theme.isDark ? 'radial-gradient(103.12% 50% at 50% 50%, #21193A 0%, #191326 100%)' : '#F4D8AA'}
         index={2}
         hasCurvedDivider={false}
       >
@@ -71,7 +67,7 @@ const Home: React.FC = () => {
           mt={[account ? '0' : '-16px', null, null, account ? '0' : '-48px']}
           pb="24px"
           minHeight={150}
-         />
+        />
         <Hero />
       </StyledHeroSection>
       <PageSection

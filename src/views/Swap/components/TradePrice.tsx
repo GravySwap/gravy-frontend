@@ -1,6 +1,6 @@
 import React from 'react'
 import { Price } from '@liquidslabs/gravyswap-sdk'
-import { Text, AutoRenewIcon } from '@pancakeswap/uikit'
+import { Text, AutoRenewIcon } from '@gravyswap/uikit'
 import { StyledBalanceMaxMini } from './styleds'
 
 interface TradePriceProps {
