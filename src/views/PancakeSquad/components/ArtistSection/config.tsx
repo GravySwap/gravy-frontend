@@ -1,5 +1,5 @@
 import React from 'react'
-import { InstagramIcon, TwitterIcon } from '@pancakeswap/uikit'
+import { InstagramIcon, TwitterIcon } from '@gravyswap/uikit'
 import { ContextApi } from 'contexts/Localization/types'
 
 type ArtistConfigType = {
@@ -26,7 +26,7 @@ const artistConfigBuilder = ({ t, isDark }: ArtistConfigType) => ({
       to: 'https://twitter.com/cecymeade',
       text: t('Follow on Twitter'),
       external: true,
-      icon: <TwitterIcon fillColor="white" />,
+      icon: <TwitterIcon />,
     },
     {
       to: 'https://www.instagram.com/cecymeade/',

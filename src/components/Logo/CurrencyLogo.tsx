@@ -1,5 +1,5 @@
 import { Currency, ETHER, Token } from '@liquidslabs/gravyswap-sdk'
-import { BinanceIcon } from '@pancakeswap/uikit'
+import { BinanceIcon } from '@gravyswap/uikit'
 import React, { useMemo } from 'react'
 import styled from 'styled-components'
 import useHttpLocations from '../../hooks/useHttpLocations'

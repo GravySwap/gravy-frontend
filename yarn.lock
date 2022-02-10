@@ -2241,6 +2241,18 @@
   resolved "https://registry.yarnpkg.com/@graphql-typed-document-node/core/-/core-3.1.0.tgz#0eee6373e11418bfe0b5638f654df7a4ca6a3950"
   integrity sha512-wYn6r8zVZyQJ6rQaALBEln5B1pzxb9shV5Ef97kTvn6yVGrqyXVnDqnU24MXnFubR+rZjBY9NWuxX3FB2sTsjg==
 
+"@gravyswap/uikit@^0.62.0":
+  version "0.62.0"
+  resolved "https://registry.yarnpkg.com/@gravyswap/uikit/-/uikit-0.62.0.tgz#21f3f7a2c469862253ab96df45fe8e8b3c8a87a2"
+  integrity sha512-WRDd9YIH+cl34zrGAxOsWdCn8auD8nXzWVU5pUqEFMRptWbaebRD0zT9sFr+QIKDTigFTF+390W13PaZZCCtYw==
+  dependencies:
+    "@popperjs/core" "^2.9.2"
+    "@types/lodash" "^4.14.168"
+    "@types/styled-system" "^5.1.10"
+    lodash "^4.17.20"
+    react-popper "^2.2.5"
+    styled-system "^5.1.5"
+
 "@gulp-sourcemaps/map-sources@1.X":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@gulp-sourcemaps/map-sources/-/map-sources-1.0.0.tgz#890ae7c5d8c877f6d384860215ace9d7ec945bda"
@@ -2649,9 +2661,9 @@
     eslint-plugin-react "^7.21.5"
     eslint-plugin-react-hooks "^4.0.0"
 
-"@pancakeswap/uikit@^0.59.0":
+"@gravyswap/uikit@^0.59.0":
   version "0.59.0"
-  resolved "https://registry.yarnpkg.com/@pancakeswap/uikit/-/uikit-0.59.0.tgz#f019490f2c57dfcc9a5324f4e662601b298342c8"
+  resolved "https://registry.yarnpkg.com/@gravyswap/uikit/-/uikit-0.59.0.tgz#f019490f2c57dfcc9a5324f4e662601b298342c8"
   integrity sha512-PC4MycqLaPdU/uYkm/3thvnFopOMIbvwqpEYekZtpsMJGDQMwVZq1mQVt3Y7VY4UJCCzFGJf/gqQ2HIv9FqqRg==
   dependencies:
     "@popperjs/core" "^2.9.2"

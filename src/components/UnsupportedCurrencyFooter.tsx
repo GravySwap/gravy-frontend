@@ -1,6 +1,6 @@
 import React from 'react'
 import { Currency, Token } from '@liquidslabs/gravyswap-sdk'
-import { Button, Text, Modal, useModal, InjectedModalProps, Link } from '@pancakeswap/uikit'
+import { Button, Text, Modal, useModal, InjectedModalProps, Link } from '@gravyswap/uikit'
 import styled from 'styled-components'
 import { AutoRow } from 'components/Layout/Row'
 import { AutoColumn } from 'components/Layout/Column'

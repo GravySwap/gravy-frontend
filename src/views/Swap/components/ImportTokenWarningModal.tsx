@@ -1,6 +1,6 @@
 import React from 'react'
 import { Token } from '@liquidslabs/gravyswap-sdk'
-import { Modal, InjectedModalProps } from '@pancakeswap/uikit'
+import { Modal, InjectedModalProps } from '@gravyswap/uikit'
 import ImportToken from 'components/SearchModal/ImportToken'
 import { useTranslation } from 'contexts/Localization'
 

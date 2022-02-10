@@ -1,7 +1,7 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
 import { Link } from 'react-router-dom'
-import { Flex, Heading, Button } from '@pancakeswap/uikit'
+import { Flex, Heading, Button } from '@gravyswap/uikit'
 import { useWeb3React } from '@web3-react/core'
 import { useTranslation } from 'contexts/Localization'
 import ConnectWalletButton from 'components/ConnectWalletButton'
@@ -110,7 +110,9 @@ const Hero = () => {
             {t('Revolutionary Trading')}
           </Heading>
           <Heading scale="md" mb="24px">
-            {t('Using GravySwap you wll be able to instantly swap crypto tokens and access the latest in DeFi technology.')}
+            {t(
+              'Using GravySwap you wll be able to instantly swap crypto tokens and access the latest in DeFi technology.',
+            )}
           </Heading>
           <Flex>
             {!account && <ConnectWalletButton mr="8px" />}

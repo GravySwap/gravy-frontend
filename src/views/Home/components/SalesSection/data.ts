@@ -65,8 +65,6 @@ export const cakeSectionData: SalesSectionProps = {
 
   images: {
     path: '/images/home/cake/',
-    attributes: [
-      { src: 'coin', alt: 'GRAVY token' },
-    ],
+    attributes: [{ src: 'coin', alt: 'GRAVY token' }],
   },
 }
