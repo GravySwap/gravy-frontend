@@ -107,7 +107,8 @@ const Home: React.FC = () => {
           </InnerWedgeWrapper>
         </OuterWedgeWrapper>
         <SalesSection {...earnSectionData} />
-        <FarmsPoolsRow />
+        {/* TODO: Inspect component to resolve performance issue. */}
+        {/* <FarmsPoolsRow /> */}
       </PageSection>
       <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
