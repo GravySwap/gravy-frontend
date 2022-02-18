@@ -1,6 +1,6 @@
 // region import
 import React from 'react'
-import styled from 'styled-components'
+import styled, { useTheme } from 'styled-components'
 import { Link } from 'react-router-dom'
 
 // contexts
@@ -31,19 +31,65 @@ const InformationContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+
+  z-index: 1;
 `
 
-const HeroIconRightContainer = styled.div`
+const HeroIconRightContainer = styled.svg`
   position: absolute;
   right: 0;
   bottom: 50%;
   transform: translateY(50%);
+
+  ${({ theme }) => theme.mediaQueries.sm} {
+    width: 400px;
+  }
+
+  ${({ theme }) => theme.mediaQueries.md} {
+    width: 500px;
+  }
+
+  ${({ theme }) => theme.mediaQueries.lg} {
+    width: 600px;
+  }
+
+  ${({ theme }) => theme.mediaQueries.xl} {
+    width: 700px;
+  }
+
+  ${({ theme }) => theme.mediaQueries.xxl} {
+    width: 800px;
+  }
 `
 
-const HeroIconLeftContainer = styled.div`
+const HeroIconLeftContainer = styled.svg`
   position: absolute;
   top: 0;
   left: 0;
+
+  ${({ theme }) => theme.mediaQueries.xs} {
+    width: 200px;
+  }
+
+  ${({ theme }) => theme.mediaQueries.sm} {
+    width: 200px;
+  }
+
+  ${({ theme }) => theme.mediaQueries.md} {
+    width: 300px;
+  }
+
+  ${({ theme }) => theme.mediaQueries.lg} {
+    width: 400px;
+  }
+
+  ${({ theme }) => theme.mediaQueries.xl} {
+    width: 450px;
+  }
+
+  ${({ theme }) => theme.mediaQueries.xxl} {
+    width: 600px;
+  }
 `
 
 const Logo = styled(LogoWithTextIcon)`
@@ -76,27 +122,24 @@ const Img = styled.img`
 
 const DividerSectionHero: React.FC = () => {
   const { t } = useTranslation()
+  const theme = useTheme()
   return (
     <DividerSection color="white">
       <Logo isDark={false} />
       <StyledConnectWalletButton />
-      <HeroIconLeftContainer>
-        <svg width={700} viewBox="0 0 543 222" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M0-2h543c-19.001 81.191-79.962 142.731-182.882 184.62C282.038 214.398 161.998 226.525 0 219V-2Z"
-            fill="#441F95"
-            fillRule="evenodd"
-          />
-        </svg>
+      <HeroIconLeftContainer theme={theme} viewBox="0 0 543 222" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M0-2h543c-19.001 81.191-79.962 142.731-182.882 184.62C282.038 214.398 161.998 226.525 0 219V-2Z"
+          fill="#441F95"
+          fillRule="evenodd"
+        />
       </HeroIconLeftContainer>
-      <HeroIconRightContainer>
-        <svg width={800} viewBox="0 0 737 640" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M335.475 64.732 746-1v643L333.298 536.843C111.1 476.649 0 381.403 0 251.103c0-84.034 111.825-146.158 335.475-186.371Z"
-            fill="#FAEBC1"
-            fillRule="evenodd"
-          />
-        </svg>
+      <HeroIconRightContainer theme={theme} viewBox="0 0 737 640" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M335.475 64.732 746-1v643L333.298 536.843C111.1 476.649 0 381.403 0 251.103c0-84.034 111.825-146.158 335.475-186.371Z"
+          fill="#FAEBC1"
+          fillRule="evenodd"
+        />
       </HeroIconRightContainer>
 
       <InformationContainer>
