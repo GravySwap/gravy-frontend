@@ -2241,10 +2241,10 @@
   resolved "https://registry.yarnpkg.com/@graphql-typed-document-node/core/-/core-3.1.0.tgz#0eee6373e11418bfe0b5638f654df7a4ca6a3950"
   integrity sha512-wYn6r8zVZyQJ6rQaALBEln5B1pzxb9shV5Ef97kTvn6yVGrqyXVnDqnU24MXnFubR+rZjBY9NWuxX3FB2sTsjg==
 
-"@gravyswap/uikit@^0.68.0":
-  version "0.68.0"
-  resolved "https://registry.yarnpkg.com/@gravyswap/uikit/-/uikit-0.68.0.tgz#014872d987b6394372a03a5e69e015e7088679ba"
-  integrity sha512-69e+u0f8h70HLqdbIqxB0p+w4rZWMTO8Kr/t+iLgh0XtpHlldHnmV6L720FjGtub1TsZUfrALoxBtUhIIkfVhQ==
+"@gravyswap/uikit@^0.69.0":
+  version "0.69.0"
+  resolved "https://registry.yarnpkg.com/@gravyswap/uikit/-/uikit-0.69.0.tgz#6059f74fc7b29c2c2ac85f90478c8ee4ab237b16"
+  integrity sha512-fhWWjogOUloNy/bPjDQUVU4J4/Ot9PeOOulaqJO2YW6aoC04tWhpEKo2sUHWIOhKu4uEE0omzBE/kVd/E6Nu2g==
   dependencies:
     "@popperjs/core" "^2.9.2"
     "@types/lodash" "^4.14.168"

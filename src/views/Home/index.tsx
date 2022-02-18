@@ -9,6 +9,7 @@ import Container from 'components/Layout/Container'
 import { PageMeta } from 'components/Layout/Page'
 import DividerSectionServices from 'components/DividerSectionServices'
 import DividerSectionSwap from 'components/DividerSectionSwap'
+import DividerSectionEarn from 'components/DividerSectionEarn'
 import Hero from './components/Hero'
 import { swapSectionData, earnSectionData, cakeSectionData } from './components/SalesSection/data'
 import MetricsSection from './components/MetricsSection'
@@ -125,34 +126,7 @@ const Home: React.FC = () => {
       </HeroContainer>
       <DividerSectionServices />
       <DividerSectionSwap />
-      {/* <PageSection
-        innerProps={{ style: HomeSectionContainerStyles }}
-        background={theme.colors.background}
-        index={2}
-        hasCurvedDivider={false}
-      >
-        <OuterWedgeWrapper>
-          <InnerWedgeWrapper top fill={theme.isDark ? '#201335' : '#D8CBED'}>
-            <WedgeTopLeft />
-          </InnerWedgeWrapper>
-        </OuterWedgeWrapper>
-        <SalesSection {...swapSectionData} />
-      </PageSection> */}
-      <PageSection
-        innerProps={{ style: HomeSectionContainerStyles }}
-        background={theme.colors.gradients.cardHeader}
-        index={2}
-        hasCurvedDivider={false}
-      >
-        <OuterWedgeWrapper>
-          <InnerWedgeWrapper width="150%" top fill={theme.colors.background}>
-            <WedgeTopRight />
-          </InnerWedgeWrapper>
-        </OuterWedgeWrapper>
-        <SalesSection {...earnSectionData} />
-        {/* TODO: Inspect component to resolve performance issue. */}
-        {/* <FarmsPoolsRow /> */}
-      </PageSection>
+      <DividerSectionEarn />
       <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
         background={theme.colors.background}
