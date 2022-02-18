@@ -10,6 +10,7 @@ import { PageMeta } from 'components/Layout/Page'
 import DividerSectionServices from 'components/DividerSectionServices'
 import DividerSectionSwap from 'components/DividerSectionSwap'
 import DividerSectionEarn from 'components/DividerSectionEarn'
+import DividerSectionGravy from 'components/DividerSectionGravy'
 import Hero from './components/Hero'
 import { swapSectionData, earnSectionData, cakeSectionData } from './components/SalesSection/data'
 import MetricsSection from './components/MetricsSection'
@@ -127,15 +128,7 @@ const Home: React.FC = () => {
       <DividerSectionServices />
       <DividerSectionSwap />
       <DividerSectionEarn />
-      <PageSection
-        innerProps={{ style: HomeSectionContainerStyles }}
-        background={theme.colors.background}
-        index={2}
-        hasCurvedDivider={false}
-      >
-        <SalesSection {...cakeSectionData} />
-        <CakeDataRow />
-      </PageSection>
+      <DividerSectionGravy />
       <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
         background="linear-gradient(180deg, #7645D9 0%, #5121B1 100%)"
