@@ -33,6 +33,8 @@ const InformationContainer = styled.div`
   align-items: flex-start;
 
   z-index: 1;
+
+  padding-top: 150px;
 `
 
 const HeroIconRightContainer = styled.svg`
@@ -66,38 +68,35 @@ const HeroIconLeftContainer = styled.svg`
   position: absolute;
   top: 0;
   left: 0;
-
-  ${({ theme }) => theme.mediaQueries.xs} {
-    width: 200px;
-  }
-
-  ${({ theme }) => theme.mediaQueries.sm} {
-    width: 200px;
-  }
+  width: 90%;
 
   ${({ theme }) => theme.mediaQueries.md} {
-    width: 300px;
-  }
-
-  ${({ theme }) => theme.mediaQueries.lg} {
-    width: 400px;
-  }
-
-  ${({ theme }) => theme.mediaQueries.xl} {
-    width: 450px;
-  }
-
-  ${({ theme }) => theme.mediaQueries.xxl} {
-    width: 600px;
+    width: 39%;
   }
 `
 
-const Logo = styled(LogoWithTextIcon)`
+const LogoWhite = styled(LogoWithTextIcon)`
   position: absolute;
   width: 250px;
   right: 50%;
   transform: translateX(50%);
   top: 50px;
+
+  z-index: 1;
+`
+
+const LogoDark = styled(LogoWithTextIcon)`
+  position: absolute;
+  width: 250px;
+  right: 50%;
+  transform: translateX(50%);
+  top: 50px;
+
+  z-index: 1;
+
+  ${({ theme }) => theme.mediaQueries.md} {
+    display: none;
+  }
 `
 
 const StyledConnectWalletButton = styled(ConnectWalletButton)`
@@ -130,7 +129,8 @@ const DividerSectionHero: React.FC = () => {
   const theme = useTheme()
   return (
     <DividerSection color="white">
-      <Logo isDark={false} />
+      <LogoWhite isDark={false} />
+      <LogoDark isDark />
       <StyledConnectWalletButton />
       <HeroIconLeftContainer theme={theme} viewBox="0 0 543 222" xmlns="http://www.w3.org/2000/svg">
         <path

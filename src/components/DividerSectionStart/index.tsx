@@ -39,6 +39,11 @@ const StyledImg = styled.img`
   position: absolute;
   right: 0;
   bottom: 0;
+  width: 250px;
+
+  ${({ theme }) => theme.mediaQueries.xxl} {
+    width: auto;
+  }
 `
 
 const Divider = styled.div`
