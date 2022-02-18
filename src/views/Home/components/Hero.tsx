@@ -106,10 +106,12 @@ const Hero = () => {
         id="homepage-hero"
       >
         <Flex flex="1" flexDirection="column">
-          <Heading scale="xxl" color="secondary" mb="24px">
-            {t('Revolutionary Trading')}
-          </Heading>
-          <Heading scale="md" mb="24px">
+          <Flex>
+            <Heading black scale="xxl" color="secondary">
+              {t('Trade better.')}
+            </Heading>
+          </Flex>
+          <Heading maxWidth={540} scale="md" mb="38px">
             {t(
               'Using GravySwap you wll be able to instantly swap crypto tokens and access the latest in DeFi technology.',
             )}
@@ -122,22 +124,13 @@ const Hero = () => {
           </Flex>
         </Flex>
         <Flex
-          height={['192px', null, null, '100%']}
-          width={['192px', null, null, '100%']}
+          height={['192px', '192px', '350px', '600px']}
+          width={['192px', '192px', '350px', '600px']}
           flex={[null, null, null, '1']}
           mb={['24px', null, null, '0']}
           position="relative"
         >
-          <BunnyWrapper>
-            <picture>
-              <source type="image/webp" srcSet={getSrcSet(imagePath, imageSrc, '.webp')} />
-              <source type="image/png" srcSet={getSrcSet(imagePath, imageSrc)} />
-              <img src={`${imagePath}${imageSrc}.png`} alt={t('Lunar bunny')} />
-            </picture>
-          </BunnyWrapper>
-          <StarsWrapper>
-            <CompositeImage {...starsImage} />
-          </StarsWrapper>
+          <img style={{ maxWidth: 'none' }} src={`${imagePath}${imageSrc}.png`} alt={t('Lunar bunny')} />
         </Flex>
       </Flex>
     </>
