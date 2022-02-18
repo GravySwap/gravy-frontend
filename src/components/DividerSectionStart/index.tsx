@@ -1,15 +1,13 @@
 // region import
 import React from 'react'
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
 
 // contexts
 import { useTranslation } from 'contexts/Localization'
 
 // components
-import DividerSection from 'components/DividerSection'
 import ConnectWalletButton from 'components/ConnectWalletButton'
-import { Heading, Button } from '@gravyswap/uikit'
+import { Heading } from '@gravyswap/uikit'
 // endregion
 
 const StyledHeading = styled(Heading)`
@@ -79,9 +77,7 @@ const DividerSectionStart: React.FC = () => {
             {t('Connect your crypto wallet to start using the app in seconds. No registration needed.')}
           </Heading>
         </DescriptionContainer>
-        <Link to="/farms">
-          <Button variant="primary">{t('Start earning')}</Button>
-        </Link>
+        <ConnectWalletButton />
       </InformationContainer>
       <StyledImg src="/images/gravy_conductor.png" alt="Gravy support" />
     </Divider>
