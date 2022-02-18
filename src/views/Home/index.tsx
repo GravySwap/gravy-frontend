@@ -7,8 +7,8 @@ import useTheme from 'hooks/useTheme'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import Container from 'components/Layout/Container'
 import { PageMeta } from 'components/Layout/Page'
-import DividerSection from 'components/DividerSection'
 import DividerSectionServices from 'components/DividerSectionServices'
+import DividerSectionSwap from 'components/DividerSectionSwap'
 import Hero from './components/Hero'
 import { swapSectionData, earnSectionData, cakeSectionData } from './components/SalesSection/data'
 import MetricsSection from './components/MetricsSection'
@@ -124,7 +124,8 @@ const Home: React.FC = () => {
         </HeroIconRightContainer>
       </HeroContainer>
       <DividerSectionServices />
-      <PageSection
+      <DividerSectionSwap />
+      {/* <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
         background={theme.colors.background}
         index={2}
@@ -136,7 +137,7 @@ const Home: React.FC = () => {
           </InnerWedgeWrapper>
         </OuterWedgeWrapper>
         <SalesSection {...swapSectionData} />
-      </PageSection>
+      </PageSection> */}
       <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
         background={theme.colors.gradients.cardHeader}
