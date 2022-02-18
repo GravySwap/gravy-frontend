@@ -7,6 +7,8 @@ import useTheme from 'hooks/useTheme'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import Container from 'components/Layout/Container'
 import { PageMeta } from 'components/Layout/Page'
+import DividerSection from 'components/DividerSection'
+import DividerSectionServices from 'components/DividerSectionServices'
 import Hero from './components/Hero'
 import { swapSectionData, earnSectionData, cakeSectionData } from './components/SalesSection/data'
 import MetricsSection from './components/MetricsSection'
@@ -50,14 +52,15 @@ const HeroContainer = styled.div`
   background: white;
 
   display: flex;
-  align-items: flex-end;
   justify-content: center;
+  padding-top: 150px;
 `
 
 const HeroIconRightContainer = styled.div`
   position: absolute;
   right: 0;
-  bottom: 0;
+  bottom: 50%;
+  transform: translateY(50%);
 `
 
 const HeroIconLeftContainer = styled.div`
@@ -120,37 +123,7 @@ const Home: React.FC = () => {
           </svg>
         </HeroIconRightContainer>
       </HeroContainer>
-      {/* <StyledHeroSection
-        innerProps={{ style: { margin: '0', width: '100%' } }}
-        background={theme.isDark ? 'radial-gradient(103.12% 50% at 50% 50%, #21193A 0%, #191326 100%)' : '#F4D8AA'}
-        index={2}
-        hasCurvedDivider={false}
-      >
-        {account && (
-          <UserBannerWrapper>
-            <UserBanner />
-          </UserBannerWrapper>
-        )}
-        <Flex
-          pt={[account ? '220px' : '0', null, null, account ? '76px' : '0']}
-          mt={[account ? '0' : '-16px', null, null, account ? '0' : '-48px']}
-          pb="24px"
-          minHeight={150}
-        />
-        <Hero />
-      </StyledHeroSection> */}
-      <PageSection
-        innerProps={{ style: { margin: '0', width: '100%' } }}
-        background={
-          theme.isDark
-            ? 'linear-gradient(180deg, #09070C 22%, #201335 100%)'
-            : 'linear-gradient(180deg, #FFFFFF 22%, #D7CAEC 100%)'
-        }
-        index={2}
-        hasCurvedDivider={false}
-      >
-        <MetricsSection />
-      </PageSection>
+      <DividerSectionServices />
       <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
         background={theme.colors.background}
