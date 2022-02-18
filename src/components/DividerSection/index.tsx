@@ -6,6 +6,8 @@ interface DividerSectionProps {
 }
 
 const MainContainer = styled.div`
+  position: relative;
+
   min-height: 850px;
   background-color: ${({ color }) => color};
   padding: 200px 50px;
