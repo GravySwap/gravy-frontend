@@ -101,10 +101,15 @@ const Logo = styled(LogoWithTextIcon)`
 `
 
 const StyledConnectWalletButton = styled(ConnectWalletButton)`
+  display: none;
   position: absolute;
   top: 40px;
   right: 100px;
   z-index: 2;
+
+  ${({ theme }) => theme.mediaQueries.lg} {
+    display: block;
+  }
 `
 
 const Buttons = styled.div`

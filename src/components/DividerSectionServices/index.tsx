@@ -51,6 +51,8 @@ const Card = styled.div`
   font-weight: 900;
   font-size: 25px;
   color: white;
+
+  margin: 25px;
 `
 
 const DividerSectionServices: React.FC = () => {

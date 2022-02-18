@@ -14,28 +14,26 @@ const MainContainer = styled.div`
 `
 
 const Content = styled.div`
-    display: grid;
-    gap: 75px;
-   
-    justify-items: center;
-    max-width: 1350px;
-    margin: auto;
-    align-items: center;
+  display: grid;
+  gap: 75px;
 
-    ${({ theme }) => theme.mediaQueries.xl} {
-      display: flex;
-      gap: 0;
-      flex-direction: row;
-      justify-content: center;
-    }
+  justify-items: center;
+  max-width: 1350px;
+  margin: auto;
+  align-items: center;
+
+  ${({ theme }) => theme.mediaQueries.xl} {
+    display: flex;
+    gap: 0;
+    flex-direction: row;
+    justify-content: center;
+  }
 `
 
 const DividerSection: React.FC<DividerSectionProps> = ({ children, color }) => {
   return (
     <MainContainer color={color}>
-      <Content>
-        {children}
-      </Content>
+      <Content>{children}</Content>
     </MainContainer>
   )
 }
