@@ -26,7 +26,7 @@ const Content = styled.div`
     display: flex;
     gap: 0;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
   }
 `
 
