@@ -59,6 +59,11 @@ const Card = styled.div`
 
   margin: 25px;
   text-align: center;
+
+  ${(props) => props.theme.mediaQueries.xl} {
+    margin: 0;
+    margin-bottom: 25px;
+  }
 `
 
 const ComingSoon = styled.div`
