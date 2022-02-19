@@ -11,8 +11,8 @@ import { usePollCoreFarmData } from 'state/farms/hooks'
 import { useFetchProfile } from 'state/profile/hooks'
 import { DatePickerPortal } from 'components/DatePicker'
 import { nftsBaseUrl } from 'views/Nft/market/constants'
+import Footer from 'components/Footer'
 import GlobalStyle from './style/Global'
-import Menu from './components/Menu'
 import SuspenseWithChunkError from './components/SuspenseWithChunkError'
 import { ToastListener } from './contexts/ToastsContext'
 import PageLoader from './components/Loader/PageLoader'
@@ -78,7 +78,6 @@ const App: React.FC = () => {
       <ResetCSS />
       <GlobalStyle />
       <GlobalCheckClaimStatus excludeLocations={[]} />
-      {/* <Menu> */}
       <SuspenseWithChunkError fallback={<PageLoader />}>
         <Switch>
           <Route path="/" exact>
@@ -178,7 +177,7 @@ const App: React.FC = () => {
           <Route component={NotFound} />
         </Switch>
       </SuspenseWithChunkError>
-      {/* </Menu> */}
+      <Footer />
       <EasterEgg iterations={2} />
       <ToastListener />
       <DatePickerPortal />
