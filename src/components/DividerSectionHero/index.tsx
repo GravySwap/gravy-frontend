@@ -1,5 +1,5 @@
 // region import
-import React from 'react'
+import React, { useState } from 'react'
 import styled, { useTheme } from 'styled-components'
 import { Link } from 'react-router-dom'
 
@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 import { useTranslation } from 'contexts/Localization'
 
 // components
-import DividerSection from 'components/DividerSection'
+import LateralMenu from 'components/LateralMenu'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import { Heading, Button, LogoWithTextIcon } from '@gravyswap/uikit'
 // endregion
@@ -28,39 +28,25 @@ const DescriptionContainer = styled.div`
 `
 
 const InformationContainer = styled.div`
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 
-  z-index: 1;
-
-  padding-top: 150px;
+  padding-top: 250px;
+  margin-bottom: 100px;
 `
 
 const HeroIconRightContainer = styled.svg`
   position: absolute;
   right: 0;
-  bottom: 50%;
+  bottom: 35%;
   transform: translateY(50%);
-
-  ${({ theme }) => theme.mediaQueries.sm} {
-    width: 400px;
-  }
-
-  ${({ theme }) => theme.mediaQueries.md} {
-    width: 500px;
-  }
-
-  ${({ theme }) => theme.mediaQueries.lg} {
-    width: 600px;
-  }
+  width: 75%;
 
   ${({ theme }) => theme.mediaQueries.xl} {
-    width: 700px;
-  }
-
-  ${({ theme }) => theme.mediaQueries.xxl} {
-    width: 800px;
+    width: 50%;
+    bottom: 50%;
   }
 `
 
@@ -77,22 +63,14 @@ const HeroIconLeftContainer = styled.svg`
 
 const LogoWhite = styled(LogoWithTextIcon)`
   position: absolute;
-  width: 250px;
   right: 50%;
   transform: translateX(50%);
-  top: 50px;
-
-  z-index: 1;
 `
 
 const LogoDark = styled(LogoWithTextIcon)`
   position: absolute;
-  width: 250px;
   right: 50%;
   transform: translateX(50%);
-  top: 50px;
-
-  z-index: 1;
 
   ${({ theme }) => theme.mediaQueries.md} {
     display: none;
@@ -100,11 +78,9 @@ const LogoDark = styled(LogoWithTextIcon)`
 `
 
 const StyledConnectWalletButton = styled(ConnectWalletButton)`
+  margin-left: auto;
+  z-index: 1;
   display: none;
-  position: absolute;
-  top: 40px;
-  right: 100px;
-  z-index: 2;
 
   ${({ theme }) => theme.mediaQueries.lg} {
     display: block;
@@ -120,18 +96,61 @@ const ButtonWallet = styled.div`
 `
 
 const Img = styled.img`
-  z-index: 2;
   width: 800px;
+  z-index: 1;
+
+  ${(props) => props.theme.mediaQueries.xl} {
+    padding-top: 150px;
+  }
+`
+
+const Head = styled.div`
+  max-width: 1350px;
+
+  display: flex;
+  align-items: center;
+  margin: auto;
+`
+
+const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  max-width: 1350px;
+
+  ${(props) => props.theme.mediaQueries.xl} {
+    flex-direction: row;
+  }
+`
+
+const Container = styled.div`
+  z-index: 2;
+`
+
+const MainContainer = styled.div`
+  background-color: white;
+  padding: 50px;
+  padding-bottom: 250px;
+  position: relative;
+`
+
+const Svg = styled.svg`
+  z-index: 1;
+  cursor: pointer;
+
+  &:active {
+    opacity: 0.75;
+  }
 `
 
 const DividerSectionHero: React.FC = () => {
+  const [menuOpen, setMenuOpen] = useState(false)
   const { t } = useTranslation()
   const theme = useTheme()
   return (
-    <DividerSection color="white">
-      <LogoWhite isDark={false} />
-      <LogoDark isDark />
-      <StyledConnectWalletButton />
+    <MainContainer color="white">
+      <LateralMenu onClose={setMenuOpen} open={menuOpen} />
       <HeroIconLeftContainer theme={theme} viewBox="0 0 543 222" xmlns="http://www.w3.org/2000/svg">
         <path
           d="M0-2h543c-19.001 81.191-79.962 142.731-182.882 184.62C282.038 214.398 161.998 226.525 0 219V-2Z"
@@ -146,38 +165,60 @@ const DividerSectionHero: React.FC = () => {
           fillRule="evenodd"
         />
       </HeroIconRightContainer>
+      <Container>
+        <Head>
+          <Svg
+            onClick={() => setMenuOpen(true)}
+            width={40}
+            height={21}
+            viewBox="0 0 40 21"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g fill="#FFF">
+              <rect transform="matrix(-1 0 0 1 40 0)" width={40} height={3} rx={1.5} />
+              <rect transform="matrix(-1 0 0 1 31 0)" y={9} width={31} height={3} rx={1.5} />
+              <rect transform="matrix(-1 0 0 1 40 0)" y={18} width={40} height={3} rx={1.5} />
+            </g>
+          </Svg>
+          <LogoWhite isDark={false} />
+          <LogoDark isDark />
+          <StyledConnectWalletButton />
+        </Head>
 
-      <InformationContainer>
-        <HeadingContainer>
-          <div>
-            <StyledHeading black scale="xxl" color="secondary">
-              Trade better
-            </StyledHeading>
-            <StyledHeading black scale="xxl" color="primary">
-              .
-            </StyledHeading>
-          </div>
-        </HeadingContainer>
+        <Content>
+          <InformationContainer>
+            <HeadingContainer>
+              <div>
+                <StyledHeading black scale="xxl" color="secondary">
+                  Trade better
+                </StyledHeading>
+                <StyledHeading black scale="xxl" color="primary">
+                  .
+                </StyledHeading>
+              </div>
+            </HeadingContainer>
 
-        <DescriptionContainer>
-          <Heading maxWidth={640} scale="md" mb="38px">
-            {t(
-              'Using GravySwap you wll be able to instantly swap crypto tokens and access the latest in DeFi technology.',
-            )}
-          </Heading>
-        </DescriptionContainer>
+            <DescriptionContainer>
+              <Heading maxWidth={640} scale="md" mb="38px">
+                {t(
+                  'Using GravySwap you wll be able to instantly swap crypto tokens and access the latest in DeFi technology.',
+                )}
+              </Heading>
+            </DescriptionContainer>
 
-        <Buttons>
-          <ButtonWallet>
-            <ConnectWalletButton />
-          </ButtonWallet>
-          <Link to="/swap">
-            <Button variant="secondary">{t('Trade Now')}</Button>
-          </Link>
-        </Buttons>
-      </InformationContainer>
-      <Img src="/images/train_launch.png" alt="Launch" />
-    </DividerSection>
+            <Buttons>
+              <ButtonWallet>
+                <ConnectWalletButton />
+              </ButtonWallet>
+              <Link to="/swap">
+                <Button variant="secondary">{t('Trade Now')}</Button>
+              </Link>
+            </Buttons>
+          </InformationContainer>
+          <Img src="/images/train_launch.png" alt="Launch" />
+        </Content>
+      </Container>
+    </MainContainer>
   )
 }
 
