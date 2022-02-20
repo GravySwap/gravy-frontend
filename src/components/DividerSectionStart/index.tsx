@@ -18,6 +18,7 @@ const HeadingContainer = styled.div`
   display: flex;
   justify-content: center;
   max-width: 500px;
+  text-align: center;
 `
 
 const DescriptionContainer = styled.div`
@@ -33,16 +34,23 @@ const InformationContainer = styled.div`
   flex-direction: column;
   align-items: center;
   max-width: 480px;
+  margin: auto;
 `
 
 const StyledImg = styled.img`
   position: absolute;
-  right: 0;
-  bottom: 0;
-  width: 250px;
+  right: -100px;
+  bottom: -100px;
+  width: 100px;
+  margin-left: auto;
+
+  ${(props) => props.theme.mediaQueries.md} {
+    width: 200px;
+  }
 
   ${({ theme }) => theme.mediaQueries.xxl} {
     width: auto;
+    bottom: auto;
   }
 `
 
@@ -51,40 +59,52 @@ const Divider = styled.div`
 
   min-height: 500px;
   background-color: #faebc1;
-  padding: 200px 50px;
+  padding: 100px;
 
   display: flex;
   justify-content: center;
   align-items: center;
 `
 
+const Content = styled.div`
+  position: relative;
+
+  max-width: 1350px;
+
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`
+
 const DividerSectionStart: React.FC = () => {
   const { t } = useTranslation()
   return (
     <Divider>
-      <InformationContainer>
-        <HeadingContainer>
-          <div>
-            <StyledHeading black scale="xl" color="secondary">
-              Start in{' '}
-            </StyledHeading>
-            <StyledHeading black scale="xl" color="primary">
-              seconds
-            </StyledHeading>
-            <StyledHeading black scale="xl" color="secondary">
-              .
-            </StyledHeading>
-          </div>
-        </HeadingContainer>
+      <Content>
+        <InformationContainer>
+          <HeadingContainer>
+            <div>
+              <StyledHeading black scale="xl" color="secondary">
+                Start in{' '}
+              </StyledHeading>
+              <StyledHeading black scale="xl" color="primary">
+                seconds
+              </StyledHeading>
+              <StyledHeading black scale="xl" color="secondary">
+                .
+              </StyledHeading>
+            </div>
+          </HeadingContainer>
 
-        <DescriptionContainer>
-          <Heading maxWidth={640} scale="md" mb="38px">
-            {t('Connect your crypto wallet to start using the app in seconds. No registration needed.')}
-          </Heading>
-        </DescriptionContainer>
-        <ConnectWalletButton />
-      </InformationContainer>
-      <StyledImg src="/images/gravy_conductor.png" alt="Gravy support" />
+          <DescriptionContainer>
+            <Heading maxWidth={640} scale="md" mb="38px">
+              {t('Connect your crypto wallet to start using the app in seconds. No registration needed.')}
+            </Heading>
+          </DescriptionContainer>
+          <ConnectWalletButton />
+        </InformationContainer>
+        <StyledImg src="/images/gravy_conductor.png" alt="Gravy support" />
+      </Content>
     </Divider>
   )
 }
