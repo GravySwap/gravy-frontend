@@ -2,10 +2,12 @@
 import React, { useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import styled from 'styled-components'
+import { useWeb3React } from '@web3-react/core'
 
 // components
 import { LogoWithTextIcon } from '@gravyswap/uikit'
 import LateralMenu from 'components/LateralMenu'
+import UserMenu from 'components/Menu/UserMenu'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 // endregion
 
@@ -33,7 +35,7 @@ const Svg = styled.svg`
   }
 `
 
-const StyledConnectWalletButton = styled(ConnectWalletButton)`
+const UserMenuContainer = styled.div`
   margin-left: auto;
   z-index: 1;
   display: none;
@@ -52,6 +54,7 @@ const LogoWhite = styled(LogoWithTextIcon)`
 const Header: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false)
   const location = useLocation()
+  const { account } = useWeb3React()
 
   if (location.pathname === '/') return null
   return (
@@ -71,7 +74,10 @@ const Header: React.FC = () => {
         </g>
       </Svg>
       <LogoWhite isDark={false} />
-      <StyledConnectWalletButton />
+      <UserMenuContainer>
+        {!account && <ConnectWalletButton />}
+        {account && <UserMenu />}
+      </UserMenuContainer>
     </Container>
   )
 }

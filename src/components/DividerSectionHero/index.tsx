@@ -2,12 +2,13 @@
 import React, { useState } from 'react'
 import styled, { useTheme } from 'styled-components'
 import { Link } from 'react-router-dom'
-
+import { useWeb3React } from '@web3-react/core'
 // contexts
 import { useTranslation } from 'contexts/Localization'
 
 // components
 import LateralMenu from 'components/LateralMenu'
+import UserMenu from 'components/Menu/UserMenu'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import { Heading, Button, LogoWithTextIcon } from '@gravyswap/uikit'
 // endregion
@@ -77,7 +78,7 @@ const LogoDark = styled(LogoWithTextIcon)`
   }
 `
 
-const StyledConnectWalletButton = styled(ConnectWalletButton)`
+const UserMenuContainer = styled.div`
   margin-left: auto;
   z-index: 1;
   display: none;
@@ -97,7 +98,7 @@ const ButtonWallet = styled.div`
 
 const Img = styled.img`
   width: 800px;
-  z-index: 1;
+  z-index: 0;
 
   ${(props) => props.theme.mediaQueries.xl} {
     padding-top: 150px;
@@ -146,6 +147,7 @@ const Svg = styled.svg`
 
 const DividerSectionHero: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false)
+  const { account } = useWeb3React()
   const { t } = useTranslation()
   const theme = useTheme()
   return (
@@ -182,7 +184,10 @@ const DividerSectionHero: React.FC = () => {
           </Svg>
           <LogoWhite isDark={false} />
           <LogoDark isDark />
-          <StyledConnectWalletButton />
+          <UserMenuContainer>
+            {!account && <ConnectWalletButton />}
+            {account && <UserMenu />}
+          </UserMenuContainer>
         </Head>
 
         <Content>
@@ -207,9 +212,7 @@ const DividerSectionHero: React.FC = () => {
             </DescriptionContainer>
 
             <Buttons>
-              <ButtonWallet>
-                <ConnectWalletButton />
-              </ButtonWallet>
+              <ButtonWallet>{!account && <ConnectWalletButton />}</ButtonWallet>
               <Link to="/swap">
                 <Button variant="secondary">{t('Trade Now')}</Button>
               </Link>
