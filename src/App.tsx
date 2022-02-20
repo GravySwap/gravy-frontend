@@ -11,6 +11,7 @@ import { usePollCoreFarmData } from 'state/farms/hooks'
 import { useFetchProfile } from 'state/profile/hooks'
 import { DatePickerPortal } from 'components/DatePicker'
 import { nftsBaseUrl } from 'views/Nft/market/constants'
+import Header from 'components/Header'
 import Footer from 'components/Footer'
 import GlobalStyle from './style/Global'
 import SuspenseWithChunkError from './components/SuspenseWithChunkError'
@@ -78,6 +79,7 @@ const App: React.FC = () => {
       <ResetCSS />
       <GlobalStyle />
       <GlobalCheckClaimStatus excludeLocations={[]} />
+      <Header />
       <SuspenseWithChunkError fallback={<PageLoader />}>
         <Switch>
           <Route path="/" exact>
