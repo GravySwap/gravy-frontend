@@ -43,13 +43,14 @@ const CardsContainer = styled.div`
 
 const Card = styled.div`
   background-color: ${(props) => props.color};
-  min-width: 368px;
+  width: 100%;
   min-height: 304px;
 
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-bottom: 25px;
 
   border-radius: 24px;
 
@@ -57,8 +58,13 @@ const Card = styled.div`
   font-size: 25px;
   color: white;
 
-  margin: 25px;
   text-align: center;
+
+  ${(props) => props.theme.mediaQueries.sm} {
+    width: auto;
+    min-width: 368px;
+    margin: 25px;
+  }
 
   ${(props) => props.theme.mediaQueries.xl} {
     margin: 0;
