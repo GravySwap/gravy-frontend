@@ -1,5 +1,5 @@
 // region import
-import React from 'react'
+import React, { useState } from 'react'
 import styled, { useTheme } from 'styled-components'
 import { Link } from 'react-router-dom'
 
@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 import { useTranslation } from 'contexts/Localization'
 
 // components
-import DividerSection from 'components/DividerSection'
+import LateralMenu from 'components/LateralMenu'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import { Heading, Button, LogoWithTextIcon } from '@gravyswap/uikit'
 // endregion
@@ -137,13 +137,20 @@ const MainContainer = styled.div`
 
 const Svg = styled.svg`
   z-index: 1;
+  cursor: pointer;
+
+  &:active {
+    opacity: 0.75;
+  }
 `
 
 const DividerSectionHero: React.FC = () => {
+  const [menuOpen, setMenuOpen] = useState(false)
   const { t } = useTranslation()
   const theme = useTheme()
   return (
     <MainContainer color="white">
+      <LateralMenu onClose={setMenuOpen} open={menuOpen} />
       <HeroIconLeftContainer theme={theme} viewBox="0 0 543 222" xmlns="http://www.w3.org/2000/svg">
         <path
           d="M0-2h543c-19.001 81.191-79.962 142.731-182.882 184.62C282.038 214.398 161.998 226.525 0 219V-2Z"
@@ -160,7 +167,13 @@ const DividerSectionHero: React.FC = () => {
       </HeroIconRightContainer>
       <Container>
         <Head>
-          <Svg width={40} height={21} viewBox="0 0 40 21" xmlns="http://www.w3.org/2000/svg">
+          <Svg
+            onClick={() => setMenuOpen(true)}
+            width={40}
+            height={21}
+            viewBox="0 0 40 21"
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <g fill="#FFF">
               <rect transform="matrix(-1 0 0 1 40 0)" width={40} height={3} rx={1.5} />
               <rect transform="matrix(-1 0 0 1 31 0)" y={9} width={31} height={3} rx={1.5} />
