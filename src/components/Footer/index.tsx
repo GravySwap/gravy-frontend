@@ -13,6 +13,8 @@ import {
   RedditIcon,
   ArrowForwardIcon,
   Button,
+  LinkExternal,
+  Link,
 } from '@gravyswap/uikit'
 // endregion
 
@@ -82,7 +84,7 @@ const LineSeparator = styled.div`
   margin: 25px 0;
 `
 
-const WrapIcon = styled.div`
+const WrapIcon = styled(Link)`
   background-color: white;
   height: 33px;
   width: 33px;
@@ -167,29 +169,26 @@ const Footer: React.FC = () => {
 
       <EndContainer>
         <SocialIconsContainer>
-          <WrapIcon>
+          <WrapIcon external href="https://discord.gg/gravyswap">
             <DiscordIcon fill="#884024" width={11} />
           </WrapIcon>
-          <WrapIcon>
-            <RedditIcon fill="#884024" width={11} />
-          </WrapIcon>
-          <WrapIcon>
+          <WrapIcon external href="https://twitter.com/swapgravy">
             <TwitterIcon fill="#884024" width={11} />
           </WrapIcon>
-          <WrapIcon>
+          <WrapIcon external href="https://instagram.com/swapgravy">
             <InstagramIcon fill="#884024" width={11} />
           </WrapIcon>
-          <WrapIcon>
+          <WrapIcon external href="https://t.me/+XuejWFLwO0NkZDUx">
             <TelegramIcon fill="#884024" width={11} />
           </WrapIcon>
-          <WrapIcon>
+          <WrapIcon external href="https://github.com/GravySwap">
             <GithubIcon fill="#884024" width={11} />
           </WrapIcon>
         </SocialIconsContainer>
         <Button
           maxWidth={200}
           as="a"
-          href="https://pancakeswap.finance/swap?outputCurrency=0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82"
+          href="/swap?outputCurrency=0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82"
           target="_blank"
           scale="sm"
           endIcon={<ArrowForwardIcon color={theme.colors.backgroundAlt} />}

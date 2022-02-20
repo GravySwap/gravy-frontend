@@ -1,6 +1,7 @@
 // region import
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 // components
 import { CloseIcon, HomeIcon, FarmIcon, PoolIcon, ChartIcon, SwapIcon, CommunityIcon } from '@gravyswap/uikit'
@@ -33,7 +34,7 @@ const RemoveContainer = styled.div`
   padding: 75px 25px;
 `
 
-const Tab = styled.div`
+const Tab = styled(Link)`
   display: flex;
   align-items: center;
   padding: 25px;
@@ -79,27 +80,27 @@ const LateralMenu: React.FC<{ open: boolean; onClose?: (value: boolean) => void 
         <StyledCloseIcon onClick={() => onClose(false)} />
       </RemoveContainer>
       <TabContainer>
-        <Tab>
+        <Tab to="/">
           <HomeIcon width={24} />
           <TextTab>Home</TextTab>
         </Tab>
-        <Tab>
+        <Tab to="/swap">
           <SwapIcon width={24} />
           <TextTab>Swap</TextTab>
         </Tab>
-        <Tab>
+        <Tab to="/farms">
           <FarmIcon width={24} />
           <TextTab>Farms</TextTab>
         </Tab>
-        <Tab>
+        <Tab to="/liquidity">
           <CommunityIcon width={24} />
           <TextTab>Liquidity</TextTab>
         </Tab>
-        <Tab>
+        <Tab to="/pools">
           <PoolIcon width={24} />
           <TextTab>Pools</TextTab>
         </Tab>
-        <Tab>
+        <Tab to="/info">
           <ChartIcon width={24} />
           <TextTab>Info</TextTab>
         </Tab>
