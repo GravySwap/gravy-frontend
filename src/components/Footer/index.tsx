@@ -188,7 +188,7 @@ const Footer: React.FC = () => {
         <Button
           maxWidth={200}
           as="a"
-          href="/swap?outputCurrency=0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82"
+          href="/swap?outputCurrency=0x5eA26D0d36EAF02d63a3023521A7924e19c34454"
           target="_blank"
           scale="sm"
           endIcon={<ArrowForwardIcon color={theme.colors.backgroundAlt} />}
