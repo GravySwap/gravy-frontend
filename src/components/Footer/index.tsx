@@ -1,5 +1,6 @@
 // region import
 import React from 'react'
+// import { Link } from 'react-router-dom'
 import styled, { useTheme } from 'styled-components'
 
 // components
@@ -71,9 +72,10 @@ const TitleSection = styled.div`
   margin-bottom: 20px;
 `
 
-const ElementSection = styled.div`
+const ElementSection = styled(Link)`
   font-weight: 800;
   margin-bottom: 15px;
+  color: white;
 `
 const LineSeparator = styled.div`
   background-color: #348183;
@@ -141,26 +143,36 @@ const Footer: React.FC = () => {
         <InfoElements>
           <Section>
             <TitleSection>Gravyswap</TitleSection>
-            <ElementSection>Contact</ElementSection>
-            <ElementSection>Brand kit</ElementSection>
-            <ElementSection>Blog</ElementSection>
-            <ElementSection>Community</ElementSection>
+            <ElementSection href="https://gravyswap-1.gitbook.io/gravyswap-1/contact-us/email">Contact</ElementSection>
+            <ElementSection href="https://gravyswap-1.gitbook.io/gravyswap-1/brand-kit">Brand kit</ElementSection>
+            <ElementSection href="https://gravyswap.medium.com/">Blog</ElementSection>
+            <ElementSection href="https://gravyswap-1.gitbook.io/gravyswap-1/contact-us/telegram">
+              Community
+            </ElementSection>
           </Section>
 
           <Section>
             <TitleSection>Help</TitleSection>
-            <ElementSection>Customer Support</ElementSection>
-            <ElementSection>Troubleshooting</ElementSection>
-            <ElementSection>Guides</ElementSection>
+            <ElementSection href="https://gravyswap-1.gitbook.io/gravyswap-1/looking-for-help">
+              Customer Support
+            </ElementSection>
+            <ElementSection href="https://gravyswap-1.gitbook.io/gravyswap-1/looking-for-help/troubleshooting">
+              Troubleshooting
+            </ElementSection>
+            <ElementSection href="https://gravyswap-1.gitbook.io/gravyswap-1/getting-started">Guides</ElementSection>
           </Section>
 
           <Section>
             <TitleSection>Developers</TitleSection>
-            <ElementSection>Github</ElementSection>
-            <ElementSection>Documentation</ElementSection>
-            <ElementSection>Bug Bounty</ElementSection>
-            <ElementSection>Audits</ElementSection>
-            <ElementSection>Careers</ElementSection>
+            <ElementSection href="https://github.com/GravySwap/">Github</ElementSection>
+            <ElementSection href="https://gravyswap-1.gitbook.io/gravyswap-1/">Documentation</ElementSection>
+            <ElementSection href="https://gravyswap-1.gitbook.io/gravyswap-1/contact-us/email">
+              Bug Bounty
+            </ElementSection>
+            <ElementSection href="#">Audits</ElementSection>
+            <ElementSection href="https://gravyswap-1.gitbook.io/gravyswap-1/join-us/make-some-gravy">
+              Careers
+            </ElementSection>
           </Section>
         </InfoElements>
       </SectionsContainer>
