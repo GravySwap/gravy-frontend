@@ -159,6 +159,7 @@ const Container = styled.div`
 `
 
 const MainContainer = styled.div`
+  min-height: 1080px;
   background-color: white;
   padding: 50px 20px;
   padding-bottom: 250px;
