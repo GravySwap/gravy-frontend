@@ -66,6 +66,15 @@ const LogoWhite = styled(LogoWithTextIcon)`
   position: absolute;
   right: 50%;
   transform: translateX(50%);
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.75;
+  }
+
+  &:active {
+    opacity: 0.9;
+  }
 `
 
 const LogoDark = styled(LogoWithTextIcon)`
