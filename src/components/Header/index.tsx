@@ -1,6 +1,6 @@
 // region import
 import React, { useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { useWeb3React } from '@web3-react/core'
 
@@ -16,7 +16,7 @@ const Container = styled.div`
 
   display: flex;
   align-items: center;
-  min-height: 149px;
+  min-height: 147px;
 
   margin: auto;
   padding-left: 24px;
@@ -37,7 +37,6 @@ const Svg = styled.svg`
 
 const UserMenuContainer = styled.div`
   margin-left: auto;
-  z-index: 1;
   display: none;
 
   ${({ theme }) => theme.mediaQueries.lg} {
@@ -45,10 +44,18 @@ const UserMenuContainer = styled.div`
   }
 `
 
-const LogoWhite = styled(LogoWithTextIcon)`
+const LinkLogo = styled(Link)`
   position: absolute;
   right: 50%;
   transform: translateX(50%);
+
+  &:hover {
+    opacity: 0.75;
+  }
+
+  &:active {
+    opacity: 0.9;
+  }
 `
 
 const Header: React.FC = () => {
@@ -73,7 +80,9 @@ const Header: React.FC = () => {
           <rect transform="matrix(-1 0 0 1 40 0)" y={18} width={40} height={3} rx={1.5} />
         </g>
       </Svg>
-      <LogoWhite isDark={false} />
+      <LinkLogo to="/">
+        <LogoWithTextIcon isDark={false} />
+      </LinkLogo>
       <UserMenuContainer>
         {!account && <ConnectWalletButton />}
         {account && <UserMenu />}
