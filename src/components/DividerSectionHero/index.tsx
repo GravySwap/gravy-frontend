@@ -215,7 +215,7 @@ const DividerSectionHero: React.FC = () => {
             <DescriptionContainer>
               <Heading maxWidth={640} scale="md" mb="38px">
                 {t(
-                  'Using GravySwap you wll be able to instantly swap crypto tokens and access the latest in DeFi technology.',
+                  'Using GravySwap you will be able to instantly swap crypto tokens and access the latest in DeFi technology.',
                 )}
               </Heading>
             </DescriptionContainer>

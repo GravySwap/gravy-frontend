@@ -1,7 +1,7 @@
 import { Token, ChainId } from '@liquidslabs/gravyswap-sdk'
 import getLpAddress from 'utils/getLpAddress'
 
-const GRAVY_AS_STRING = '0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82'
+const GRAVY_AS_STRING = '0x5eA26D0d36EAF02d63a3023521A7924e19c34454'
 const BUSD_AS_STRING = '0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56'
 const GRAVY_AS_TOKEN = new Token(ChainId.MAINNET, GRAVY_AS_STRING, 18)
 const BUSD_AS_TOKEN = new Token(ChainId.MAINNET, BUSD_AS_STRING, 18)

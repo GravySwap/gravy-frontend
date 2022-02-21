@@ -12,7 +12,7 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'GRAVY',
     lpAddresses: {
       97: '0x9C21123D94b93361a29B2C2EFB3d5CD8B17e0A9e',
-      56: '0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82',
+      56: '0x5eA26D0d36EAF02d63a3023521A7924e19c34454',
     },
     token: serializedTokens.syrup,
     quoteToken: serializedTokens.wbnb,

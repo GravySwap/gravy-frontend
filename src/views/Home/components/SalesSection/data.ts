@@ -53,7 +53,7 @@ export const cakeSectionData: SalesSectionProps = {
     'GRAVY token is at the heart of the GravySwap ecosystem. Buy it, win it, farm it, spend it, stake it... heck, you can even vote with it!',
   reverse: false,
   primaryButton: {
-    to: '/swap?outputCurrency=0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82',
+    to: '/swap?outputCurrency=0x5eA26D0d36EAF02d63a3023521A7924e19c34454',
     text: 'Buy GRAVY',
     external: false,
   },
