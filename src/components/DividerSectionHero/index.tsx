@@ -55,7 +55,11 @@ const HeroIconLeftContainer = styled.svg`
   position: absolute;
   top: 0;
   left: 0;
-  width: 90%;
+  width: 125%;
+
+  ${({ theme }) => theme.mediaQueries.sm} {
+    width: 90%;
+  }
 
   ${({ theme }) => theme.mediaQueries.md} {
     width: 39%;
@@ -63,10 +67,15 @@ const HeroIconLeftContainer = styled.svg`
 `
 
 const LogoWhite = styled(LogoWithTextIcon)`
+  display: none;
   position: absolute;
   right: 50%;
   transform: translateX(50%);
   cursor: pointer;
+
+  ${({ theme }) => theme.mediaQueries.md} {
+    display: block;
+  }
 
   &:hover {
     opacity: 0.75;
@@ -78,9 +87,13 @@ const LogoWhite = styled(LogoWithTextIcon)`
 `
 
 const LogoDark = styled(LogoWithTextIcon)`
-  position: absolute;
-  right: 50%;
-  transform: translateX(50%);
+  z-index: 1;
+
+  ${(props) => props.theme.mediaQueries.sm} {
+    position: absolute;
+    right: 50%;
+    transform: translateX(50%);
+  }
 
   ${({ theme }) => theme.mediaQueries.md} {
     display: none;
@@ -120,6 +133,13 @@ const Head = styled.div`
   display: flex;
   align-items: center;
   margin: auto;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+
+  ${(props) => props.theme.mediaQueries.sm} {
+    justify-content: flex-start;
+    flex-direction: row;
+  }
 `
 
 const Content = styled.div`
@@ -140,9 +160,13 @@ const Container = styled.div`
 
 const MainContainer = styled.div`
   background-color: white;
-  padding: 50px;
+  padding: 50px 20px;
   padding-bottom: 250px;
   position: relative;
+
+  ${({ theme }) => theme.mediaQueries.sm} {
+    padding: 50px;
+  }
 `
 
 const Svg = styled.svg`

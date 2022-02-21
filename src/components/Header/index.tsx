@@ -17,12 +17,18 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   min-height: 147px;
+  justify-content: space-between;
 
   margin: auto;
-  padding-left: 24px;
+  padding: 0 24px;
+  flex-direction: row-reverse;
 
-  ${(props) => props.theme.mediaQueries.lg} {
-    padding-left: 0;
+  ${(props) => props.theme.mediaQueries.md} {
+    flex-direction: row;
+  }
+
+  ${(props) => props.theme.mediaQueries.xxl} {
+    justify-content: flex-start;
   }
 `
 
@@ -45,9 +51,11 @@ const UserMenuContainer = styled.div`
 `
 
 const LinkLogo = styled(Link)`
-  position: absolute;
-  right: 50%;
-  transform: translateX(50%);
+  ${({ theme }) => theme.mediaQueries.sm} {
+    position: absolute;
+    right: 50%;
+    transform: translateX(50%);
+  }
 
   &:hover {
     opacity: 0.75;
