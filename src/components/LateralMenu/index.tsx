@@ -13,7 +13,7 @@ const Container = styled.div<{ open: boolean }>`
   transition: left ease 0.5s;
   background-color: white;
   height: 100%;
-  z-index: 5;
+  z-index: 10;
   top: 0;
   box-shadow: 1px 1px 10px rgb(0 0 0 / 20%);
 
