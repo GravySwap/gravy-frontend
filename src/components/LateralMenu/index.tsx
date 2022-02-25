@@ -1,15 +1,16 @@
 // region import
-import React from 'react'
+import React, { PropsWithChildren, useState } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 // components
-import { CloseIcon, HomeIcon, FarmIcon, PoolIcon, ChartIcon, SwapIcon, CommunityIcon } from '@gravyswap/uikit'
+import { CloseIcon, HomeIcon, ChartIcon, SwapIcon, ArrowDropDownIcon, ArrowDropUpIcon } from '@gravyswap/uikit'
 // endregion
 
 const Container = styled.div<{ open: boolean }>`
   position: fixed;
 
+  overflow: auto;
   transition: left ease 0.5s;
   background-color: white;
   height: 100%;
@@ -72,6 +73,48 @@ const StyledCloseIcon = styled(CloseIcon)`
   }
 `
 
+const SubmenuTab = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 25px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  &:active {
+    opacity: 0.75;
+  }
+`
+
+const SubmenuContainer = styled.div<{ open: boolean }>`
+  background-color: ${(props) => props.open && 'rgba(0,0,0,0.05)'};
+`
+
+const SubmenuContent = styled.div<{ open: boolean; maxHeight: string }>`
+  overflow: hidden;
+  max-height: ${(props) => (!props.open ? '0' : props.maxHeight)};
+  transition: max-height 0.25s ease-in;
+`
+
+function Submenu(props: PropsWithChildren<{ TabContent: any; maxHeight: string }>) {
+  const [open, setOpen] = useState(false)
+  const { children, TabContent, maxHeight } = props
+  return (
+    <SubmenuContainer open={open}>
+      <SubmenuTab onClick={() => setOpen(!open)}>
+        {TabContent}
+        {open && <ArrowDropUpIcon marginLeft="auto" width={24} />}
+        {!open && <ArrowDropDownIcon marginLeft="auto" width={24} />}
+      </SubmenuTab>
+      <SubmenuContent maxHeight={maxHeight} open={open}>
+        {children}
+      </SubmenuContent>
+    </SubmenuContainer>
+  )
+}
+
 const LateralMenu: React.FC<{ open: boolean; onClose?: (value: boolean) => void }> = (props) => {
   const { open, onClose } = props
   return (
@@ -84,26 +127,81 @@ const LateralMenu: React.FC<{ open: boolean; onClose?: (value: boolean) => void 
           <HomeIcon width={24} />
           <TextTab>Home</TextTab>
         </Tab>
-        <Tab to="/swap">
-          <SwapIcon width={24} />
-          <TextTab>Swap</TextTab>
-        </Tab>
+        <Submenu
+          maxHeight="200px"
+          TabContent={
+            <>
+              <span className="material-icons-outlined">published_with_changes</span>
+              <TextTab>Swap</TextTab>
+            </>
+          }
+        >
+          <Tab to="/swap">
+            <SwapIcon width={24} />
+            <TextTab>Exchange</TextTab>
+          </Tab>
+          <Tab to="/liquidity">
+            <span className="material-icons-outlined">group_add</span>
+            <TextTab>Liquidity</TextTab>
+          </Tab>
+        </Submenu>
         <Tab to="/farms">
-          <FarmIcon width={24} />
+          <span className="material-icons-outlined">agriculture</span>
           <TextTab>Farms</TextTab>
         </Tab>
-        <Tab to="/liquidity">
-          <CommunityIcon width={24} />
-          <TextTab>Liquidity</TextTab>
-        </Tab>
         <Tab to="/pools">
-          <PoolIcon width={24} />
+          <span className="material-icons-outlined">savings</span>
           <TextTab>Pools</TextTab>
         </Tab>
-        <Tab to="/info">
-          <ChartIcon width={24} />
-          <TextTab>Info</TextTab>
+        <Submenu
+          maxHeight="250px"
+          TabContent={
+            <>
+              <span className="material-icons-outlined">rocket_launch</span>
+              <TextTab>Games</TextTab>
+            </>
+          }
+        >
+          <Tab to="/lottery">
+            <span className="material-icons-outlined">local_activity</span>
+            <TextTab>Lottery</TextTab>
+          </Tab>
+          <Tab to="/horse-races">
+            <span className="material-icons-outlined">pix</span>
+            <TextTab>Horse Races</TextTab>
+          </Tab>
+          <Tab to="/bingo">
+            <span className="material-icons-outlined">app_registration</span>
+            <TextTab>Bingo</TextTab>
+          </Tab>
+        </Submenu>
+        <Tab to="/nfts">
+          <span className="material-icons-outlined">wallpaper</span>
+          <TextTab>NFT</TextTab>
         </Tab>
+
+        <Submenu
+          maxHeight="250px"
+          TabContent={
+            <>
+              <span className="material-icons-outlined">more_horiz</span>
+              <TextTab>More</TextTab>
+            </>
+          }
+        >
+          <Tab to="/info">
+            <ChartIcon width={24} />
+            <TextTab>Stats</TextTab>
+          </Tab>
+          <Tab to="/ifo">
+            <span className="material-icons-outlined">local_offer</span>
+            <TextTab>IFO</TextTab>
+          </Tab>
+          <Tab to="/voting">
+            <span className="material-icons-outlined">how_to_vote</span>
+            <TextTab>Voting</TextTab>
+          </Tab>
+        </Submenu>
       </TabContainer>
     </Container>
   )
