@@ -82,6 +82,14 @@ const ControlStretch = styled(Flex)`
   }
 `
 
+const ContainerImage = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 25px;
+`
+
 const NUMBER_OF_POOLS_VISIBLE = 12
 
 const Pools: React.FC = () => {
@@ -332,7 +340,9 @@ const Pools: React.FC = () => {
         )}
         {viewMode === ViewMode.CARD ? cardLayout : tableLayout}
         <div ref={observerRef} />
-        <Image mx="auto" mt="12px" src="/images/gravy_plate.png" alt="Pancake illustration" width={384} height={216} />
+        <ContainerImage>
+          <img src="/images/gravy_pool.png" alt="Gravy illustration" width={350} />
+        </ContainerImage>
       </Page>
     </>
   )
