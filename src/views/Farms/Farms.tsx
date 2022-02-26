@@ -374,7 +374,7 @@ const Farms: React.FC = () => {
           {t('Farms')}
         </Heading>
         <Heading scale="lg" color="text">
-          {t('Stake LP tokens to earn.')}
+          {t('Gravy Trains, Stake LP Tokens to earn.')}
         </Heading>
       </PageHeader>
       <Page>
