@@ -35,9 +35,7 @@ const LogoContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: auto;
-  margin-top: 18px;
-  margin-bottom: 20px;
+  margin: 18px auto 20px auto;
   flex: 1;
 
   ${(props) => props.theme.mediaQueries.md} {
@@ -149,6 +147,7 @@ const Footer: React.FC = () => {
             <ElementSection href="https://gravyswap-1.gitbook.io/gravyswap-1/contact-us/telegram">
               Community
             </ElementSection>
+            <ElementSection href="https://gravyswap.creator-spring.com">Store</ElementSection>
           </Section>
 
           <Section>
@@ -169,7 +168,9 @@ const Footer: React.FC = () => {
             <ElementSection href="https://gravyswap-1.gitbook.io/gravyswap-1/contact-us/email">
               Bug Bounty
             </ElementSection>
-            <ElementSection href="#">Audits</ElementSection>
+            <ElementSection href="https://gravyswap-1.gitbook.io/gravyswap-1/contract-governance/contracts">
+              Audits
+            </ElementSection>
             <ElementSection href="https://gravyswap-1.gitbook.io/gravyswap-1/join-us/make-some-gravy">
               Careers
             </ElementSection>
