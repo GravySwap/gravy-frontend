@@ -178,7 +178,7 @@ const LateralMenu: React.FC<{ open: boolean; onClose?: (value: boolean) => void 
             <TextTab>Lottery</TextTab>
           </Tab>
           <Tab to="#">
-            <MaterialIcon className="material-icons-outlined">pix</MaterialIcon>
+            <MaterialIcon className="material-icons-outlined">emoji_events</MaterialIcon>
             <TextTab>
               Horse Races
               <TextSup>soon</TextSup>
