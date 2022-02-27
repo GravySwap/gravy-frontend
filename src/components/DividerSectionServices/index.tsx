@@ -138,7 +138,7 @@ const DividerSectionServices: React.FC = () => {
           <Card color={colors.secondary}>
             <ContainerTextCard>
               {t('B-I-N-G-O')}
-              <ComingSoon>{t('Comming soon')}</ComingSoon>
+              <ComingSoon>{t('Coming soon')}</ComingSoon>
             </ContainerTextCard>
             <svg width="76" height="84" viewBox="0 0 76 84" xmlns="http://www.w3.org/2000/svg">
               <path

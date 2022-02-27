@@ -98,6 +98,17 @@ const SubmenuContent = styled.div<{ open: boolean; maxHeight: string }>`
   transition: max-height 0.25s ease-in;
 `
 
+const MaterialIcon = styled.span`
+  color: #441f95;
+`
+
+const TextSup = styled.sup`
+  vertical-align: super;
+  font-size: 12px;
+  color: mediumvioletred;
+  margin-left: 5px;
+`
+
 function Submenu(props: PropsWithChildren<{ TabContent: any; maxHeight: string }>) {
   const [open, setOpen] = useState(false)
   const { children, TabContent, maxHeight } = props
@@ -131,7 +142,7 @@ const LateralMenu: React.FC<{ open: boolean; onClose?: (value: boolean) => void 
           maxHeight="200px"
           TabContent={
             <>
-              <span className="material-icons-outlined">published_with_changes</span>
+              <MaterialIcon className="material-icons-outlined">published_with_changes</MaterialIcon>
               <TextTab>Swap</TextTab>
             </>
           }
@@ -141,42 +152,48 @@ const LateralMenu: React.FC<{ open: boolean; onClose?: (value: boolean) => void 
             <TextTab>Exchange</TextTab>
           </Tab>
           <Tab to="/liquidity">
-            <span className="material-icons-outlined">group_add</span>
+            <MaterialIcon className="material-icons-outlined">group_add</MaterialIcon>
             <TextTab>Liquidity</TextTab>
           </Tab>
         </Submenu>
         <Tab to="/farms">
-          <span className="material-icons-outlined">agriculture</span>
+          <MaterialIcon className="material-icons-outlined">agriculture</MaterialIcon>
           <TextTab>Farms</TextTab>
         </Tab>
         <Tab to="/pools">
-          <span className="material-icons-outlined">savings</span>
+          <MaterialIcon className="material-icons-outlined">savings</MaterialIcon>
           <TextTab>Pools</TextTab>
         </Tab>
         <Submenu
           maxHeight="250px"
           TabContent={
             <>
-              <span className="material-icons-outlined">rocket_launch</span>
+              <MaterialIcon className="material-icons-outlined">rocket_launch</MaterialIcon>
               <TextTab>Games</TextTab>
             </>
           }
         >
           <Tab to="/lottery">
-            <span className="material-icons-outlined">local_activity</span>
+            <MaterialIcon className="material-icons-outlined">local_activity</MaterialIcon>
             <TextTab>Lottery</TextTab>
           </Tab>
-          <Tab to="/horse-races">
-            <span className="material-icons-outlined">pix</span>
-            <TextTab>Horse Races</TextTab>
+          <Tab to="#">
+            <MaterialIcon className="material-icons-outlined">pix</MaterialIcon>
+            <TextTab>
+              Horse Races
+              <TextSup>soon</TextSup>
+            </TextTab>
           </Tab>
-          <Tab to="/bingo">
-            <span className="material-icons-outlined">app_registration</span>
-            <TextTab>Bingo</TextTab>
+          <Tab to="#">
+            <MaterialIcon className="material-icons-outlined">app_registration</MaterialIcon>
+            <TextTab>
+              Bingo
+              <TextSup>soon</TextSup>
+            </TextTab>
           </Tab>
         </Submenu>
         <Tab to="/nfts">
-          <span className="material-icons-outlined">wallpaper</span>
+          <MaterialIcon className="material-icons-outlined">wallpaper</MaterialIcon>
           <TextTab>NFT</TextTab>
         </Tab>
 
@@ -184,7 +201,7 @@ const LateralMenu: React.FC<{ open: boolean; onClose?: (value: boolean) => void 
           maxHeight="250px"
           TabContent={
             <>
-              <span className="material-icons-outlined">more_horiz</span>
+              <MaterialIcon className="material-icons-outlined">more_horiz</MaterialIcon>
               <TextTab>More</TextTab>
             </>
           }
@@ -194,11 +211,11 @@ const LateralMenu: React.FC<{ open: boolean; onClose?: (value: boolean) => void 
             <TextTab>Stats</TextTab>
           </Tab>
           <Tab to="/ifo">
-            <span className="material-icons-outlined">local_offer</span>
+            <MaterialIcon className="material-icons-outlined">local_offer</MaterialIcon>
             <TextTab>IFO</TextTab>
           </Tab>
           <Tab to="/voting">
-            <span className="material-icons-outlined">how_to_vote</span>
+            <MaterialIcon className="material-icons-outlined">how_to_vote</MaterialIcon>
             <TextTab>Voting</TextTab>
           </Tab>
         </Submenu>
