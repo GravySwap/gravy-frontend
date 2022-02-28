@@ -148,7 +148,7 @@ const LateralMenu: React.FC<{ open: boolean; onClose?: (value: boolean) => void 
           }
         >
           <Tab to="/swap">
-            <SwapIcon width={24} />
+            <MaterialIcon className="material-icons-outlined">swap_horiz</MaterialIcon>
             <TextTab>Exchange</TextTab>
           </Tab>
           <Tab to="/liquidity">
