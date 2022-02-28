@@ -82,6 +82,14 @@ const ControlStretch = styled(Flex)`
   }
 `
 
+const ContainerImage = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 25px;
+`
+
 const NUMBER_OF_POOLS_VISIBLE = 12
 
 const Pools: React.FC = () => {
@@ -259,13 +267,13 @@ const Pools: React.FC = () => {
         <Flex justifyContent="space-between" flexDirection={['column', null, null, 'row']}>
           <Flex flex="1" flexDirection="column" mr={['8px', 0]}>
             <Heading as="h1" scale="xxl" color="secondary" mb="24px">
-              {t('Syrup Pools')}
+              {t('Gravy Boats')}
             </Heading>
             <Heading scale="md" color="text">
-              {t('Just stake some tokens to earn.')}
+              {t('Stake tokens, earn tokens, it’s that simple.')}
             </Heading>
             <Heading scale="md" color="text">
-              {t('High APR, low risk.')}
+              {t('Higher APRs, lower risks.')}
             </Heading>
           </Flex>
           <Flex flex="1" height="fit-content" justifyContent="center" alignItems="center" mt={['24px', null, '0']}>
@@ -332,7 +340,9 @@ const Pools: React.FC = () => {
         )}
         {viewMode === ViewMode.CARD ? cardLayout : tableLayout}
         <div ref={observerRef} />
-        <Image mx="auto" mt="12px" src="/images/gravy_plate.png" alt="Pancake illustration" width={384} height={216} />
+        <ContainerImage>
+          <img src="/images/gravy_pool.png" alt="Gravy illustration" width={350} />
+        </ContainerImage>
       </Page>
     </>
   )

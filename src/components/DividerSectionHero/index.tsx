@@ -159,10 +159,10 @@ const Container = styled.div`
 `
 
 const MainContainer = styled.div`
+  overflow: hidden;
   min-height: 1080px;
   background-color: white;
-  padding: 50px 20px;
-  padding-bottom: 250px;
+  padding: 50px 20px 250px 20px;
   position: relative;
 
   ${({ theme }) => theme.mediaQueries.sm} {
