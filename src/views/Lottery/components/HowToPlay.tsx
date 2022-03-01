@@ -60,7 +60,7 @@ type Step = { title: string; subtitle: string; label: string }
 const StepCard: React.FC<{ step: Step }> = ({ step }) => {
   return (
     <StyledStepCard width="100%">
-      <StepCardInner height={['200px', '180px', null, '200px']}>
+      <StepCardInner height={['250px', '250px', '250px', '250px']}>
         <Text mb="16px" fontSize="12px" bold textAlign="right" textTransform="uppercase">
           {step.label}
         </Text>
