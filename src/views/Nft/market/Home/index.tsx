@@ -86,7 +86,7 @@ const Home = () => {
         <Newest />
       </PageSection>
       <Gradient p="64px 0">
-        <SectionsWithFoldableText header={t('FAQs')} config={config(t)} m="auto" />
+        <SectionsWithFoldableText header={t('NFT Marketplace Website FAQs')} config={config(t)} m="auto" />
       </Gradient>
     </>
   )

@@ -3,40 +3,37 @@ import { ContextApi } from 'contexts/Localization/types'
 const config = (t: ContextApi['t']) => {
   return [
     {
-      title: t('I sold an NFT, where’s my BNB?'),
+      title: t('Are there any fees to sell my NFTs on GravySwap?'),
       description: [
         t(
-          'Trades are settled in WBNB, which is a wrapped version of BNB used on Binance Smart Chain. That means that when you sell an item, WBNB is sent to your wallet instead of BNB.',
+          'The fee to use the GravySwap NFT Marketplace is 2% of sales price. Creators also set their own fees on initial sales as well as royalties on revolving sales',
         ),
-        t('You can instantly swap your WBNB for BNB with no trading fees on GravySwap.'),
-      ],
-    },
-    {
-      title: t('When can I trade other NFT Collections?'),
-      description: [
         t(
-          'Soon! The current NFT Market is a basic version (phase 1), with early access to trading GravySwap NFTs only.',
-        ),
-        t('Other collections will be coming soon. We’ll make an announcement soon about the launch of the V2 Market.'),
-      ],
-    },
-    {
-      title: t('How can I list my NFT collection on the Market?'),
-      description: [
-        t('In Phase 2 of the NFT Marketplace, collections must be whitelisted before they may be listed.'),
-        t(
-          'We are now accepting applications from NFT collection owners seeking to list their collections. Please apply here: https://docs.pancakeswap.finance/contact-us/nft-market-applications',
+          'All platform fees go towards the GravySwap Treasury to be allocated to either burns or additional prizes in the lotteries!',
         ),
       ],
     },
     {
-      title: t('What are the fees?'),
+      title: t('Am I able to trade other NFT collection?'),
       description: [
         t(
-          '100% of all platform fees taken by GravySwap from sales are used to buy back and BURN GRAVY tokens in our weekly GRAVY burns.',
+          'Currently, GravySwap NFTs are the only ones able to be traded at this time. Once we roll out our next phase then you’ll be able to see the collections that we onboard and an announcement will be made to our community',
         ),
+      ],
+    },
+    {
+      title: t('How do I list an NFT collection on GravySwap market?'),
+      description: [
         t(
-          'Platform fees: 2% is subtracted from NFT sales on the market. Subject to change.Collection fees: Additional fees may be taken by collection creators, once those collections are live. These will not contribute to the GRAVY burns.',
+          "Please apply here to be considered for listing on our NFT marketplace. Our goal is to keep the marketplace free of bad actors and enhance our users' experience by giving the best projects the opportunity to list their collections.",
+        ),
+      ],
+    },
+    {
+      title: t('If I sell an NFT, how do I find my sales proceeds?'),
+      description: [
+        t(
+          'Sales on the GravySwap NFT marketplace are made in WBNB, which stands for wrapped BNB. WBNB is the same price as BNB and will show up in your wallet where you can then swap for BNB.',
         ),
       ],
     },
