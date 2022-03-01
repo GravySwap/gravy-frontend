@@ -60,7 +60,7 @@ type Step = { title: string; subtitle: string; label: string }
 const StepCard: React.FC<{ step: Step }> = ({ step }) => {
   return (
     <StyledStepCard width="100%">
-      <StepCardInner height={['200px', '180px', null, '200px']}>
+      <StepCardInner height={['250px', '250px', '250px', '250px']}>
         <Text mb="16px" fontSize="12px" bold textAlign="right" textTransform="uppercase">
           {step.label}
         </Text>
@@ -218,31 +218,30 @@ const HowToPlay: React.FC = () => {
     {
       label: t('Step %number%', { number: 1 }),
       title: t('Buy Tickets'),
-      subtitle: t('Prices are set when the round starts, equal to 5 USD in GRAVY per ticket.'),
+      subtitle: t(
+        'On GravySwap the ticket price is set once the drawing round begins. The ticket price is $5 USD per entry in Gravy.',
+      ),
     },
     {
       label: t('Step %number%', { number: 2 }),
       title: t('Wait for the Draw'),
-      subtitle: t('There are two draws every day: one every 12 hours.'),
+      subtitle: t('Randomly generated drawings are done every day and alternate between 0 AM UTC and 12 PM UTC.'),
     },
     {
       label: t('Step %number%', { number: 3 }),
       title: t('Check for Prizes'),
-      subtitle: t('Once the round’s over, come back to the page and check to see if you’ve won!'),
+      subtitle: t('You can come back to the page and connect your wallet to see if you won!'),
     },
   ]
   return (
     <Box width="100%">
       <Flex mb="40px" alignItems="center" flexDirection="column">
         <Heading mb="24px" scale="xl" color="secondary">
-          {t('How to Play')}
+          {t('What happens in the Lottery?')}
         </Heading>
         <Text textAlign="center">
-          {t(
-            'If the digits on your tickets match the winning numbers in the correct order, you win a portion of the prize pool.',
-          )}
+          {t('The digits on your ticket must match the correct order of the draw ticket in order to win.')}
         </Text>
-        <Text>{t('Simple!')}</Text>
       </Flex>
       <StepContainer>
         {steps.map((step) => (
@@ -253,33 +252,43 @@ const HowToPlay: React.FC = () => {
       <GappedFlex flexDirection={['column', 'column', 'column', 'row']}>
         <Flex flex="2" flexDirection="column">
           <Heading mb="24px" scale="lg" color="secondary">
-            {t('Winning Criteria')}
+            {t('How to Win!')}
           </Heading>
           <Heading mb="24px" scale="md">
-            {t('The digits on your ticket must match in the correct order to win.')}
+            {t(
+              'There is no limit to the number of tickets you can purchase, however there is a limit per transaction.',
+            )}
           </Heading>
           <Text mb="16px" color="textSubtle">
-            {t('Here’s an example lottery draw, with two tickets, A and B.')}
+            {t(
+              "To be eligible for the prize pool, you'll need to buy the number of tickets you'd like to purchase before the drawing commences. Any tickets purchased after a drawing period are applied to the next drawing.",
+            )}
+          </Text>
+          <Text mb="16px" color="textSubtle">
+            {t("Your ticket will win based on it matching the correct order of the drawing ticket, that's it!")}
+          </Text>
+          <Text mb="16px" color="textSubtle">
+            {t('As an example:')}
           </Text>
           <BulletList>
             <li>
               <Text display="inline" color="textSubtle">
                 {t(
-                  'Ticket A: The first 3 digits and the last 2 digits match, but the 4th digit is wrong, so this ticket only wins a “Match first 3” prize.',
+                  'Ticket 1: If you pull a ticket that matches the 1st, 2nd, and 3rd number as the draw ticket then you’ll win the prize pool for “Matching 3” numbers.',
                 )}
               </Text>
             </li>
             <li>
               <Text display="inline" color="textSubtle">
                 {t(
-                  'Ticket B: Even though the last 5 digits match, the first digit is wrong, so this ticket doesn’t win a prize.',
+                  'Ticket 2: If you pull a ticket that does not match the 1st number then that ticket is automatically disqualified from winning, even if you match the last 5 numbers.',
                 )}
               </Text>
             </li>
           </BulletList>
           <Text mt="16px" color="textSubtle">
             {t(
-              'Prize brackets don’t ‘stack’: if you match the first 3 digits in order, you’ll only win prizes from the ‘Match 3’ bracket, and not from ‘Match 1’ and ‘Match 2’.',
+              'Note: Prizes will not stack, which means you will win the highest reward on the ticket. So, if you’re ticket matches the first 5 numbers on the draw ticket, then you will win the “Matching 5” prize. You won’t win the “Matching 4” or less prize on that specific ticket.',
             )}
           </Text>
         </Flex>
@@ -291,16 +300,18 @@ const HowToPlay: React.FC = () => {
       <GappedFlex flexDirection={['column', 'column', 'column', 'row']}>
         <Flex flex="2" flexDirection="column">
           <Heading mb="24px" scale="lg" color="secondary">
-            {t('Prize Funds')}
+            {t('Prize Pools')}
           </Heading>
-          <Text color="textSubtle">{t('The prizes for each lottery round come from three sources:')}</Text>
+          <Text color="textSubtle">{t('There are a few ways that funds are allocated into the prize pools.')}</Text>
           <Heading my="16px" scale="md">
             {t('Ticket Purchases')}
           </Heading>
           <BulletList>
             <li>
               <Text display="inline" color="textSubtle">
-                {t('100% of the GRAVY paid by people buying tickets that round goes back into the prize pools.')}
+                {t(
+                  'All the Gravy used to purchase tickets from people are allocated directly into the prize pool. None of these funds go into the treasury or get allocated anywhere else.',
+                )}
               </Text>
             </li>
           </BulletList>
@@ -311,23 +322,20 @@ const HowToPlay: React.FC = () => {
             <li>
               <Text display="inline" color="textSubtle">
                 {t(
-                  'After every round, if nobody wins in one of the prize brackets, the unclaimed GRAVY for that bracket rolls over into the next round and are redistributed among the prize pools.',
+                  'Not every round will have a winner. If no winner is drawn at the time of a drawing, then the entire prize pool rolls into the next round and the pool will increase with the new tickets being purchased.',
                 )}
               </Text>
             </li>
           </BulletList>
           <Heading my="16px" scale="md">
-            {t('GRAVY Injections')}
+            {t('The Gravy Boat')}
           </Heading>
           <BulletList>
             <li>
               <Text display="inline" color="textSubtle">
                 {t(
-                  'An average total of 35,000 GRAVY from the treasury is added to lottery rounds over the course of a week. This GRAVY is of course also included in rollovers! Read more in our guide to ',
+                  'Some of the platform fees from the NFT marketplace will be distributed to the prize pool for the lotteries! That means that the bigger GravySwap grows, the bigger the Gravy Boat could be!',
                 )}
-                <InlineLink href="https://docs.pancakeswap.finance/tokenomics/cake/cake-tokenomics">
-                  {t('GRAVY Tokenomics')}
-                </InlineLink>
               </Text>
             </li>
           </BulletList>
@@ -338,14 +346,14 @@ const HowToPlay: React.FC = () => {
       </GappedFlex>
       <Divider />
       <Flex justifyContent="center" alignItems="center" flexDirection={['column', 'column', 'row']}>
-        <Image width={240} height={172} src="/images/lottery/tombola.png" alt="tombola bunny" mr="8px" mb="16px" />
+        <Image width={257} height={150} src="/images/gravy_lottery.png" alt="tombola monkey" mr="8px" mb="16px" />
         <Flex maxWidth="300px" flexDirection="column">
           <Heading mb="16px" scale="md">
             {t('Still got questions?')}
           </Heading>
           <Text>
             {t('Check our in-depth guide on')}{' '}
-            <InlineLink href="https://docs.pancakeswap.finance/products/lottery/lottery-guide">
+            <InlineLink href="https://gravyswap-1.gitbook.io/gravyswap-1/gravy-suite/gravy-games/lotteries">
               {t('how to play the GravySwap lottery!')}
             </InlineLink>
           </Text>

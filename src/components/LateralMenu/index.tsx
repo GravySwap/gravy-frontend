@@ -210,9 +210,12 @@ const LateralMenu: React.FC<{ open: boolean; onClose?: (value: boolean) => void 
             <ChartIcon width={24} />
             <TextTab>Stats</TextTab>
           </Tab>
-          <Tab to="/ifo">
+          <Tab to="#">
             <MaterialIcon className="material-icons-outlined">local_offer</MaterialIcon>
-            <TextTab>IFO</TextTab>
+            <TextTab>
+              IFO
+              <TextSup>soon</TextSup>
+            </TextTab>
           </Tab>
           <Tab to="/voting">
             <MaterialIcon className="material-icons-outlined">how_to_vote</MaterialIcon>

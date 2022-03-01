@@ -228,10 +228,13 @@ const DividerSectionHero: React.FC = () => {
           <InformationContainer>
             <HeadingContainer>
               <div>
-                <StyledHeading black scale="xxl" color="secondary">
-                  Trade better
+                <StyledHeading black scale="xl" color="secondary">
+                  Everything is better with{' '}
                 </StyledHeading>
-                <StyledHeading black scale="xxl" color="primary">
+                <StyledHeading black scale="xl" color="primary">
+                  GRAVY
+                </StyledHeading>
+                <StyledHeading black scale="xl" color="secondary">
                   .
                 </StyledHeading>
               </div>
