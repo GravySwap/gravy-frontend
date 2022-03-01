@@ -229,9 +229,12 @@ const DividerSectionHero: React.FC = () => {
             <HeadingContainer>
               <div>
                 <StyledHeading black scale="xl" color="secondary">
-                  Everything is better with GRAVY
+                  Everything is better with{' '}
                 </StyledHeading>
                 <StyledHeading black scale="xl" color="primary">
+                  GRAVY
+                </StyledHeading>
+                <StyledHeading black scale="xl" color="secondary">
                   .
                 </StyledHeading>
               </div>
