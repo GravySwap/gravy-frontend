@@ -2571,10 +2571,10 @@
   resolved "https://registry.yarnpkg.com/@ledgerhq/logs/-/logs-5.50.0.tgz#29c6419e8379d496ab6d0426eadf3c4d100cd186"
   integrity sha512-swKHYCOZUGyVt4ge0u8a7AwNcA//h4nx5wIi0sruGye1IJ5Cva0GyK9L2/WdX+kWVTKp92ZiEo1df31lrWGPgA==
 
-"@liquidslabs/gravyswap-sdk@npm:@gravyswap/testnet-sdk":
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/@gravyswap/testnet-sdk/-/testnet-sdk-2.4.0.tgz#380a021c345ef78b065d00518851acad181c5a94"
-  integrity sha512-JH4UMkbLEL60xJmho9jsdVOuBOwIPx8IJxVCxuwszIqTutrkxCvLq4DHse/WrslN4X8PsfKgKFqzvOpLJo9qmg==
+"@liquidslabs/gravyswap-sdk@npm:@gravyswap/testnet-sdk@latest":
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/@gravyswap/testnet-sdk/-/testnet-sdk-2.4.1.tgz#9b002db21b9f932ce31a353cd3bcbbde8ad457fa"
+  integrity sha512-IfokO15zeMUtecCmCs9Bs6AcOrLmCjiZdZiImeBHT23q/gzfzvu2qoQ6Tfe5I2JCbQEMUYEwIpHuCFA7QbGZ3Q==
   dependencies:
     "@pancakeswap-libs/pancake-swap-core" "^0.1.0"
     big.js "^5.2.2"
