@@ -42,7 +42,7 @@ const DividerSectionGravy: React.FC = () => {
         <HeadingContainer>
           <div>
             <StyledHeading black scale="xl" color="secondary">
-              Everything tastes better with{' '}
+              We eat, sleep and dream{' '}
             </StyledHeading>
             <StyledHeading black scale="xl" color="primary">
               GRAVY
@@ -63,7 +63,7 @@ const DividerSectionGravy: React.FC = () => {
             )}
           </Heading>
         </DescriptionContainer>
-        <Link to="/farms">
+        <Link to="/pools">
           <Button variant="primary">{t('Start earning')}</Button>
         </Link>
       </InformationContainer>

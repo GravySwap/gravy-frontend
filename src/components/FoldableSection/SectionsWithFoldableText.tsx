@@ -1,7 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { Text, Heading, Card, CardHeader, CardBody, Box, BoxProps } from '@gravyswap/uikit'
+import { Text, Heading, Card, CardHeader, CardBody, Box, BoxProps, Link } from '@gravyswap/uikit'
 import FoldableText from './FoldableText'
 
 interface Props extends BoxProps {
@@ -33,7 +32,11 @@ const SectionsWithFoldableText: React.FC<Props> = ({ header, config, ...props })
                   </Text>
                 )
               })}
-              {i > 1 && <StyledLink to="/">Grab a chance to whitelist on our marketplace!</StyledLink>}
+              {i > 1 && (
+                <StyledLink external href="https://forms.gle/uxrqinVzzLNjgqut8">
+                  Grab a chance to whitelist on our marketplace!
+                </StyledLink>
+              )}
             </FoldableText>
           ))}
         </CardBody>

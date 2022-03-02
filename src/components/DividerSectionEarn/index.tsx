@@ -58,7 +58,7 @@ const DividerSectionEarn: React.FC = () => {
             {t('With GravySwap, its easy to put your crypto to work today and earn for tomorrow.')}
           </Heading>
         </DescriptionContainer>
-        <Link to="/farms">
+        <Link to="/pools">
           <Button variant="primary">{t('Start earning')}</Button>
         </Link>
       </InformationContainer>
