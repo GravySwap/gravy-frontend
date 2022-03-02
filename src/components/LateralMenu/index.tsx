@@ -1,113 +1,24 @@
 // region import
-import React, { PropsWithChildren, useState } from 'react'
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import React, { PropsWithChildren, useEffect, useRef, useState } from 'react'
 
 // components
-import { CloseIcon, HomeIcon, ChartIcon, SwapIcon, ArrowDropDownIcon, ArrowDropUpIcon } from '@gravyswap/uikit'
+import { HomeIcon, ChartIcon, ArrowDropDownIcon, ArrowDropUpIcon } from '@gravyswap/uikit'
+
+// styles
+import {
+  SubmenuContainer,
+  StyledCloseIcon,
+  SubmenuContent,
+  SubmenuTab,
+  Container,
+  RemoveContainer,
+  Tab,
+  TabContainer,
+  TextSup,
+  TextTab,
+  MaterialIcon,
+} from './style'
 // endregion
-
-const Container = styled.div<{ open: boolean }>`
-  position: fixed;
-
-  overflow: auto;
-  transition: left ease 0.5s;
-  background-color: white;
-  height: 100%;
-  z-index: 1005;
-  top: 0;
-  box-shadow: 1px 1px 10px rgb(0 0 0 / 20%);
-
-  width: 100%;
-  left: ${(props) => (props.open ? '0' : '-100%')};
-
-  ${(props) => props.theme.mediaQueries.md} {
-    width: 350px;
-    left: ${(props) => (props.open ? '0' : '-350px')};
-  }
-`
-
-const RemoveContainer = styled.div`
-  height: 75px;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 75px 25px;
-`
-
-const Tab = styled(Link)`
-  display: flex;
-  align-items: center;
-  padding: 25px;
-  cursor: pointer;
-
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.05);
-  }
-
-  &:active {
-    opacity: 0.75;
-  }
-`
-
-const TextTab = styled.div`
-  margin-left: 15px;
-`
-
-const TabContainer = styled.div`
-  /* padding: 0 25px; */
-`
-
-const StyledCloseIcon = styled(CloseIcon)`
-  border-radius: 100%;
-  width: 48px;
-  padding: 5px;
-  cursor: pointer;
-
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.05);
-  }
-
-  &:active {
-    opacity: 0.75;
-  }
-`
-
-const SubmenuTab = styled.div`
-  display: flex;
-  align-items: center;
-  padding: 25px;
-  cursor: pointer;
-
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.05);
-  }
-
-  &:active {
-    opacity: 0.75;
-  }
-`
-
-const SubmenuContainer = styled.div<{ open: boolean }>`
-  background-color: ${(props) => props.open && 'rgba(0,0,0,0.05)'};
-`
-
-const SubmenuContent = styled.div<{ open: boolean; maxHeight: string }>`
-  overflow: hidden;
-  max-height: ${(props) => (!props.open ? '0' : props.maxHeight)};
-  transition: max-height 0.25s ease-in;
-`
-
-const MaterialIcon = styled.span`
-  color: #441f95;
-`
-
-const TextSup = styled.sup`
-  vertical-align: super;
-  font-size: 12px;
-  color: mediumvioletred;
-  margin-left: 5px;
-`
 
 function Submenu(props: PropsWithChildren<{ TabContent: any; maxHeight: string }>) {
   const [open, setOpen] = useState(false)
@@ -116,8 +27,8 @@ function Submenu(props: PropsWithChildren<{ TabContent: any; maxHeight: string }
     <SubmenuContainer open={open}>
       <SubmenuTab onClick={() => setOpen(!open)}>
         {TabContent}
-        {open && <ArrowDropUpIcon marginLeft="auto" width={24} />}
-        {!open && <ArrowDropDownIcon marginLeft="auto" width={24} />}
+        <ArrowDropUpIcon display={open ? 'block' : 'none'} marginLeft="auto" width={24} />
+        <ArrowDropDownIcon display={open ? 'none' : 'block'} marginLeft="auto" width={24} />
       </SubmenuTab>
       <SubmenuContent maxHeight={maxHeight} open={open}>
         {children}
@@ -127,9 +38,28 @@ function Submenu(props: PropsWithChildren<{ TabContent: any; maxHeight: string }
 }
 
 const LateralMenu: React.FC<{ open: boolean; onClose?: (value: boolean) => void }> = (props) => {
+  const refContainer = useRef<HTMLDivElement>(null)
   const { open, onClose } = props
+
+  useEffect(() => {
+    if (open) {
+      const listener = (e: MouseEvent) => {
+        if (refContainer.current && e.target instanceof Node) {
+          if (!refContainer.current.contains(e.target)) {
+            console.log('executed close', refContainer.current.contains(e.target))
+            onClose(false)
+          }
+        }
+      }
+      window.addEventListener('click', listener)
+      return () => window.removeEventListener('click', listener)
+    }
+
+    return () => null
+  }, [open, onClose])
+
   return (
-    <Container open={open}>
+    <Container ref={refContainer} open={open}>
       <RemoveContainer>
         <StyledCloseIcon onClick={() => onClose(false)} />
       </RemoveContainer>
