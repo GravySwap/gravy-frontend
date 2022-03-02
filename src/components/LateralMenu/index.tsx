@@ -46,7 +46,6 @@ const LateralMenu: React.FC<{ open: boolean; onClose?: (value: boolean) => void 
       const listener = (e: MouseEvent) => {
         if (refContainer.current && e.target instanceof Node) {
           if (!refContainer.current.contains(e.target)) {
-            console.log('executed close', refContainer.current.contains(e.target))
             onClose(false)
           }
         }
