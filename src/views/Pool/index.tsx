@@ -71,7 +71,7 @@ export default function Pool() {
         <FullPositionCard
           key={v2Pair.liquidityToken.address}
           pair={v2Pair}
-          mb={index < allV2PairsWithLiquidity.length - 1 ? '16px' : 0}
+          mb={index < allV2PairsWithLiquidity.length ? '16px' : 0}
         />
       ))
     }
