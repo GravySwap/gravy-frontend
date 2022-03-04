@@ -7,7 +7,7 @@ import { useTranslation } from 'contexts/Localization'
 import { getBscScanLinkForNft } from 'utils'
 import { HorizontalDivider, RoundedImage } from './BuySellModals/shared/styles'
 import EditProfileModal from '../Profile/components/EditProfileModal'
-import { nftsBaseUrl, pancakeBunniesAddress } from '../constants'
+import { nftsBaseUrl, gravyBunniesAddress } from '../constants'
 
 export const StyledModal = styled(Modal)`
   & > div:last-child {
@@ -28,7 +28,7 @@ const ProfileNftModal: React.FC<ProfileNftModalProps> = ({ nft, onDismiss }) => 
   const { t } = useTranslation()
   const { theme } = useTheme()
 
-  const itemPageUrlId = nft.collectionAddress === pancakeBunniesAddress ? nft.attributes[0].value : nft.tokenId
+  const itemPageUrlId = nft.collectionAddress === gravyBunniesAddress ? nft.attributes[0].value : nft.tokenId
 
   return (
     <StyledModal title={t('Details')} onDismiss={onDismiss} headerBackground={theme.colors.gradients.cardHeader}>
@@ -67,7 +67,7 @@ const ProfileNftModal: React.FC<ProfileNftModalProps> = ({ nft, onDismiss }) => 
           </Flex>
         </Flex>
         <TextWrapper p="24px 16px" flexDirection="column">
-          <Text mb="16px">{t("You're using this NFT as your Pancake Profile picture")}</Text>
+          <Text mb="16px">{t("You're using this NFT as your Gravy Profile picture")}</Text>
           <Text color="textSubtle" mb="16px" fontSize="14px">
             {t(
               'Removing it will suspend your profile, and you won’t be able to earn points, participate in team activities, or be eligible for new NFT drops.',

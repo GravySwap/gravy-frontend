@@ -27,15 +27,15 @@ const ClaimModal: React.FC<CompetitionProps> = ({ onDismiss, onClaimSuccess, use
 
   const {
     userRewardGroup,
-    userCakeRewards,
+    userGravyRewards,
     userLazioRewards,
     userPortoRewards,
     userSantosRewards,
     userPointReward,
     canClaimNFT,
   } = userTradingInformation
-  const { cakeReward, lazioReward, portoReward, santosReward } = useCompetitionRewards({
-    userCakeRewards,
+  const { gravyReward, lazioReward, portoReward, santosReward } = useCompetitionRewards({
+    userGravyRewards,
     userLazioRewards,
     userPortoRewards,
     userSantosRewards,
@@ -72,7 +72,7 @@ const ClaimModal: React.FC<CompetitionProps> = ({ onDismiss, onClaimSuccess, use
         </Flex>
         {/* tokens */}
         <Heading mt="16px" scale="md" mb={canClaimNFT ? '16px' : '0px'}>
-          {cakeReward.toFixed(2)} GRAVY
+          {gravyReward.toFixed(2)} GRAVY
         </Heading>
         <Heading mt="16px" scale="md" mb={canClaimNFT ? '16px' : '0px'}>
           {lazioReward.toFixed(2)} LAZIO

@@ -7,7 +7,7 @@ import { ChainId } from '@liquidslabs/gravyswap-sdk'
 import styled from 'styled-components'
 import FlexLayout from 'components/Layout/Flex'
 import Page from 'components/Layout/Page'
-import { useFarms, usePollFarmsWithUserData, usePriceCakeBusd } from 'state/farms/hooks'
+import { useFarms, usePollFarmsWithUserData, usePriceGravyBusd } from 'state/farms/hooks'
 import useIntersectionObserver from 'hooks/useIntersectionObserver'
 import { DeserializedFarm } from 'state/types'
 import { useTranslation } from 'contexts/Localization'
@@ -103,12 +103,12 @@ const StyledImage = styled(Image)`
 `
 const NUMBER_OF_FARMS_VISIBLE = 12
 
-const getDisplayApr = (cakeRewardsApr?: number, lpRewardsApr?: number) => {
-  if (cakeRewardsApr && lpRewardsApr) {
-    return (cakeRewardsApr + lpRewardsApr).toLocaleString('en-US', { maximumFractionDigits: 2 })
+const getDisplayApr = (gravyRewardsApr?: number, lpRewardsApr?: number) => {
+  if (gravyRewardsApr && lpRewardsApr) {
+    return (gravyRewardsApr + lpRewardsApr).toLocaleString('en-US', { maximumFractionDigits: 2 })
   }
-  if (cakeRewardsApr) {
-    return cakeRewardsApr.toLocaleString('en-US', { maximumFractionDigits: 2 })
+  if (gravyRewardsApr) {
+    return gravyRewardsApr.toLocaleString('en-US', { maximumFractionDigits: 2 })
   }
   return null
 }
@@ -118,7 +118,7 @@ const Farms: React.FC = () => {
   const { pathname } = useLocation()
   const { t } = useTranslation()
   const { data: farmsLP, userDataLoaded } = useFarms()
-  const cakePrice = usePriceCakeBusd()
+  const gravyPrice = usePriceGravyBusd()
   const [query, setQuery] = useState('')
   const [viewMode, setViewMode] = useUserFarmsViewMode()
   const { account } = useWeb3React()
@@ -161,11 +161,11 @@ const Farms: React.FC = () => {
           return farm
         }
         const totalLiquidity = new BigNumber(farm.lpTotalInQuoteToken).times(farm.quoteTokenPriceBusd)
-        const { cakeRewardsApr, lpRewardsApr } = isActive
-          ? getFarmApr(new BigNumber(farm.poolWeight), cakePrice, totalLiquidity, farm.lpAddresses[ChainId.MAINNET])
-          : { cakeRewardsApr: 0, lpRewardsApr: 0 }
+        const { gravyRewardsApr, lpRewardsApr } = isActive
+          ? getFarmApr(new BigNumber(farm.poolWeight), gravyPrice, totalLiquidity, farm.lpAddresses[ChainId.MAINNET])
+          : { gravyRewardsApr: 0, lpRewardsApr: 0 }
 
-        return { ...farm, apr: cakeRewardsApr, lpRewardsApr, liquidity: totalLiquidity }
+        return { ...farm, apr: gravyRewardsApr, lpRewardsApr, liquidity: totalLiquidity }
       })
 
       if (query) {
@@ -176,7 +176,7 @@ const Farms: React.FC = () => {
       }
       return farmsToDisplayWithAPR
     },
-    [cakePrice, query, isActive],
+    [gravyPrice, query, isActive],
   )
 
   const handleChangeQuery = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -255,7 +255,7 @@ const Farms: React.FC = () => {
     const { token, quoteToken } = farm
     const tokenAddress = token.address
     const quoteTokenAddress = quoteToken.address
-    const lpLabel = farm.lpSymbol && farm.lpSymbol.split(' ')[0].toUpperCase().replace('PANGRAVY', '')
+    const lpLabel = farm.lpSymbol && farm.lpSymbol.split(' ')[0].toUpperCase().replace('GRAVY', '')
 
     const row: RowProps = {
       apr: {
@@ -266,7 +266,7 @@ const Farms: React.FC = () => {
         lpSymbol: farm.lpSymbol,
         tokenAddress,
         quoteTokenAddress,
-        cakePrice,
+        gravyPrice,
         originalValue: farm.apr,
       },
       farm: {
@@ -329,7 +329,7 @@ const Farms: React.FC = () => {
               key={farm.pid}
               farm={farm}
               displayApr={getDisplayApr(farm.apr, farm.lpRewardsApr)}
-              cakePrice={cakePrice}
+              gravyPrice={gravyPrice}
               account={account}
               removed={false}
             />
@@ -341,7 +341,7 @@ const Farms: React.FC = () => {
               key={farm.pid}
               farm={farm}
               displayApr={getDisplayApr(farm.apr, farm.lpRewardsApr)}
-              cakePrice={cakePrice}
+              gravyPrice={gravyPrice}
               account={account}
               removed
             />
@@ -353,7 +353,7 @@ const Farms: React.FC = () => {
               key={farm.pid}
               farm={farm}
               displayApr={getDisplayApr(farm.apr, farm.lpRewardsApr)}
-              cakePrice={cakePrice}
+              gravyPrice={gravyPrice}
               account={account}
               removed
             />

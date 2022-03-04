@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Flex, Box, Image } from '@gravyswap/uikit'
 import { TeamRanksProps } from '../../types'
-import CakerBunny from '../../pngs/cakers.png'
+import GravyrBunny from '../../pngs/gravyrs.png'
 import TopTradersCard from './TopTradersCard'
 import Podium from './Podium'
 
@@ -77,7 +77,7 @@ const TeamRanks: React.FC<TeamRanksProps> = ({
           }
         />
         <BunnyImageWrapper mt="24px">
-          <Image src={CakerBunny} width={200} height={205} />
+          <Image src={GravyrBunny} width={200} height={205} />
         </BunnyImageWrapper>
       </StyledPodiumWrapper>
       <StyledTopTradersWrapper>

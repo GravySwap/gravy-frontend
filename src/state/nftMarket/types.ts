@@ -30,8 +30,8 @@ export interface State {
     filters: Record<string, NftFilter> // string is the collection address
     activityFilters: Record<string, NftActivityFilter> // string is the collection address
     loadingState: {
-      isUpdatingPancakeBunnies: boolean
-      latestPancakeBunniesUpdateAt: number
+      isUpdatingGravyBunnies: boolean
+      latestGravyBunniesUpdateAt: number
     }
     users: Record<string, User> // string is the address
     user: UserNftsState
@@ -104,7 +104,7 @@ export interface TokenMarketData {
   transactionHistory?: Transaction[]
 }
 
-// Represents single NFT token, either Squad-like NFT or single PancakeBunny.
+// Represents single NFT token, either Squad-like NFT or single GravyBunny.
 export interface NftToken {
   tokenId: string
   name: string

@@ -3,9 +3,9 @@ import styled from 'styled-components'
 import { useWeb3React } from '@web3-react/core'
 import { Button, Flex, Text, InjectedModalProps } from '@gravyswap/uikit'
 import { formatBigNumber } from 'utils/formatBalance'
-import { getPancakeProfileAddress } from 'utils/addressHelpers'
-import { useCake } from 'hooks/useContract'
-import { FetchStatus, useGetCakeBalance } from 'hooks/useTokenBalance'
+import { getGravyProfileAddress } from 'utils/addressHelpers'
+import { useGravy } from 'hooks/useContract'
+import { FetchStatus, useGetGravyBalance } from 'hooks/useTokenBalance'
 import { useTranslation } from 'contexts/Localization'
 import useGetProfileCosts from 'views/Nft/market/Profile/hooks/useGetProfileCosts'
 import { useProfile } from 'state/profile/hooks'
@@ -42,16 +42,16 @@ const AvatarWrapper = styled.div`
 const StartPage: React.FC<StartPageProps> = ({ goToApprove, goToChange, goToRemove, onDismiss }) => {
   const { t } = useTranslation()
   const { account } = useWeb3React()
-  const cakeContract = useCake()
+  const gravyContract = useGravy()
   const { profile } = useProfile()
-  const { balance: cakeBalance, fetchStatus } = useGetCakeBalance()
+  const { balance: gravyBalance, fetchStatus } = useGetGravyBalance()
   const {
-    costs: { numberCakeToUpdate, numberCakeToReactivate },
+    costs: { numberGravyToUpdate, numberGravyToReactivate },
     isLoading: isProfileCostsLoading,
   } = useGetProfileCosts()
   const [needsApproval, setNeedsApproval] = useState(null)
-  const minimumCakeRequired = profile.isActive ? numberCakeToUpdate : numberCakeToReactivate
-  const hasMinimumCakeRequired = fetchStatus === FetchStatus.SUCCESS && cakeBalance.gte(minimumCakeRequired)
+  const minimumGravyRequired = profile.isActive ? numberGravyToUpdate : numberGravyToReactivate
+  const hasMinimumGravyRequired = fetchStatus === FetchStatus.SUCCESS && gravyBalance.gte(minimumGravyRequired)
 
   /**
    * Check if the wallet has the required GRAVY allowance to change their profile pic or reactivate
@@ -59,14 +59,14 @@ const StartPage: React.FC<StartPageProps> = ({ goToApprove, goToChange, goToRemo
    */
   useEffect(() => {
     const checkApprovalStatus = async () => {
-      const response = await cakeContract.allowance(account, getPancakeProfileAddress())
-      setNeedsApproval(response.lt(minimumCakeRequired))
+      const response = await gravyContract.allowance(account, getGravyProfileAddress())
+      setNeedsApproval(response.lt(minimumGravyRequired))
     }
 
     if (account && !isProfileCostsLoading) {
       checkApprovalStatus()
     }
-  }, [account, minimumCakeRequired, setNeedsApproval, cakeContract, isProfileCostsLoading])
+  }, [account, minimumGravyRequired, setNeedsApproval, gravyContract, isProfileCostsLoading])
 
   if (!profile) {
     return null
@@ -80,8 +80,8 @@ const StartPage: React.FC<StartPageProps> = ({ goToApprove, goToChange, goToRemo
       <Flex alignItems="center" style={{ height: '48px' }} justifyContent="center">
         <Text as="p" color="failure">
           {!isProfileCostsLoading &&
-            !hasMinimumCakeRequired &&
-            t('%minimum% GRAVY required to change profile pic', { minimum: formatBigNumber(minimumCakeRequired) })}
+            !hasMinimumGravyRequired &&
+            t('%minimum% GRAVY required to change profile pic', { minimum: formatBigNumber(minimumGravyRequired) })}
         </Text>
       </Flex>
       {profile.isActive ? (
@@ -90,7 +90,7 @@ const StartPage: React.FC<StartPageProps> = ({ goToApprove, goToChange, goToRemo
             width="100%"
             mb="8px"
             onClick={needsApproval === true ? goToApprove : goToChange}
-            disabled={isProfileCostsLoading || !hasMinimumCakeRequired || needsApproval === null}
+            disabled={isProfileCostsLoading || !hasMinimumGravyRequired || needsApproval === null}
           >
             {t('Change Profile Pic')}
           </Button>
@@ -103,7 +103,7 @@ const StartPage: React.FC<StartPageProps> = ({ goToApprove, goToChange, goToRemo
           width="100%"
           mb="8px"
           onClick={needsApproval === true ? goToApprove : goToChange}
-          disabled={isProfileCostsLoading || !hasMinimumCakeRequired || needsApproval === null}
+          disabled={isProfileCostsLoading || !hasMinimumGravyRequired || needsApproval === null}
         >
           {t('Reactivate Profile')}
         </Button>

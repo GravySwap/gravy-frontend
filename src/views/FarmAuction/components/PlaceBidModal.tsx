@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import BigNumber from 'bignumber.js'
 import { ethers } from 'ethers'
-import { Modal, Text, Flex, BalanceInput, Box, Button, PancakeRoundIcon } from '@gravyswap/uikit'
+import { Modal, Text, Flex, BalanceInput, Box, Button, GravyRoundIcon } from '@gravyswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 import { useWeb3React } from '@web3-react/core'
 import { formatNumber, getBalanceAmount, getBalanceNumber } from 'utils/formatBalance'
@@ -10,13 +10,13 @@ import { ethersToBigNumber } from 'utils/bigNumber'
 import useTheme from 'hooks/useTheme'
 import useTokenBalance, { FetchStatus } from 'hooks/useTokenBalance'
 import useApproveConfirmTransaction from 'hooks/useApproveConfirmTransaction'
-import { useCake, useFarmAuctionContract } from 'hooks/useContract'
+import { useGravy, useFarmAuctionContract } from 'hooks/useContract'
 import { DEFAULT_TOKEN_DECIMAL } from 'config'
 import useToast from 'hooks/useToast'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import ApproveConfirmButtons, { ButtonArrangement } from 'components/ApproveConfirmButtons'
 import { ConnectedBidder } from 'config/constants/types'
-import { usePriceCakeBusd } from 'state/farms/hooks'
+import { usePriceGravyBusd } from 'state/farms/hooks'
 import { useCallWithGasPrice } from 'hooks/useCallWithGasPrice'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import tokens from 'config/constants/tokens'
@@ -61,15 +61,15 @@ const PlaceBidModal: React.FC<PlaceBidModalProps> = ({
   const [bid, setBid] = useState('')
   const [isMultipleOfTen, setIsMultipleOfTen] = useState(false)
   const [isMoreThanInitialBidAmount, setIsMoreThanInitialBidAmount] = useState(false)
-  const [userNotEnoughCake, setUserNotEnoughCake] = useState(false)
+  const [userNotEnoughGravy, setUserNotEnoughGravy] = useState(false)
   const [errorText, setErrorText] = useState(null)
 
-  const { balance: userCake, fetchStatus } = useTokenBalance(tokens.cake.address)
-  const userCakeBalance = getBalanceAmount(userCake)
+  const { balance: userGravy, fetchStatus } = useTokenBalance(tokens.gravy.address)
+  const userGravyBalance = getBalanceAmount(userGravy)
 
-  const cakePriceBusd = usePriceCakeBusd()
+  const gravyPriceBusd = usePriceGravyBusd()
   const farmAuctionContract = useFarmAuctionContract()
-  const cakeContract = useCake()
+  const gravyContract = useGravy()
 
   const { toastSuccess } = useToast()
 
@@ -81,15 +81,15 @@ const PlaceBidModal: React.FC<PlaceBidModalProps> = ({
   useEffect(() => {
     setIsMoreThanInitialBidAmount(parseFloat(bid) >= initialBidAmount)
     setIsMultipleOfTen(parseFloat(bid) % 10 === 0 && parseFloat(bid) !== 0)
-    if (fetchStatus === FetchStatus.SUCCESS && userCakeBalance.lt(bid)) {
-      setUserNotEnoughCake(true)
+    if (fetchStatus === FetchStatus.SUCCESS && userGravyBalance.lt(bid)) {
+      setUserNotEnoughGravy(true)
     } else {
-      setUserNotEnoughCake(false)
+      setUserNotEnoughGravy(false)
     }
-  }, [bid, initialBidAmount, fetchStatus, userCakeBalance])
+  }, [bid, initialBidAmount, fetchStatus, userGravyBalance])
 
   useEffect(() => {
-    if (userNotEnoughCake) {
+    if (userNotEnoughGravy) {
       setErrorText(t('Insufficient GRAVY balance'))
     } else if (!isMoreThanInitialBidAmount && isFirstBid) {
       setErrorText(t('First bid must be %initialBidAmount% GRAVY or more.', { initialBidAmount }))
@@ -98,13 +98,13 @@ const PlaceBidModal: React.FC<PlaceBidModalProps> = ({
     } else {
       setErrorText(null)
     }
-  }, [isMultipleOfTen, isMoreThanInitialBidAmount, userNotEnoughCake, initialBidAmount, t, isFirstBid])
+  }, [isMultipleOfTen, isMoreThanInitialBidAmount, userNotEnoughGravy, initialBidAmount, t, isFirstBid])
 
   const { isApproving, isApproved, isConfirmed, isConfirming, handleApprove, handleConfirm } =
     useApproveConfirmTransaction({
       onRequiresApproval: async () => {
         try {
-          const response = await cakeContract.allowance(account, farmAuctionContract.address)
+          const response = await gravyContract.allowance(account, farmAuctionContract.address)
           const currentAllowance = ethersToBigNumber(response)
           return currentAllowance.gt(0)
         } catch (error) {
@@ -112,7 +112,7 @@ const PlaceBidModal: React.FC<PlaceBidModalProps> = ({
         }
       },
       onApprove: () => {
-        return callWithGasPrice(cakeContract, 'approve', [farmAuctionContract.address, ethers.constants.MaxUint256])
+        return callWithGasPrice(gravyContract, 'approve', [farmAuctionContract.address, ethers.constants.MaxUint256])
       },
       onApproveSuccess: async ({ receipt }) => {
         toastSuccess(
@@ -137,7 +137,7 @@ const PlaceBidModal: React.FC<PlaceBidModalProps> = ({
 
   const setPercentageValue = (percentage: number) => {
     const rounding = percentage === 1 ? BigNumber.ROUND_FLOOR : BigNumber.ROUND_CEIL
-    const valueToSet = getBalanceAmount(userCake.times(percentage)).div(10).integerValue(rounding).times(10)
+    const valueToSet = getBalanceAmount(userGravy.times(percentage)).div(10).integerValue(rounding).times(10)
     setBid(valueToSet.toString())
   }
   return (
@@ -156,7 +156,7 @@ const PlaceBidModal: React.FC<PlaceBidModalProps> = ({
         <Flex justifyContent="space-between" alignItems="center" pb="8px">
           <Text>{t('Bid a multiple of 10')}</Text>
           <Flex>
-            <PancakeRoundIcon width="24px" height="24px" mr="4px" />
+            <GravyRoundIcon width="24px" height="24px" mr="4px" />
             <Text bold>GRAVY</Text>
           </Flex>
         </Flex>
@@ -171,8 +171,8 @@ const PlaceBidModal: React.FC<PlaceBidModalProps> = ({
           value={bid}
           onUserInput={handleInputChange}
           currencyValue={
-            cakePriceBusd.gt(0) &&
-            `~${bid ? cakePriceBusd.times(new BigNumber(bid)).toNumber().toLocaleString() : '0.00'} USD`
+            gravyPriceBusd.gt(0) &&
+            `~${bid ? gravyPriceBusd.times(new BigNumber(bid)).toNumber().toLocaleString() : '0.00'} USD`
           }
         />
         <Flex justifyContent="flex-end" mt="8px">
@@ -180,7 +180,7 @@ const PlaceBidModal: React.FC<PlaceBidModalProps> = ({
             {t('Balance')}:
           </Text>
           <Text fontSize="12px" color="textSubtle">
-            {formatNumber(userCakeBalance.toNumber(), 3, 3)}
+            {formatNumber(userGravyBalance.toNumber(), 3, 3)}
           </Text>
         </Flex>
         {errorText && (
@@ -237,10 +237,10 @@ const PlaceBidModal: React.FC<PlaceBidModalProps> = ({
               isApproving={isApproving}
               isConfirmDisabled={
                 !isMultipleOfTen ||
-                getBalanceAmount(userCake).lt(bid) ||
+                getBalanceAmount(userGravy).lt(bid) ||
                 isConfirmed ||
                 isInvalidFirstBid ||
-                userNotEnoughCake
+                userNotEnoughGravy
               }
               isConfirming={isConfirming}
               onApprove={handleApprove}

@@ -16,15 +16,15 @@ const UserPrizeGrid: React.FC<{ userTradingInformation?: UserTradingInformationP
   const { t } = useTranslation()
   const {
     userRewardGroup,
-    userCakeRewards,
+    userGravyRewards,
     userLazioRewards,
     userPortoRewards,
     userSantosRewards,
     userPointReward,
     canClaimNFT,
   } = userTradingInformation
-  const { cakeReward, lazioReward, portoReward, santosReward, dollarValueOfTokensReward } = useCompetitionRewards({
-    userCakeRewards,
+  const { gravyReward, lazioReward, portoReward, santosReward, dollarValueOfTokensReward } = useCompetitionRewards({
+    userGravyRewards,
     userLazioRewards,
     userPortoRewards,
     userSantosRewards,
@@ -45,7 +45,7 @@ const UserPrizeGrid: React.FC<{ userTradingInformation?: UserTradingInformationP
         <tr>
           <BoldTd>
             <Flex flexDirection="column">
-              <Text bold>{cakeReward.toFixed(2)} GRAVY</Text>
+              <Text bold>{gravyReward.toFixed(2)} GRAVY</Text>
               <Text bold>{lazioReward.toFixed(2)} LAZIO</Text>
               <Text bold>{portoReward.toFixed(2)} PORTO</Text>
               <Text bold>{santosReward.toFixed(2)} SANTOS</Text>

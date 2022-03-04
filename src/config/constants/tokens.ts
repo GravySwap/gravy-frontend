@@ -31,13 +31,13 @@ export const mainnetTokens = {
     'GravySwap Token',
     'https://gravyswap.finance/',
   ),
-  cake: new Token(
+  gravy: new Token(
     MAINNET,
     '0x5eA26D0d36EAF02d63a3023521A7924e19c34454',
     18,
     'GRAVY',
     'GravySwap Token',
-    'https://pancakeswap.finance/',
+    'https://gravyswap.com/',
   ),
   tlos: new Token(MAINNET, '0xb6C53431608E626AC81a9776ac3e999c5556717c', 18, 'TLOS', 'Telos', 'https://www.telos.net/'),
   beta: new Token(
@@ -225,7 +225,7 @@ export const mainnetTokens = {
     18,
     'SYRUP',
     'SyrupBar Token',
-    'https://pancakeswap.finance/',
+    'https://gravyswap.com/',
   ),
   pha: new Token(
     MAINNET,
@@ -235,13 +235,13 @@ export const mainnetTokens = {
     'Phala Token',
     'https://phala.network',
   ),
-  babycake: new Token(
+  babygravy: new Token(
     MAINNET,
     '0xdB8D30b74bf098aF214e862C90E647bbB1fcC58c',
     18,
     'BABYGRAVY',
-    'Baby Cake Token',
-    'https://babycake.app/',
+    'Baby Gravy Token',
+    'https://babygravy.app/',
   ),
   bmon: new Token(
     MAINNET,
@@ -394,8 +394,8 @@ export const mainnetTokens = {
     '0xC9849E6fdB743d08fAeE3E34dd2D1bc69EA11a51',
     18,
     'BUNNY',
-    'Pancakebunny Token',
-    'https://pancakebunny.finance/',
+    'Gravybunny Token',
+    'https://gravybunny.finance/',
   ),
   alice: new Token(
     MAINNET,
@@ -1858,7 +1858,7 @@ export const testnetTokens = {
     'Wrapped BNB',
     'https://www.binance.com/',
   ),
-  cake: new Token(
+  gravy: new Token(
     TESTNET,
     '0x5eA26D0d36EAF02d63a3023521A7924e19c34454',
     18,
@@ -1872,7 +1872,7 @@ export const testnetTokens = {
     18,
     'GRAVY',
     'GravySwap Token',
-    'https://pancakeswap.finance/',
+    'https://gravyswap.com/',
   ),
   busd: new Token(
     TESTNET,
@@ -1888,7 +1888,7 @@ export const testnetTokens = {
     18,
     'SYRUP',
     'SyrupBar Token',
-    'https://pancakeswap.finance/',
+    'https://gravyswap.com/',
   ),
   bake: new Token(
     TESTNET,

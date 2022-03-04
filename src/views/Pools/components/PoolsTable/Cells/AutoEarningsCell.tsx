@@ -3,9 +3,9 @@ import styled from 'styled-components'
 import { Skeleton, Text, useTooltip, HelpIcon, Flex, Box, useMatchBreakpoints } from '@gravyswap/uikit'
 import { DeserializedPool } from 'state/types'
 import Balance from 'components/Balance'
-import { useCakeVault } from 'state/pools/hooks'
+import { useGravyVault } from 'state/pools/hooks'
 import { useTranslation } from 'contexts/Localization'
-import { getCakeVaultEarnings } from 'views/Pools/helpers'
+import { getGravyVaultEarnings } from 'views/Pools/helpers'
 import BaseCell, { CellContent } from './BaseCell'
 
 interface AutoEarningsCellProps {
@@ -31,19 +31,19 @@ const AutoEarningsCell: React.FC<AutoEarningsCellProps> = ({ pool, account, user
   const { earningTokenPrice } = pool
 
   const {
-    userData: { cakeAtLastUserAction, userShares, lastUserActionTime },
+    userData: { gravyAtLastUserAction, userShares, lastUserActionTime },
     pricePerFullShare,
-  } = useCakeVault()
-  const { hasAutoEarnings, autoCakeToDisplay, autoUsdToDisplay } = getCakeVaultEarnings(
+  } = useGravyVault()
+  const { hasAutoEarnings, autoGravyToDisplay, autoUsdToDisplay } = getGravyVaultEarnings(
     account,
-    cakeAtLastUserAction,
+    gravyAtLastUserAction,
     userShares,
     pricePerFullShare,
     earningTokenPrice,
   )
 
   const labelText = t('Recent GRAVY profit')
-  const earningTokenBalance = autoCakeToDisplay
+  const earningTokenBalance = autoGravyToDisplay
   const hasEarnings = hasAutoEarnings
   const earningTokenDollarBalance = autoUsdToDisplay
 
@@ -53,7 +53,7 @@ const AutoEarningsCell: React.FC<AutoEarningsCellProps> = ({ pool, account, user
 
   const { targetRef, tooltip, tooltipVisible } = useTooltip(
     <>
-      <Balance fontSize="16px" value={autoCakeToDisplay} decimals={3} bold unit=" GRAVY" />
+      <Balance fontSize="16px" value={autoGravyToDisplay} decimals={3} bold unit=" GRAVY" />
       <Balance fontSize="16px" value={autoUsdToDisplay} decimals={2} bold prefix="~$" />
       {t('Earned since your last action')}
       <Text>{dateStringToDisplay}</Text>

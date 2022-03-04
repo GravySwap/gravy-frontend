@@ -5,7 +5,7 @@ import { getErc721Contract } from 'utils/contractHelpers'
 import { ethers } from 'ethers'
 import map from 'lodash/map'
 import { uniq } from 'lodash'
-import { pancakeBunniesAddress } from 'views/Nft/market/constants'
+import { gravyBunniesAddress } from 'views/Nft/market/constants'
 import {
   ApiCollection,
   ApiCollections,
@@ -73,7 +73,7 @@ export const getNftsFromCollectionApi = async (
   size = 100,
   page = 1,
 ): Promise<ApiResponseCollectionTokens> => {
-  const isPBCollection = collectionAddress.toLowerCase() === pancakeBunniesAddress.toLowerCase()
+  const isPBCollection = collectionAddress.toLowerCase() === gravyBunniesAddress.toLowerCase()
   const requestPath = `${API_NFT}/collections/${collectionAddress}/tokens${
     !isPBCollection ? `?page=${page}&size=${size}` : ``
   }`
@@ -198,7 +198,7 @@ export const getNftsFromCollectionSg = async (
   skip = 0,
 ): Promise<TokenMarketData[]> => {
   // Squad to be sorted by tokenId as this matches the order of the paginated API return. For PBs - get the most recent,
-  const isPBCollection = collectionAddress.toLowerCase() === pancakeBunniesAddress.toLowerCase()
+  const isPBCollection = collectionAddress.toLowerCase() === gravyBunniesAddress.toLowerCase()
 
   try {
     const res = await request(
@@ -223,7 +223,7 @@ export const getNftsFromCollectionSg = async (
 }
 
 /**
- * Fetch market data for PancakeBunnies NFTs by bunny id using the Subgraph
+ * Fetch market data for GravyBunnies NFTs by bunny id using the Subgraph
  * @param bunnyId - bunny id to query
  * @param existingTokenIds - tokens that are already loaded into redux
  * @returns
@@ -248,7 +248,7 @@ export const getNftsByBunnyIdSg = async (
         }
       `,
       {
-        collectionAddress: pancakeBunniesAddress.toLowerCase(),
+        collectionAddress: gravyBunniesAddress.toLowerCase(),
         where,
         orderDirection,
       },
@@ -261,7 +261,7 @@ export const getNftsByBunnyIdSg = async (
 }
 
 /**
- * Fetch market data for PancakeBunnies NFTs by bunny id using the Subgraph
+ * Fetch market data for GravyBunnies NFTs by bunny id using the Subgraph
  * @param bunnyId - bunny id to query
  * @param existingTokenIds - tokens that are already loaded into redux
  * @returns
@@ -328,9 +328,9 @@ export const getNftsMarketData = async (
   }
 }
 
-export const getAllPancakeBunniesLowestPrice = async (bunnyIds: string[]): Promise<Record<string, number>> => {
+export const getAllGravyBunniesLowestPrice = async (bunnyIds: string[]): Promise<Record<string, number>> => {
   try {
-    const singlePancakeBunnySubQueries = bunnyIds.map(
+    const singleGravyBunnySubQueries = bunnyIds.map(
       (
         bunnyId,
       ) => `b${bunnyId}:nfts(first: 1, where: { otherId: ${bunnyId}, isTradable: true }, orderBy: currentAskPrice, orderDirection: asc) {
@@ -341,8 +341,8 @@ export const getAllPancakeBunniesLowestPrice = async (bunnyIds: string[]): Promi
     const rawResponse: Record<string, { currentAskPrice: string }[]> = await request(
       GRAPH_API_NFTMARKET,
       gql`
-        query getAllPancakeBunniesLowestPrice {
-          ${singlePancakeBunnySubQueries}
+        query getAllGravyBunniesLowestPrice {
+          ${singleGravyBunnySubQueries}
         }
       `,
     )
@@ -355,14 +355,14 @@ export const getAllPancakeBunniesLowestPrice = async (bunnyIds: string[]): Promi
       }
     }, {})
   } catch (error) {
-    console.error('Failed to fetch PancakeBunnies lowest prices', error)
+    console.error('Failed to fetch GravyBunnies lowest prices', error)
     return {}
   }
 }
 
-export const getAllPancakeBunniesRecentUpdatedAt = async (bunnyIds: string[]): Promise<Record<string, number>> => {
+export const getAllGravyBunniesRecentUpdatedAt = async (bunnyIds: string[]): Promise<Record<string, number>> => {
   try {
-    const singlePancakeBunnySubQueries = bunnyIds.map(
+    const singleGravyBunnySubQueries = bunnyIds.map(
       (
         bunnyId,
       ) => `b${bunnyId}:nfts(first: 1, where: { otherId: ${bunnyId}, isTradable: true }, orderBy: updatedAt, orderDirection: desc) {
@@ -373,8 +373,8 @@ export const getAllPancakeBunniesRecentUpdatedAt = async (bunnyIds: string[]): P
     const rawResponse: Record<string, { updatedAt: string }[]> = await request(
       GRAPH_API_NFTMARKET,
       gql`
-        query getAllPancakeBunniesLowestPrice {
-          ${singlePancakeBunnySubQueries}
+        query getAllGravyBunniesLowestPrice {
+          ${singleGravyBunnySubQueries}
         }
       `,
     )
@@ -386,7 +386,7 @@ export const getAllPancakeBunniesRecentUpdatedAt = async (bunnyIds: string[]): P
       }
     }, {})
   } catch (error) {
-    console.error('Failed to fetch PancakeBunnies latest market updates', error)
+    console.error('Failed to fetch GravyBunnies latest market updates', error)
     return {}
   }
 }
@@ -670,7 +670,7 @@ export const getMetadataWithFallback = (apiMetadata: ApiResponseCollectionTokens
     apiMetadata[bunnyId] ?? {
       name: '',
       description: '',
-      collection: { name: 'Pancake Bunnies' },
+      collection: { name: 'Gravy Bunnies' },
       image: {
         original: '',
         thumbnail: '',
@@ -679,7 +679,7 @@ export const getMetadataWithFallback = (apiMetadata: ApiResponseCollectionTokens
   )
 }
 
-export const getPancakeBunniesAttributesField = (bunnyId: string) => {
+export const getGravyBunniesAttributesField = (bunnyId: string) => {
   // Generating attributes field that is not returned by API
   // but can be "faked" since objects are keyed with bunny id
   return [
@@ -701,7 +701,7 @@ export const combineApiAndSgResponseToNftToken = (
     name: apiMetadata.name,
     description: apiMetadata.description,
     collectionName: apiMetadata.collection.name,
-    collectionAddress: pancakeBunniesAddress,
+    collectionAddress: gravyBunniesAddress,
     image: apiMetadata.image,
     marketData,
     attributes,

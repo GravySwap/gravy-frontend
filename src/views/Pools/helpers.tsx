@@ -3,28 +3,28 @@ import { DeserializedPool } from 'state/types'
 import { getApy } from 'utils/compoundApyHelpers'
 import { getBalanceNumber, getFullDisplayBalance, getDecimalAmount } from 'utils/formatBalance'
 
-export const convertSharesToCake = (
+export const convertSharesToGravy = (
   shares: BigNumber,
-  cakePerFullShare: BigNumber,
+  gravyPerFullShare: BigNumber,
   decimals = 18,
   decimalsToRound = 3,
 ) => {
-  const sharePriceNumber = getBalanceNumber(cakePerFullShare, decimals)
-  const amountInCake = new BigNumber(shares.multipliedBy(sharePriceNumber))
-  const cakeAsNumberBalance = getBalanceNumber(amountInCake, decimals)
-  const cakeAsBigNumber = getDecimalAmount(new BigNumber(cakeAsNumberBalance), decimals)
-  const cakeAsDisplayBalance = getFullDisplayBalance(amountInCake, decimals, decimalsToRound)
-  return { cakeAsNumberBalance, cakeAsBigNumber, cakeAsDisplayBalance }
+  const sharePriceNumber = getBalanceNumber(gravyPerFullShare, decimals)
+  const amountInGravy = new BigNumber(shares.multipliedBy(sharePriceNumber))
+  const gravyAsNumberBalance = getBalanceNumber(amountInGravy, decimals)
+  const gravyAsBigNumber = getDecimalAmount(new BigNumber(gravyAsNumberBalance), decimals)
+  const gravyAsDisplayBalance = getFullDisplayBalance(amountInGravy, decimals, decimalsToRound)
+  return { gravyAsNumberBalance, gravyAsBigNumber, gravyAsDisplayBalance }
 }
 
-export const convertCakeToShares = (
-  cake: BigNumber,
-  cakePerFullShare: BigNumber,
+export const convertGravyToShares = (
+  gravy: BigNumber,
+  gravyPerFullShare: BigNumber,
   decimals = 18,
   decimalsToRound = 3,
 ) => {
-  const sharePriceNumber = getBalanceNumber(cakePerFullShare, decimals)
-  const amountInShares = new BigNumber(cake.dividedBy(sharePriceNumber))
+  const sharePriceNumber = getBalanceNumber(gravyPerFullShare, decimals)
+  const amountInShares = new BigNumber(gravy.dividedBy(sharePriceNumber))
   const sharesAsNumberBalance = getBalanceNumber(amountInShares, decimals)
   const sharesAsBigNumber = getDecimalAmount(new BigNumber(sharesAsNumberBalance), decimals)
   const sharesAsDisplayBalance = getFullDisplayBalance(amountInShares, decimals, decimalsToRound)
@@ -47,22 +47,22 @@ export const getAprData = (pool: DeserializedPool, performanceFee: number) => {
   return { apr, autoCompoundFrequency }
 }
 
-export const getCakeVaultEarnings = (
+export const getGravyVaultEarnings = (
   account: string,
-  cakeAtLastUserAction: BigNumber,
+  gravyAtLastUserAction: BigNumber,
   userShares: BigNumber,
   pricePerFullShare: BigNumber,
   earningTokenPrice: number,
 ) => {
   const hasAutoEarnings =
-    account && cakeAtLastUserAction && cakeAtLastUserAction.gt(0) && userShares && userShares.gt(0)
-  const { cakeAsBigNumber } = convertSharesToCake(userShares, pricePerFullShare)
-  const autoCakeProfit = cakeAsBigNumber.minus(cakeAtLastUserAction)
-  const autoCakeToDisplay = autoCakeProfit.gte(0) ? getBalanceNumber(autoCakeProfit, 18) : 0
+    account && gravyAtLastUserAction && gravyAtLastUserAction.gt(0) && userShares && userShares.gt(0)
+  const { gravyAsBigNumber } = convertSharesToGravy(userShares, pricePerFullShare)
+  const autoGravyProfit = gravyAsBigNumber.minus(gravyAtLastUserAction)
+  const autoGravyToDisplay = autoGravyProfit.gte(0) ? getBalanceNumber(autoGravyProfit, 18) : 0
 
-  const autoUsdProfit = autoCakeProfit.times(earningTokenPrice)
+  const autoUsdProfit = autoGravyProfit.times(earningTokenPrice)
   const autoUsdToDisplay = autoUsdProfit.gte(0) ? getBalanceNumber(autoUsdProfit, 18) : 0
-  return { hasAutoEarnings, autoCakeToDisplay, autoUsdToDisplay }
+  return { hasAutoEarnings, autoGravyToDisplay, autoUsdToDisplay }
 }
 
 export const getPoolBlockInfo = (pool: DeserializedPool, currentBlock: number) => {

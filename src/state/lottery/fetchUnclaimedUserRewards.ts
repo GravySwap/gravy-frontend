@@ -18,9 +18,9 @@ interface RoundDataAndUserTickets {
 
 const lotteryAddress = getLotteryV2Address()
 
-const fetchCakeRewardsForTickets = async (
+const fetchGravyRewardsForTickets = async (
   winningTickets: LotteryTicket[],
-): Promise<{ ticketsWithUnclaimedRewards: LotteryTicket[]; cakeTotal: BigNumber }> => {
+): Promise<{ ticketsWithUnclaimedRewards: LotteryTicket[]; gravyTotal: BigNumber }> => {
   const calls = winningTickets.map((winningTicket) => {
     const { roundId, id, rewardBracket } = winningTicket
     return {
@@ -31,19 +31,19 @@ const fetchCakeRewardsForTickets = async (
   })
 
   try {
-    const cakeRewards = await multicallv2(lotteryV2Abi, calls)
+    const gravyRewards = await multicallv2(lotteryV2Abi, calls)
 
-    const cakeTotal = cakeRewards.reduce((accum: BigNumber, cakeReward: ethers.BigNumber[]) => {
-      return accum.plus(new BigNumber(cakeReward[0].toString()))
+    const gravyTotal = gravyRewards.reduce((accum: BigNumber, gravyReward: ethers.BigNumber[]) => {
+      return accum.plus(new BigNumber(gravyReward[0].toString()))
     }, BIG_ZERO)
 
     const ticketsWithUnclaimedRewards = winningTickets.map((winningTicket, index) => {
-      return { ...winningTicket, cakeReward: cakeRewards[index] }
+      return { ...winningTicket, gravyReward: gravyRewards[index] }
     })
-    return { ticketsWithUnclaimedRewards, cakeTotal }
+    return { ticketsWithUnclaimedRewards, gravyTotal }
   } catch (error) {
     console.error(error)
-    return { ticketsWithUnclaimedRewards: null, cakeTotal: null }
+    return { ticketsWithUnclaimedRewards: null, gravyTotal: null }
   }
 }
 
@@ -93,12 +93,12 @@ export const getWinningTickets = async (
   })
 
   if (unclaimedWinningTickets.length > 0) {
-    const { ticketsWithUnclaimedRewards, cakeTotal } = await fetchCakeRewardsForTickets(unclaimedWinningTickets)
-    return { ticketsWithUnclaimedRewards, allWinningTickets, cakeTotal, roundId }
+    const { ticketsWithUnclaimedRewards, gravyTotal } = await fetchGravyRewardsForTickets(unclaimedWinningTickets)
+    return { ticketsWithUnclaimedRewards, allWinningTickets, gravyTotal, roundId }
   }
 
   if (allWinningTickets.length > 0) {
-    return { ticketsWithUnclaimedRewards: null, allWinningTickets, cakeTotal: null, roundId }
+    return { ticketsWithUnclaimedRewards: null, allWinningTickets, gravyTotal: null, roundId }
   }
 
   return null

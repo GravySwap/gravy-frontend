@@ -5,13 +5,13 @@ import ifoV2Abi from 'config/abi/ifoV2.json'
 import tokens from 'config/constants/tokens'
 import { Ifo, IfoStatus } from 'config/constants/types'
 import { ethers } from 'ethers'
-import { useLpTokenPrice, usePriceCakeBusd } from 'state/farms/hooks'
+import { useLpTokenPrice, usePriceGravyBusd } from 'state/farms/hooks'
 import { BIG_ZERO } from 'utils/bigNumber'
 import { multicallv2 } from 'utils/multicall'
 import { PublicIfoData } from '../../types'
 import { getStatus } from '../helpers'
 
-// https://github.com/pancakeswap/pancake-contracts/blob/master/projects/ifo/contracts/IFOV2.sol#L431
+// https://github.com/gravyswap/gravy-contracts/blob/master/projects/ifo/contracts/IFOV2.sol#L431
 // 1,000,000,000 / 100
 const TAX_PRECISION = ethers.FixedNumber.from(10000000000)
 
@@ -29,9 +29,9 @@ const formatPool = (pool) => ({
  */
 const useGetPublicIfoData = (ifo: Ifo): PublicIfoData => {
   const { address, releaseBlockNumber } = ifo
-  const cakePriceUsd = usePriceCakeBusd()
+  const gravyPriceUsd = usePriceGravyBusd()
   const lpTokenPriceInUsd = useLpTokenPrice(ifo.currency.symbol)
-  const currencyPriceInUSD = ifo.currency === tokens.cake ? cakePriceUsd : lpTokenPriceInUsd
+  const currencyPriceInUSD = ifo.currency === tokens.gravy ? gravyPriceUsd : lpTokenPriceInUsd
 
   const [state, setState] = useState({
     isInitialized: false,

@@ -4,7 +4,7 @@ import { ethers } from 'ethers'
 import { formatUnits } from '@ethersproject/units'
 import { useAppDispatch } from 'state'
 import { useTranslation } from 'contexts/Localization'
-import { useCake, useProfile } from 'hooks/useContract'
+import { useGravy, useProfile } from 'hooks/useContract'
 import useApproveConfirmTransaction from 'hooks/useApproveConfirmTransaction'
 import { fetchProfile } from 'state/profile'
 import useToast from 'hooks/useToast'
@@ -19,7 +19,7 @@ interface Props {
   selectedNft: State['selectedNft']
   account: string
   teamId: number
-  minimumCakeRequired: ethers.BigNumber
+  minimumGravyRequired: ethers.BigNumber
   allowance: ethers.BigNumber
   onDismiss?: () => void
 }
@@ -28,7 +28,7 @@ const ConfirmProfileCreationModal: React.FC<Props> = ({
   account,
   teamId,
   selectedNft,
-  minimumCakeRequired,
+  minimumGravyRequired,
   allowance,
   onDismiss,
 }) => {
@@ -36,21 +36,21 @@ const ConfirmProfileCreationModal: React.FC<Props> = ({
   const profileContract = useProfile()
   const dispatch = useAppDispatch()
   const { toastSuccess } = useToast()
-  const cakeContract = useCake()
+  const gravyContract = useGravy()
   const { callWithGasPrice } = useCallWithGasPrice()
 
   const { isApproving, isApproved, isConfirmed, isConfirming, handleApprove, handleConfirm } =
     useApproveConfirmTransaction({
       onRequiresApproval: async () => {
         try {
-          const response = await cakeContract.allowance(account, profileContract.address)
-          return response.gte(minimumCakeRequired)
+          const response = await gravyContract.allowance(account, profileContract.address)
+          return response.gte(minimumGravyRequired)
         } catch (error) {
           return false
         }
       },
       onApprove: () => {
-        return callWithGasPrice(cakeContract, 'approve', [profileContract.address, allowance.toJSON()])
+        return callWithGasPrice(gravyContract, 'approve', [profileContract.address, allowance.toJSON()])
       },
       onConfirm: () => {
         return callWithGasPrice(profileContract, 'createProfile', [

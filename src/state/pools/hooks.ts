@@ -8,9 +8,9 @@ import useRefresh from 'hooks/useRefresh'
 import {
   fetchPoolsPublicDataAsync,
   fetchPoolsUserDataAsync,
-  fetchCakeVaultPublicData,
-  fetchCakeVaultUserData,
-  fetchCakeVaultFees,
+  fetchGravyVaultPublicData,
+  fetchGravyVaultUserData,
+  fetchGravyVaultFees,
   fetchPoolsStakingLimitsAsync,
 } from '.'
 import { State, DeserializedPool } from '../types'
@@ -49,48 +49,48 @@ export const usePools = (): { pools: DeserializedPool[]; userDataLoaded: boolean
   return { pools: pools.map(transformPool), userDataLoaded }
 }
 
-export const useFetchCakeVault = () => {
+export const useFetchGravyVault = () => {
   const { account } = useWeb3React()
   const { fastRefresh } = useRefresh()
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    dispatch(fetchCakeVaultPublicData())
+    dispatch(fetchGravyVaultPublicData())
   }, [dispatch, fastRefresh])
 
   useEffect(() => {
-    dispatch(fetchCakeVaultUserData({ account }))
+    dispatch(fetchGravyVaultUserData({ account }))
   }, [dispatch, fastRefresh, account])
 
   useEffect(() => {
-    dispatch(fetchCakeVaultFees())
+    dispatch(fetchGravyVaultFees())
   }, [dispatch])
 }
 
-export const useCakeVault = () => {
+export const useGravyVault = () => {
   const {
     totalShares: totalSharesAsString,
     pricePerFullShare: pricePerFullShareAsString,
-    totalCakeInVault: totalCakeInVaultAsString,
-    estimatedCakeBountyReward: estimatedCakeBountyRewardAsString,
-    totalPendingCakeHarvest: totalPendingCakeHarvestAsString,
+    totalGravyInVault: totalGravyInVaultAsString,
+    estimatedGravyBountyReward: estimatedGravyBountyRewardAsString,
+    totalPendingGravyHarvest: totalPendingGravyHarvestAsString,
     fees: { performanceFee, callFee, withdrawalFee, withdrawalFeePeriod },
     userData: {
       isLoading,
       userShares: userSharesAsString,
-      cakeAtLastUserAction: cakeAtLastUserActionAsString,
+      gravyAtLastUserAction: gravyAtLastUserActionAsString,
       lastDepositedTime,
       lastUserActionTime,
     },
-  } = useSelector((state: State) => state.pools.cakeVault)
+  } = useSelector((state: State) => state.pools.gravyVault)
 
-  const estimatedCakeBountyReward = useMemo(() => {
-    return new BigNumber(estimatedCakeBountyRewardAsString)
-  }, [estimatedCakeBountyRewardAsString])
+  const estimatedGravyBountyReward = useMemo(() => {
+    return new BigNumber(estimatedGravyBountyRewardAsString)
+  }, [estimatedGravyBountyRewardAsString])
 
-  const totalPendingCakeHarvest = useMemo(() => {
-    return new BigNumber(totalPendingCakeHarvestAsString)
-  }, [totalPendingCakeHarvestAsString])
+  const totalPendingGravyHarvest = useMemo(() => {
+    return new BigNumber(totalPendingGravyHarvestAsString)
+  }, [totalPendingGravyHarvestAsString])
 
   const totalShares = useMemo(() => {
     return new BigNumber(totalSharesAsString)
@@ -100,24 +100,24 @@ export const useCakeVault = () => {
     return new BigNumber(pricePerFullShareAsString)
   }, [pricePerFullShareAsString])
 
-  const totalCakeInVault = useMemo(() => {
-    return new BigNumber(totalCakeInVaultAsString)
-  }, [totalCakeInVaultAsString])
+  const totalGravyInVault = useMemo(() => {
+    return new BigNumber(totalGravyInVaultAsString)
+  }, [totalGravyInVaultAsString])
 
   const userShares = useMemo(() => {
     return new BigNumber(userSharesAsString)
   }, [userSharesAsString])
 
-  const cakeAtLastUserAction = useMemo(() => {
-    return new BigNumber(cakeAtLastUserActionAsString)
-  }, [cakeAtLastUserActionAsString])
+  const gravyAtLastUserAction = useMemo(() => {
+    return new BigNumber(gravyAtLastUserActionAsString)
+  }, [gravyAtLastUserActionAsString])
 
   return {
     totalShares,
     pricePerFullShare,
-    totalCakeInVault,
-    estimatedCakeBountyReward,
-    totalPendingCakeHarvest,
+    totalGravyInVault,
+    estimatedGravyBountyReward,
+    totalPendingGravyHarvest,
     fees: {
       performanceFee,
       callFee,
@@ -127,7 +127,7 @@ export const useCakeVault = () => {
     userData: {
       isLoading,
       userShares,
-      cakeAtLastUserAction,
+      gravyAtLastUserAction,
       lastDepositedTime,
       lastUserActionTime,
     },

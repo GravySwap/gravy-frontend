@@ -69,9 +69,9 @@ export default function useBUSDPrice(currency?: Currency): Price | undefined {
   }, [chainId, currency, ethPair, ethPairState, busdEthPair, busdEthPairState, busdPair, busdPairState, wrapped])
 }
 
-export const useCakeBusdPrice = (): Price | undefined => {
-  const cakeBusdPrice = useBUSDPrice(tokens.cake)
-  return cakeBusdPrice
+export const useGravyBusdPrice = (): Price | undefined => {
+  const gravyBusdPrice = useBUSDPrice(tokens.gravy)
+  return gravyBusdPrice
 }
 
 export const useBNBBusdPrice = (): Price | undefined => {

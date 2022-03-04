@@ -6,5 +6,5 @@ export const ADMINS = [
 ].map((address) => address.toLowerCase())
 export const IPFS_GATEWAY = 'https://gateway.ipfs.io/ipfs'
 export const SNAPSHOT_VERSION = '0.1.3'
-export const PANGRAVY_SPACE = 'cake.eth'
+export const GRAVY_SPACE = 'gravy.eth'
 export const VOTE_THRESHOLD = 10

@@ -2,7 +2,7 @@ import { ReactText } from 'react'
 import { getBalanceNumber } from 'utils/formatBalance'
 import prizes from 'config/constants/trading-competition/prizes'
 import BigNumber from 'bignumber.js'
-import useBUSDPrice, { useCakeBusdPrice } from 'hooks/useBUSDPrice'
+import useBUSDPrice, { useGravyBusdPrice } from 'hooks/useBUSDPrice'
 import tokens from 'config/constants/tokens'
 import { multiplyPriceByAmount } from 'utils/prices'
 
@@ -11,12 +11,12 @@ export const localiseTradingVolume = (value: number, decimals = 0) => {
 }
 
 export const useCompetitionRewards = ({
-  userCakeRewards,
+  userGravyRewards,
   userLazioRewards,
   userPortoRewards,
   userSantosRewards,
 }: {
-  userCakeRewards: ReactText
+  userGravyRewards: ReactText
   userLazioRewards: ReactText
   userPortoRewards: ReactText
   userSantosRewards: ReactText
@@ -24,26 +24,26 @@ export const useCompetitionRewards = ({
   const lazioPriceBUSD = useBUSDPrice(tokens.lazio)
   const portoPriceBUSD = useBUSDPrice(tokens.porto)
   const santosPriceBUSD = useBUSDPrice(tokens.santos)
-  const cakeAsBigNumber = new BigNumber(userCakeRewards as string)
+  const gravyAsBigNumber = new BigNumber(userGravyRewards as string)
   const lazioAsBigNumber = new BigNumber(userLazioRewards as string)
   const portoAsBigNumber = new BigNumber(userPortoRewards as string)
   const santosAsBigNumber = new BigNumber(userSantosRewards as string)
-  const cakeBalance = getBalanceNumber(cakeAsBigNumber)
+  const gravyBalance = getBalanceNumber(gravyAsBigNumber)
   const lazioBalance = getBalanceNumber(lazioAsBigNumber, 8)
   const portoBalance = getBalanceNumber(portoAsBigNumber, 8)
   const santosBalance = getBalanceNumber(santosAsBigNumber, 8)
-  const cakePriceBusd = useCakeBusdPrice()
+  const gravyPriceBusd = useGravyBusdPrice()
 
   const dollarValueOfTokensReward =
-    cakePriceBusd && lazioPriceBUSD && portoPriceBUSD && santosPriceBUSD
-      ? multiplyPriceByAmount(cakePriceBusd, cakeBalance) +
+    gravyPriceBusd && lazioPriceBUSD && portoPriceBUSD && santosPriceBUSD
+      ? multiplyPriceByAmount(gravyPriceBusd, gravyBalance) +
         multiplyPriceByAmount(lazioPriceBUSD, lazioBalance, 8) +
         multiplyPriceByAmount(portoPriceBUSD, portoBalance, 8) +
         multiplyPriceByAmount(santosPriceBUSD, santosBalance, 8)
       : null
 
   return {
-    cakeReward: cakeBalance,
+    gravyReward: gravyBalance,
     lazioReward: lazioBalance,
     portoReward: portoBalance,
     santosReward: santosBalance,

@@ -9,9 +9,9 @@ import { isAddress } from 'utils'
 import { useNftsFromCollection } from 'state/nftMarket/hooks'
 import { fetchNftsFromCollections } from 'state/nftMarket/reducer'
 import { useAppDispatch } from 'state'
-import { pancakeBunniesAddress } from '../../../constants'
+import { gravyBunniesAddress } from '../../../constants'
 import { CollectibleLinkCard } from '../../../components/CollectibleCard'
-import useAllPancakeBunnyNfts from '../../../hooks/useAllPancakeBunnyNfts'
+import useAllGravyBunnyNfts from '../../../hooks/useAllGravyBunnyNfts'
 
 import 'swiper/swiper-bundle.css'
 
@@ -50,10 +50,10 @@ const MoreFromThisCollection: React.FC<MoreFromThisCollectionProps> = ({
   const [swiperRef, setSwiperRef] = useState<SwiperCore>(null)
   const [activeIndex, setActiveIndex] = useState(1)
   const { isMobile, isMd, isLg } = useMatchBreakpoints()
-  const allPancakeBunnyNfts = useAllPancakeBunnyNfts(collectionAddress)
+  const allGravyBunnyNfts = useAllGravyBunnyNfts(collectionAddress)
   const collectionNfts = useNftsFromCollection(collectionAddress)
 
-  const isPBCollection = isAddress(collectionAddress) === pancakeBunniesAddress
+  const isPBCollection = isAddress(collectionAddress) === gravyBunniesAddress
 
   useEffect(() => {
     if (!isPBCollection && !collectionNfts) {
@@ -69,11 +69,11 @@ const MoreFromThisCollection: React.FC<MoreFromThisCollectionProps> = ({
 
   let nftsToShow = useMemo(() => {
     return shuffle(
-      allPancakeBunnyNfts
-        ? allPancakeBunnyNfts.filter((nft) => nft.name !== currentTokenName)
+      allGravyBunnyNfts
+        ? allGravyBunnyNfts.filter((nft) => nft.name !== currentTokenName)
         : collectionNfts?.filter((nft) => nft.name !== currentTokenName && nft.marketData?.isTradable),
     )
-  }, [allPancakeBunnyNfts, collectionNfts, currentTokenName])
+  }, [allGravyBunnyNfts, collectionNfts, currentTokenName])
 
   if (!nftsToShow || nftsToShow.length === 0) {
     return null
@@ -93,7 +93,7 @@ const MoreFromThisCollection: React.FC<MoreFromThisCollectionProps> = ({
   }
 
   if (isPBCollection) {
-    // PancakeBunnies should display 1 card per bunny id
+    // GravyBunnies should display 1 card per bunny id
     nftsToShow = nftsToShow.reduce((nftArray, current) => {
       const bunnyId = current.attributes[0].value
       if (!nftArray.find((nft) => nft.attributes[0].value === bunnyId)) {

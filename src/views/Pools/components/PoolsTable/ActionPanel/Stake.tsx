@@ -4,7 +4,7 @@ import BigNumber from 'bignumber.js'
 import { Button, useModal, IconButton, AddIcon, MinusIcon, Skeleton, useTooltip, Flex, Text } from '@gravyswap/uikit'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import { useWeb3React } from '@web3-react/core'
-import { useCakeVault } from 'state/pools/hooks'
+import { useGravyVault } from 'state/pools/hooks'
 import { DeserializedPool } from 'state/types'
 import Balance from 'components/Balance'
 import { useTranslation } from 'contexts/Localization'
@@ -12,11 +12,11 @@ import { getBalanceNumber } from 'utils/formatBalance'
 import { PoolCategory } from 'config/constants/types'
 import { BIG_ZERO } from 'utils/bigNumber'
 import { useERC20 } from 'hooks/useContract'
-import { convertSharesToCake } from 'views/Pools/helpers'
+import { convertSharesToGravy } from 'views/Pools/helpers'
 import { ActionContainer, ActionTitles, ActionContent } from './styles'
 import NotEnoughTokensModal from '../../PoolCard/Modals/NotEnoughTokensModal'
 import StakeModal from '../../PoolCard/Modals/StakeModal'
-import VaultStakeModal from '../../CakeVaultCard/VaultStakeModal'
+import VaultStakeModal from '../../GravyVaultCard/VaultStakeModal'
 import { useCheckVaultApprovalStatus, useApprovePool, useVaultApprove } from '../../../hooks/useApprove'
 
 const IconButtonWrapper = styled.div`
@@ -73,12 +73,15 @@ const Staked: React.FunctionComponent<StackedActionProps> = ({ pool, userDataLoa
   const {
     userData: { userShares },
     pricePerFullShare,
-  } = useCakeVault()
+  } = useGravyVault()
 
-  const { cakeAsBigNumber, cakeAsNumberBalance } = convertSharesToCake(userShares, pricePerFullShare)
+  const { gravyAsBigNumber, gravyAsNumberBalance } = convertSharesToGravy(userShares, pricePerFullShare)
   const hasSharesStaked = userShares && userShares.gt(0)
   const isVaultWithShares = isAutoVault && hasSharesStaked
-  const stakedAutoDollarValue = getBalanceNumber(cakeAsBigNumber.multipliedBy(stakingTokenPrice), stakingToken.decimals)
+  const stakedAutoDollarValue = getBalanceNumber(
+    gravyAsBigNumber.multipliedBy(stakingTokenPrice),
+    stakingToken.decimals,
+  )
 
   const needsApproval = isAutoVault ? !isVaultApproved : !allowance.gt(0) && !isBnbPool
 
@@ -105,7 +108,9 @@ const Staked: React.FunctionComponent<StackedActionProps> = ({ pool, userDataLoa
     />,
   )
 
-  const [onPresentVaultUnstake] = useModal(<VaultStakeModal stakingMax={cakeAsBigNumber} pool={pool} isRemovingStake />)
+  const [onPresentVaultUnstake] = useModal(
+    <VaultStakeModal stakingMax={gravyAsBigNumber} pool={pool} isRemovingStake />,
+  )
 
   const onStake = () => {
     if (isAutoVault) {
@@ -196,7 +201,7 @@ const Staked: React.FunctionComponent<StackedActionProps> = ({ pool, userDataLoa
               bold
               fontSize="20px"
               decimals={5}
-              value={isAutoVault ? cakeAsNumberBalance : stakedTokenBalance}
+              value={isAutoVault ? gravyAsNumberBalance : stakedTokenBalance}
             />
             <Balance
               fontSize="12px"

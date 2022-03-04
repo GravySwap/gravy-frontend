@@ -51,10 +51,10 @@ export interface TokenDayDatasResponse {
 }
 
 // Footprint is the same, declared just for better readability
-export type PancakeDayData = TokenDayData
+export type GravyDayData = TokenDayData
 
-export interface PancakeDayDatasResponse {
-  pancakeDayDatas: PancakeDayData[]
+export interface GravyDayDatasResponse {
+  gravyDayDatas: GravyDayData[]
 }
 
 export interface PairDayData {

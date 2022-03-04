@@ -4,7 +4,7 @@ import { useTranslation } from 'contexts/Localization'
 import { Helmet } from 'react-helmet-async'
 import { useLocation } from 'react-router'
 import { DEFAULT_META, getCustomMeta } from 'config/constants/meta'
-import { useCakeBusdPrice } from 'hooks/useBUSDPrice'
+import { useGravyBusdPrice } from 'hooks/useBUSDPrice'
 import Container from './Container'
 
 const StyledPage = styled(Container)`
@@ -26,12 +26,12 @@ const StyledPage = styled(Container)`
 export const PageMeta: React.FC<{ symbol?: string }> = ({ symbol }) => {
   const { t } = useTranslation()
   const { pathname } = useLocation()
-  const cakePriceUsd = useCakeBusdPrice()
-  const cakePriceUsdDisplay = cakePriceUsd ? `$${cakePriceUsd.toFixed(3)}` : '...'
+  const gravyPriceUsd = useGravyBusdPrice()
+  const gravyPriceUsdDisplay = gravyPriceUsd ? `$${gravyPriceUsd.toFixed(3)}` : '...'
 
   const pageMeta = getCustomMeta(pathname, t) || {}
   const { title, description, image } = { ...DEFAULT_META, ...pageMeta }
-  let pageTitle = cakePriceUsdDisplay ? [title, cakePriceUsdDisplay].join(' - ') : title
+  let pageTitle = gravyPriceUsdDisplay ? [title, gravyPriceUsdDisplay].join(' - ') : title
   if (symbol) {
     pageTitle = [symbol, title].join(' - ')
   }

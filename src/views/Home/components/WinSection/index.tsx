@@ -74,7 +74,7 @@ const bottomLeftImage = {
   attributes: [
     { src: 'bottom-left', alt: 'GRAVY card' },
     { src: 'green', alt: 'Green GRAVY card with up arrow' },
-    { src: 'red', alt: 'Red Cake card with down arrow' },
+    { src: 'red', alt: 'Red Gravy card with down arrow' },
     { src: 'top-right', alt: 'GRAVY card' },
   ],
 }
