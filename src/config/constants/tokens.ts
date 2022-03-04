@@ -1860,7 +1860,15 @@ export const testnetTokens = {
   ),
   gravy: new Token(
     TESTNET,
-    '0xa35062141Fa33BCA92Ce69FeD37D0E8908868AAe',
+    '0x5eA26D0d36EAF02d63a3023521A7924e19c34454',
+    18,
+    'GRAVY',
+    'GravySwap Token',
+    'https://pancakeswap.finance/',
+  ),
+  gravy: new Token(
+    TESTNET,
+    '0x5eA26D0d36EAF02d63a3023521A7924e19c34454',
     18,
     'GRAVY',
     'GravySwap Token',
