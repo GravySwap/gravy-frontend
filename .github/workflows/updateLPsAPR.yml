@@ -28,8 +28,8 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
-          author: GravySwap Bot <pancakeswap-bot@protonmail.com>
-          token: ${{ secrets.LP_APR_PANGRAVY_BOT }}
+          author: GravySwap Bot <gravy-bot@protonmail.com>
+          token: ${{ secrets.LP_APR_GRAVY_BOT }}
           delete-branch: true
           commit-message: 'chore: Update LP APRs for Farms'
           title: Update LP APRs for Farms

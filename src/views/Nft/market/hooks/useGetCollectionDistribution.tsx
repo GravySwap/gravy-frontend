@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { getCollectionDistributionApi } from 'state/nftMarket/helpers'
 import { ApiCollectionDistribution, ApiCollectionDistributionPB } from 'state/nftMarket/types'
-import { pancakeBunniesAddress } from '../constants'
+import { gravynniesAddress } from '../constants'
 
 interface State {
   isFetching: boolean
@@ -38,7 +38,7 @@ export const useGetCollectionDistributionPB = () => {
   useEffect(() => {
     const fetchTokens = async () => {
       setState((prevState) => ({ ...prevState, isFetching: true }))
-      const apiResponse = await getCollectionDistributionApi<ApiCollectionDistributionPB>(pancakeBunniesAddress)
+      const apiResponse = await getCollectionDistributionApi<ApiCollectionDistributionPB>(gravynniesAddress)
       setState({
         isFetching: false,
         data: apiResponse.data,

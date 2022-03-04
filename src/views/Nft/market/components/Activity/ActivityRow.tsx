@@ -10,7 +10,7 @@ import ProfileCell from 'views/Nft/market/components/ProfileCell'
 import MobileModal from './MobileModal'
 import ActivityPrice from './ActivityPrice'
 import ActivityEventText from './ActivityEventText'
-import { nftsBaseUrl, pancakeBunniesAddress } from '../../constants'
+import { nftsBaseUrl, gravynniesAddress } from '../../constants'
 
 const RoundedImage = styled(Image)`
   & > img {
@@ -53,7 +53,7 @@ const ActivityRow: React.FC<ActivityRowProps> = ({
       isUserActivity={isUserActivity}
     />,
   )
-  const isPBCollection = nft ? nft.collectionAddress.toLowerCase() === pancakeBunniesAddress.toLowerCase() : false
+  const isPBCollection = nft ? nft.collectionAddress.toLowerCase() === gravynniesAddress.toLowerCase() : false
   const tokenId =
     nft && isPBCollection
       ? nft.attributes.find((attribute) => attribute.traitType === 'bunnyId')?.value

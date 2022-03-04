@@ -16,8 +16,8 @@ import {
 } from '@gravyswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 import { getBalanceNumber } from 'utils/formatBalance'
-import { usePriceCakeBusd } from 'state/farms/hooks'
-import { useCakeVault } from 'state/pools/hooks'
+import { usePriceGravyBusd } from 'state/farms/hooks'
+import { useGravyVault } from 'state/pools/hooks'
 import Balance from 'components/Balance'
 import BountyModal from './BountyModal'
 
@@ -32,19 +32,19 @@ const StyledCard = styled(Card)`
 const BountyCard = () => {
   const { t } = useTranslation()
   const {
-    estimatedCakeBountyReward,
+    estimatedGravyBountyReward,
     fees: { callFee },
-  } = useCakeVault()
-  const cakePriceBusd = usePriceCakeBusd()
+  } = useGravyVault()
+  const gravyPriceBusd = usePriceGravyBusd()
 
   const estimatedDollarBountyReward = useMemo(() => {
-    return new BigNumber(estimatedCakeBountyReward).multipliedBy(cakePriceBusd)
-  }, [cakePriceBusd, estimatedCakeBountyReward])
+    return new BigNumber(estimatedGravyBountyReward).multipliedBy(gravyPriceBusd)
+  }, [gravyPriceBusd, estimatedGravyBountyReward])
 
   const hasFetchedDollarBounty = estimatedDollarBountyReward.gte(0)
-  const hasFetchedCakeBounty = estimatedCakeBountyReward ? estimatedCakeBountyReward.gte(0) : false
+  const hasFetchedGravyBounty = estimatedGravyBountyReward ? estimatedGravyBountyReward.gte(0) : false
   const dollarBountyToDisplay = hasFetchedDollarBounty ? getBalanceNumber(estimatedDollarBountyReward, 18) : 0
-  const cakeBountyToDisplay = hasFetchedCakeBounty ? getBalanceNumber(estimatedCakeBountyReward, 18) : 0
+  const gravyBountyToDisplay = hasFetchedGravyBounty ? getBalanceNumber(estimatedGravyBountyReward, 18) : 0
 
   const TooltipComponent = ({ fee }: { fee: number }) => (
     <>
@@ -85,8 +85,8 @@ const BountyCard = () => {
           <Flex alignItems="center" justifyContent="space-between">
             <Flex flexDirection="column" mr="12px">
               <Heading>
-                {hasFetchedCakeBounty ? (
-                  <Balance fontSize="20px" bold value={cakeBountyToDisplay} decimals={3} />
+                {hasFetchedGravyBounty ? (
+                  <Balance fontSize="20px" bold value={gravyBountyToDisplay} decimals={3} />
                 ) : (
                   <Skeleton height={20} width={96} mb="2px" />
                 )}
@@ -105,7 +105,7 @@ const BountyCard = () => {
               )}
             </Flex>
             <Button
-              disabled={!dollarBountyToDisplay || !cakeBountyToDisplay || !callFee}
+              disabled={!dollarBountyToDisplay || !gravyBountyToDisplay || !callFee}
               onClick={onPresentBountyModal}
               scale="sm"
               id="clickClaimVaultBounty"

@@ -6,7 +6,7 @@ import { BigNumber } from 'bignumber.js'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import Balance from 'components/Balance'
 import { useWeb3React } from '@web3-react/core'
-import { useFarmUser, useLpTokenPrice, usePriceCakeBusd } from 'state/farms/hooks'
+import { useFarmUser, useLpTokenPrice, usePriceGravyBusd } from 'state/farms/hooks'
 import { fetchFarmUserDataAsync } from 'state/farms'
 import { FarmWithStakedValue } from 'views/Farms/components/FarmCard/FarmCard'
 import { useTranslation } from 'contexts/Localization'
@@ -55,7 +55,7 @@ const Staked: React.FunctionComponent<StackedActionProps> = ({
   const { onUnstake } = useUnstakeFarms(pid)
   const location = useLocation()
   const lpPrice = useLpTokenPrice(lpSymbol)
-  const cakePrice = usePriceCakeBusd()
+  const gravyPrice = usePriceGravyBusd()
 
   const isApproved = account && allowance && allowance.isGreaterThan(0)
 
@@ -99,7 +99,7 @@ const Staked: React.FunctionComponent<StackedActionProps> = ({
       tokenName={lpSymbol}
       multiplier={multiplier}
       addLiquidityUrl={addLiquidityUrl}
-      cakePrice={cakePrice}
+      gravyPrice={gravyPrice}
     />,
   )
   const [onPresentWithdraw] = useModal(

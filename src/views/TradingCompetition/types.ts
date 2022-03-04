@@ -81,7 +81,7 @@ export interface TeamRanksProps {
 export interface UserRewardsProps {
   userCanClaim?: boolean
   userRewards?: {
-    cakeToClaim?: string
+    gravyToClaim?: string
     pointsToClaim?: string
   }
 }
@@ -90,7 +90,7 @@ export interface UserTradingInformationProps {
   hasRegistered?: boolean
   hasUserClaimed?: boolean
   userRewardGroup?: string
-  userCakeRewards?: string
+  userGravyRewards?: string
   userLazioRewards?: string
   userPortoRewards?: string
   userSantosRewards?: string

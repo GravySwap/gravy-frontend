@@ -4,7 +4,7 @@ import { Svg, SvgProps } from '@gravyswap/uikit'
 const Prizes: React.FC<SvgProps> = (props) => {
   return (
     <Svg viewBox="0 0 124 72" {...props}>
-      <g opacity="0.2" clipPath="url(#leaderboard_cakers_clip0)">
+      <g opacity="0.2" clipPath="url(#leaderboard_gravyrs_clip0)">
         <path d="M76 -4L164 -4V76L-4 76.0001L76 -4Z" fill="#F6C081" />
         <path
           d="M67.5447 80.6999C67.5928 80.7507 67.6417 80.8009 67.6913 80.8505C70.8255 83.9847 77.0459 84.2348 81.1546 85.1959C87.4249 86.4951 96.4699 82.8326 103.916 75.3868C111.361 67.941 115.024 58.896 113.725 52.6257L113.731 52.6199L111.808 44.0191L111.79 44.0376C111.635 43.1541 111.385 42.3276 111.039 41.5686L133.371 19.2367C136.074 16.5337 135.633 12.0348 132.458 9.9069C130.409 8.53384 127.639 9.0434 126.213 11.0558L107.342 37.682C100.624 34.2264 88.1576 38.9331 77.8101 49.2807C66.3947 60.6961 61.8444 74.6901 67.5447 80.6999Z"
@@ -101,7 +101,7 @@ const Prizes: React.FC<SvgProps> = (props) => {
         />
         <path
           d="M73.5735 -7.92095C56.6619 8.52492 36.4483 7.76286 28.9697 24.2871C20.8993 42.1191 27.6417 58.1754 43.8039 65.5498C59.966 72.9243 82.5834 66.6006 84.9694 47.1733C87.0201 30.4774 75.352 27.0562 78.0831 9.38742C78.0831 9.38742 71.1331 13.3015 70.1333 22.4809C70.1333 22.4809 65.6043 13.7246 73.5735 -7.92095Z"
-          fill="url(#leaderboard_cakers_paint0_linear)"
+          fill="url(#leaderboard_gravyrs_paint0_linear)"
         />
         <path
           d="M87.7204 44.8459C91.8181 52.2151 84.5414 60.0599 74.8508 65.0375C65.1602 70.015 57.6955 70.5857 52.781 63.7462C47.2632 56.0672 55.1428 59.2154 63.6083 50.3492C72.0739 41.483 82.3828 35.247 87.7204 44.8459Z"
@@ -168,7 +168,7 @@ const Prizes: React.FC<SvgProps> = (props) => {
       </g>
       <defs>
         <linearGradient
-          id="leaderboard_cakers_paint0_linear"
+          id="leaderboard_gravyrs_paint0_linear"
           x1="44.9115"
           y1="-0.453153"
           x2="62.8023"
@@ -178,7 +178,7 @@ const Prizes: React.FC<SvgProps> = (props) => {
           <stop stopColor="#FFC73C" />
           <stop offset="1" stopColor="#FE9A03" />
         </linearGradient>
-        <clipPath id="leaderboard_cakers_clip0">
+        <clipPath id="leaderboard_gravyrs_clip0">
           <rect width="124" height="72" fill="white" />
         </clipPath>
       </defs>

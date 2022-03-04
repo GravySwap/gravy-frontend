@@ -7,8 +7,8 @@ import { useGetCollection } from 'state/nftMarket/hooks'
 import { useTranslation } from 'contexts/Localization'
 import Select, { OptionProps } from 'components/Select/Select'
 import Container from 'components/Layout/Container'
-import { pancakeBunniesAddress } from '../../constants'
-import PancakeBunniesCollectionNfts from './PancakeBunniesCollectionNfts'
+import { gravyBunniesAddress } from '../../constants'
+import GravyBunniesCollectionNfts from './GravyBunniesCollectionNfts'
 import Header from '../Header'
 import CollectionWrapper from './CollectionWrapper'
 
@@ -18,7 +18,7 @@ const Items = () => {
   const { t } = useTranslation()
   const dispatch = useAppDispatch()
   const collection = useGetCollection(collectionAddress)
-  const isPBCollection = collectionAddress.toLowerCase() === pancakeBunniesAddress.toLowerCase()
+  const isPBCollection = collectionAddress.toLowerCase() === gravyBunniesAddress.toLowerCase()
 
   const { address } = collection || {}
 
@@ -50,7 +50,7 @@ const Items = () => {
               <Select options={sortByItems} onOptionChange={handleChange} />
             </Box>
           </Flex>
-          <PancakeBunniesCollectionNfts collection={collection} sortBy={sortBy} />
+          <GravyBunniesCollectionNfts collection={collection} sortBy={sortBy} />
         </Container>
       ) : (
         <CollectionWrapper collection={collection} />

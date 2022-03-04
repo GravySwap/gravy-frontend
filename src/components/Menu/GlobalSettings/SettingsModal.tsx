@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { Text, PancakeToggle, Toggle, Flex, Modal, InjectedModalProps, ThemeSwitcher } from '@gravyswap/uikit'
+import { Text, GravyToggle, Toggle, Flex, Modal, InjectedModalProps, ThemeSwitcher } from '@gravyswap/uikit'
 import {
   useAudioModeManager,
   useExpertModeManager,

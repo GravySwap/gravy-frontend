@@ -128,23 +128,23 @@ export interface VaultFees {
 export interface VaultUser {
   isLoading: boolean
   userShares: string
-  cakeAtLastUserAction: string
+  gravyAtLastUserAction: string
   lastDepositedTime: string
   lastUserActionTime: string
 }
-export interface CakeVault {
+export interface GravyVault {
   totalShares?: string
   pricePerFullShare?: string
-  totalCakeInVault?: string
-  estimatedCakeBountyReward?: string
-  totalPendingCakeHarvest?: string
+  totalGravyInVault?: string
+  estimatedGravyBountyReward?: string
+  totalPendingGravyHarvest?: string
   fees?: VaultFees
   userData?: VaultUser
 }
 
 export interface PoolsState {
   data: SerializedPool[]
-  cakeVault: CakeVault
+  gravyVault: GravyVault
   userDataLoaded: boolean
 }
 
@@ -513,19 +513,19 @@ interface LotteryRoundGenerics {
 
 export interface LotteryRound extends LotteryRoundGenerics {
   userTickets?: LotteryRoundUserTickets
-  priceTicketInCake: BigNumber
+  priceTicketInGravy: BigNumber
   discountDivisor: BigNumber
-  amountCollectedInCake: BigNumber
-  cakePerBracket: string[]
+  amountCollectedInGravy: BigNumber
+  gravyPerBracket: string[]
   countWinnersPerBracket: string[]
   rewardsBreakdown: string[]
 }
 
 export interface LotteryResponse extends LotteryRoundGenerics {
-  priceTicketInCake: SerializedBigNumber
+  priceTicketInGravy: SerializedBigNumber
   discountDivisor: SerializedBigNumber
-  amountCollectedInCake: SerializedBigNumber
-  cakePerBracket: SerializedBigNumber[]
+  amountCollectedInGravy: SerializedBigNumber
+  gravyPerBracket: SerializedBigNumber[]
   countWinnersPerBracket: SerializedBigNumber[]
   rewardsBreakdown: SerializedBigNumber[]
 }
@@ -553,7 +553,7 @@ export interface LotteryRoundGraphEntity {
 
 export interface LotteryUserGraphEntity {
   account: string
-  totalCake: string
+  totalGravy: string
   totalTickets: string
   rounds: UserRound[]
 }

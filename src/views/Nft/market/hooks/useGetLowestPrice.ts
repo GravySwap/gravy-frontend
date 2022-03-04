@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { getNftsMarketData } from 'state/nftMarket/helpers'
 import { NftToken } from 'state/nftMarket/types'
-import { pancakeBunniesAddress } from '../constants'
+import { gravynniesAddress } from '../constants'
 
 export interface LowestNftPrice {
   isFetching: boolean
@@ -43,7 +43,7 @@ export const useGetLowestPriceFromBunnyId = (bunnyId: string): LowestNftPrice =>
 export const useGetLowestPriceFromNft = (nft: NftToken): LowestNftPrice => {
   const [isFetching, setIsFetching] = useState<boolean>(false)
   const [lowestPrice, setLowestPrice] = useState<number>(null)
-  const isPancakeBunny = nft.collectionAddress?.toLowerCase() === pancakeBunniesAddress.toLowerCase()
+  const isGravyBunny = nft.collectionAddress?.toLowerCase() === gravynniesAddress.toLowerCase()
 
   useEffect(() => {
     const fetchLowestPrice = async () => {
@@ -66,10 +66,10 @@ export const useGetLowestPriceFromNft = (nft: NftToken): LowestNftPrice => {
       }
     }
 
-    if (isPancakeBunny && nft) {
+    if (isGravyBunny && nft) {
       fetchLowestPrice()
     }
-  }, [isPancakeBunny, nft])
+  }, [isGravyBunny, nft])
 
   return { isFetching, lowestPrice }
 }

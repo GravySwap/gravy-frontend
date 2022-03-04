@@ -7,30 +7,30 @@ export const footerLinks: (t: ContextApi['t']) => FooterLinkType[] = (t) => [
     items: [
       {
         label: t('Contact'),
-        href: 'https://docs.pancakeswap.finance/contact-us',
+        href: 'https://docs.gravyswap.com/contact-us',
       },
       {
         label: t('Brand'),
-        href: 'https://docs.pancakeswap.finance/brand',
+        href: 'https://docs.gravyswap.com/brand',
       },
       {
         label: t('Blog'),
-        href: 'https://medium.com/pancakeswap',
+        href: 'https://medium.com/gravy',
       },
       {
         label: t('Community'),
-        href: 'https://docs.pancakeswap.finance/contact-us/telegram',
+        href: 'https://docs.gravyswap.com/contact-us/telegram',
       },
       {
         label: t('GRAVY token'),
-        href: 'https://docs.pancakeswap.finance/tokenomics/cake',
+        href: 'https://docs.gravyswap.com/tokenomics/gravy',
       },
       {
         label: '—',
       },
       {
         label: t('Online Store'),
-        href: 'https://pancakeswap.creator-spring.com/',
+        href: 'https://gravyswap.creator-spring.com/',
         isHighlighted: true,
       },
     ],
@@ -40,15 +40,15 @@ export const footerLinks: (t: ContextApi['t']) => FooterLinkType[] = (t) => [
     items: [
       {
         label: t('Customer Support'),
-        href: 'https://docs.pancakeswap.finance/contact-us/customer-support',
+        href: 'https://docs.gravyswap.com/contact-us/customer-support',
       },
       {
         label: t('Troubleshooting'),
-        href: 'https://docs.pancakeswap.finance/help/troubleshooting',
+        href: 'https://docs.gravyswap.com/help/troubleshooting',
       },
       {
         label: t('Guides'),
-        href: 'https://docs.pancakeswap.finance/get-started',
+        href: 'https://docs.gravyswap.com/get-started',
       },
     ],
   },
@@ -57,23 +57,23 @@ export const footerLinks: (t: ContextApi['t']) => FooterLinkType[] = (t) => [
     items: [
       {
         label: 'Github',
-        href: 'https://github.com/pancakeswap',
+        href: 'https://github.com/gravy',
       },
       {
         label: t('Documentation'),
-        href: 'https://docs.pancakeswap.finance',
+        href: 'https://docs.gravyswap.com',
       },
       {
         label: t('Bug Bounty'),
-        href: 'https://docs.pancakeswap.finance/code/bug-bounty',
+        href: 'https://docs.gravyswap.com/code/bug-bounty',
       },
       {
         label: t('Audits'),
-        href: 'https://docs.pancakeswap.finance/help/faq#is-pancakeswap-safe-has-pancakeswap-been-audited',
+        href: 'https://docs.gravyswap.com/help/faq#is-gravy-safe-has-gravy-been-audited',
       },
       {
         label: t('Careers'),
-        href: 'https://docs.pancakeswap.finance/hiring/become-a-chef',
+        href: 'https://docs.gravyswap.com/hiring/become-a-chef',
       },
     ],
   },

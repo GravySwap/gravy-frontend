@@ -36,7 +36,7 @@ const Wrapper = styled(Flex)`
   overflow: hidden;
 `
 
-const FloatingPancakesWrapper = styled(Container)`
+const FloatingGravysWrapper = styled(Container)`
   overflow: hidden;
   position: absolute;
   width: 100%;
@@ -64,20 +64,20 @@ const BottomRightImgWrapper = styled(Flex)`
 `
 
 const topLeftImage = {
-  path: '/images/home/flying-pancakes/',
+  path: '/images/home/flying-gravys/',
   attributes: [
-    { src: '1-bottom', alt: 'Pancake flying on the bottom' },
-    { src: '1-left', alt: 'Pancake flying on the left' },
-    { src: '1-top', alt: 'Pancake flying on the top' },
+    { src: '1-bottom', alt: 'Gravy flying on the bottom' },
+    { src: '1-left', alt: 'Gravy flying on the left' },
+    { src: '1-top', alt: 'Gravy flying on the top' },
   ],
 }
 
 const bottomRightImage = {
-  path: '/images/home/flying-pancakes/',
+  path: '/images/home/flying-gravys/',
   attributes: [
-    { src: '2-bottom', alt: 'Pancake flying on the bottom' },
-    { src: '2-top', alt: 'Pancake flying on the top' },
-    { src: '2-right', alt: 'Pancake flying on the right' },
+    { src: '2-bottom', alt: 'Gravy flying on the bottom' },
+    { src: '2-top', alt: 'Gravy flying on the top' },
+    { src: '2-right', alt: 'Gravy flying on the right' },
   ],
 }
 
@@ -103,7 +103,7 @@ const Footer = () => {
           {t('No registration needed.')}
         </Text>
 
-        <Link external href="https://docs.pancakeswap.finance/">
+        <Link external href="https://docs.gravyswap.com/">
           {t('Learn how to start')}
         </Link>
         {!account && <ConnectWalletButton mt="24px" />}

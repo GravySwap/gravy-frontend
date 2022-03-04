@@ -7,21 +7,21 @@ import { getVotingPower } from '../helpers'
 
 interface State {
   verificationHash: string
-  cakeBalance: number
-  cakeVaultBalance: number
-  cakePoolBalance: number
+  gravyBalance: number
+  gravyVaultBalance: number
+  gravyPoolBalance: number
   poolsBalance: number
-  cakeBnbLpBalance: number
+  gravyBnbLpBalance: number
   total: number
 }
 
 const initialState: State = {
   verificationHash: null,
-  cakeBalance: 0,
-  cakeVaultBalance: 0,
-  cakePoolBalance: 0,
+  gravyBalance: 0,
+  gravyVaultBalance: 0,
+  gravyPoolBalance: 0,
   poolsBalance: 0,
-  cakeBnbLpBalance: 0,
+  gravyBnbLpBalance: 0,
   total: 0,
 }
 
@@ -39,12 +39,12 @@ const useGetVotingPower = (block?: number, isActive = true): State & { isLoading
         const eligiblePools = await getActivePools(blockNumber)
         const poolAddresses = eligiblePools.map(({ contractAddress }) => getAddress(contractAddress))
         const {
-          cakeBalance,
-          cakeBnbLpBalance,
-          cakePoolBalance,
+          gravyBalance,
+          gravyBnbLpBalance,
+          gravyPoolBalance,
           total,
           poolsBalance,
-          cakeVaultBalance,
+          gravyVaultBalance,
           verificationHash,
         } = await getVotingPower(account, poolAddresses, blockNumber)
 
@@ -52,11 +52,11 @@ const useGetVotingPower = (block?: number, isActive = true): State & { isLoading
           setVotingPower((prevVotingPower) => ({
             ...prevVotingPower,
             verificationHash,
-            cakeBalance: parseFloat(cakeBalance),
-            cakeBnbLpBalance: parseFloat(cakeBnbLpBalance),
-            cakePoolBalance: parseFloat(cakePoolBalance),
+            gravyBalance: parseFloat(gravyBalance),
+            gravyBnbLpBalance: parseFloat(gravyBnbLpBalance),
+            gravyPoolBalance: parseFloat(gravyPoolBalance),
             poolsBalance: parseFloat(poolsBalance),
-            cakeVaultBalance: parseFloat(cakeVaultBalance),
+            gravyVaultBalance: parseFloat(gravyVaultBalance),
             total: parseFloat(total),
           }))
         }

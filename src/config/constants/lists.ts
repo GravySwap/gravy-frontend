@@ -1,12 +1,12 @@
-const PANGRAVY_EXTENDED = 'https://tokens.pancakeswap.finance/pancakeswap-extended.json'
-const PANGRAVY_TOP100 = 'https://tokens.pancakeswap.finance/pancakeswap-top-100.json'
+const GRAVY_EXTENDED = 'https://tokens.gravyswap.com/gravy-extended.json'
+const GRAVY_TOP100 = 'https://tokens.gravyswap.com/gravy-top-100.json'
 
 export const UNSUPPORTED_LIST_URLS: string[] = []
 
 // lower index == higher priority for token import
 export const DEFAULT_LIST_OF_LISTS: string[] = [
-  PANGRAVY_TOP100,
-  PANGRAVY_EXTENDED,
+  GRAVY_TOP100,
+  GRAVY_EXTENDED,
   ...UNSUPPORTED_LIST_URLS, // need to load unsupported tokens as well
 ]
 

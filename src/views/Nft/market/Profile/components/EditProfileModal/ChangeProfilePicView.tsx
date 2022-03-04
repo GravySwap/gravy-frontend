@@ -10,7 +10,7 @@ import useApproveConfirmTransaction from 'hooks/useApproveConfirmTransaction'
 import { getErc721Contract } from 'utils/contractHelpers'
 import { useProfile as useProfileContract } from 'hooks/useContract'
 import { useCallWithGasPrice } from 'hooks/useCallWithGasPrice'
-import { getPancakeProfileAddress } from 'utils/addressHelpers'
+import { getGravyProfileAddress } from 'utils/addressHelpers'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import ApproveConfirmButtons from 'components/ApproveConfirmButtons'
 import SelectionCard from 'views/ProfileCreation/SelectionCard'
@@ -39,7 +39,7 @@ const ChangeProfilePicPage: React.FC<ChangeProfilePicPageProps> = ({ onDismiss }
     useApproveConfirmTransaction({
       onApprove: () => {
         const contract = getErc721Contract(selectedNft.collectionAddress, library.getSigner())
-        return callWithGasPrice(contract, 'approve', [getPancakeProfileAddress(), selectedNft.tokenId])
+        return callWithGasPrice(contract, 'approve', [getGravyProfileAddress(), selectedNft.tokenId])
       },
       onConfirm: () => {
         if (!profile.isActive) {
@@ -94,7 +94,7 @@ const ChangeProfilePicPage: React.FC<ChangeProfilePicPageProps> = ({ onDismiss }
             {t('Sorry! You don’t have any eligible Collectibles in your wallet to use!')}
           </Text>
           <Text as="p" color="textSubtle" mb="24px">
-            {t('Make sure you have a Pancake Collectible in your wallet and try again!')}
+            {t('Make sure you have a Gravy Collectible in your wallet and try again!')}
           </Text>
         </>
       )}

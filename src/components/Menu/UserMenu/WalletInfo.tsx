@@ -18,7 +18,7 @@ const WalletInfo: React.FC<WalletInfoProps> = ({ hasLowBnbBalance, onDismiss }) 
   const { t } = useTranslation()
   const { account } = useWeb3React()
   const { balance, fetchStatus } = useGetBnbBalance()
-  const { balance: cakeBalance, fetchStatus: cakeFetchStatus } = useTokenBalance(tokens.cake.address)
+  const { balance: gravyBalance, fetchStatus: gravyFetchStatus } = useTokenBalance(tokens.gravy.address)
   const { logout } = useAuth()
 
   const handleLogout = () => {
@@ -50,10 +50,10 @@ const WalletInfo: React.FC<WalletInfoProps> = ({ hasLowBnbBalance, onDismiss }) 
       </Flex>
       <Flex alignItems="center" justifyContent="space-between" mb="24px">
         <Text color="textSubtle">{t('GRAVY Balance')}</Text>
-        {cakeFetchStatus !== FetchStatus.SUCCESS ? (
+        {gravyFetchStatus !== FetchStatus.SUCCESS ? (
           <Skeleton height="22px" width="60px" />
         ) : (
-          <Text>{getFullDisplayBalance(cakeBalance, 18, 3)}</Text>
+          <Text>{getFullDisplayBalance(gravyBalance, 18, 3)}</Text>
         )}
       </Flex>
       <Flex alignItems="center" justifyContent="end" mb="24px">

@@ -16,15 +16,15 @@ export const BASE_BSC_SCAN_URLS = {
 
 // GRAVY_PER_BLOCK details
 // 40 GRAVY is minted per block
-// 20 GRAVY per block is sent to Burn pool (A farm just for burning cake)
+// 20 GRAVY per block is sent to Burn pool (A farm just for burning gravy)
 // 10 GRAVY per block goes to GRAVY syrup pool
 // 9 GRAVY per block goes to Yield farms and lottery
 // GRAVY_PER_BLOCK in config/index.ts = 40 as we only change the amount sent to the burn pool which is effectively a farm.
-// GRAVY/Block in src/views/Home/components/CakeDataRow.tsx = 15 (40 - Amount sent to burn pool)
+// GRAVY/Block in src/views/Home/components/GravyDataRow.tsx = 15 (40 - Amount sent to burn pool)
 export const GRAVY_PER_BLOCK = 40
 export const BLOCKS_PER_YEAR = (60 / BSC_BLOCK_TIME) * 60 * 24 * 365 // 10512000
 export const GRAVY_PER_YEAR = GRAVY_PER_BLOCK * BLOCKS_PER_YEAR
-export const BASE_URL = 'https://pancakeswap.finance'
+export const BASE_URL = 'https://gravyswap.com'
 export const BASE_ADD_LIQUIDITY_URL = `${BASE_URL}/add`
 export const BASE_BSC_SCAN_URL = BASE_BSC_SCAN_URLS[ChainId.MAINNET]
 export const DEFAULT_TOKEN_DECIMAL = BIG_TEN.pow(18)
@@ -34,4 +34,4 @@ export const RECLAIM_AUCTIONS_TO_FETCH = 500
 export const AUCTION_WHITELISTED_BIDDERS_TO_FETCH = 500
 export const IPFS_GATEWAY = 'https://ipfs.io/ipfs'
 // In reality its 10000 because of fast refresh, a bit less here to cover for possible long request times
-export const PANGRAVY_BUNNIES_UPDATE_FREQUENCY = 8000
+export const GRAVY_BUNNIES_UPDATE_FREQUENCY = 8000

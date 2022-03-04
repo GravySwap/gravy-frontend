@@ -3,7 +3,7 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_pancakePrediction",
+        "name": "_gravyPrediction",
         "type": "address"
       },
       {
@@ -13,7 +13,7 @@
       },
       {
         "internalType": "address",
-        "name": "_pancakeProfile",
+        "name": "_gravyProfile",
         "type": "address"
       },
       {
@@ -318,7 +318,7 @@
   },
   {
     "inputs": [],
-    "name": "pancakePrediction",
+    "name": "gravyPrediction",
     "outputs": [
       {
         "internalType": "contract BnbPricePrediction",
@@ -331,10 +331,10 @@
   },
   {
     "inputs": [],
-    "name": "pancakeProfile",
+    "name": "gravyProfile",
     "outputs": [
       {
-        "internalType": "contract PancakeProfile",
+        "internalType": "contract GravyProfile",
         "name": "",
         "type": "address"
       }

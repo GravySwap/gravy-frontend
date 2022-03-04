@@ -3,7 +3,7 @@ import styled, { keyframes } from 'styled-components'
 import { Box, Flex, Heading, Skeleton } from '@gravyswap/uikit'
 import { LotteryStatus } from 'config/constants/types'
 import { useTranslation } from 'contexts/Localization'
-import { usePriceCakeBusd } from 'state/farms/hooks'
+import { usePriceGravyBusd } from 'state/farms/hooks'
 import { useLottery } from 'state/lottery/hooks'
 import { getBalanceNumber } from 'utils/formatBalance'
 import Balance from 'components/Balance'
@@ -215,12 +215,12 @@ const StarsDecorations = styled(Box)`
 const Hero = () => {
   const { t } = useTranslation()
   const {
-    currentRound: { amountCollectedInCake, status },
+    currentRound: { amountCollectedInGravy, status },
     isTransitioning,
   } = useLottery()
 
-  const cakePriceBusd = usePriceCakeBusd()
-  const prizeInBusd = amountCollectedInCake.times(cakePriceBusd)
+  const gravyPriceBusd = usePriceGravyBusd()
+  const prizeInBusd = amountCollectedIngravy.times(gravyPriceBusd)
   const prizeTotal = getBalanceNumber(prizeInBusd)
   const ticketBuyIsDisabled = status !== LotteryStatus.OPEN || isTransitioning
 

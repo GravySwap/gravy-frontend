@@ -20,13 +20,13 @@ import tokens from 'config/constants/tokens'
 import { getFullDisplayBalance } from 'utils/formatBalance'
 import { BIG_ZERO, ethersToBigNumber } from 'utils/bigNumber'
 import { useAppDispatch } from 'state'
-import { usePriceCakeBusd } from 'state/farms/hooks'
+import { usePriceGravyBusd } from 'state/farms/hooks'
 import { useLottery } from 'state/lottery/hooks'
 import { fetchUserTicketsAndLotteries } from 'state/lottery'
 import useTheme from 'hooks/useTheme'
 import useTokenBalance, { FetchStatus } from 'hooks/useTokenBalance'
 import useApproveConfirmTransaction from 'hooks/useApproveConfirmTransaction'
-import { useCake, useLotteryV2Contract } from 'hooks/useContract'
+import { useGravy, useLotteryV2Contract } from 'hooks/useContract'
 import { useCallWithGasPrice } from 'hooks/useCallWithGasPrice'
 import useToast from 'hooks/useToast'
 import ConnectWalletButton from 'components/ConnectWalletButton'
@@ -65,7 +65,7 @@ const BuyTicketsModal: React.FC<BuyTicketsModalProps> = ({ onDismiss }) => {
     maxNumberTicketsPerBuyOrClaim,
     currentLotteryId,
     currentRound: {
-      priceTicketInCake,
+      priceTicketInGravy,
       discountDivisor,
       userTickets: { tickets: userCurrentTickets },
     },
@@ -78,19 +78,19 @@ const BuyTicketsModal: React.FC<BuyTicketsModalProps> = ({ onDismiss }) => {
   const [buyingStage, setBuyingStage] = useState<BuyingStage>(BuyingStage.BUY)
   const [maxPossibleTicketPurchase, setMaxPossibleTicketPurchase] = useState(BIG_ZERO)
   const [maxTicketPurchaseExceeded, setMaxTicketPurchaseExceeded] = useState(false)
-  const [userNotEnoughCake, setUserNotEnoughCake] = useState(false)
+  const [userNotEnoughGravy, setUserNotEnoughGravy] = useState(false)
   const lotteryContract = useLotteryV2Contract()
-  const cakeContract = useCake()
+  const gravyContract = useGravy()
   const { toastSuccess } = useToast()
-  const { balance: userCake, fetchStatus } = useTokenBalance(tokens.cake.address)
+  const { balance: userGravy, fetchStatus } = useTokenBalance(tokens.gravy.address)
   // balance from useTokenBalance causes rerenders in effects as a new BigNumber is instantiated on each render, hence memoising it using the stringified value below.
-  const stringifiedUserCake = userCake.toJSON()
-  const memoisedUserCake = useMemo(() => new BigNumber(stringifiedUserCake), [stringifiedUserCake])
+  const stringifiedUserGravy = usergravy.toJSON()
+  const memoisedUserGravy = useMemo(() => new BigNumber(stringifiedUserGravy), [stringifiedUserGravy])
 
-  const cakePriceBusd = usePriceCakeBusd()
+  const gravyPriceBusd = usePriceGravyBusd()
   const dispatch = useAppDispatch()
   const hasFetchedBalance = fetchStatus === FetchStatus.SUCCESS
-  const userCakeDisplayBalance = getFullDisplayBalance(userCake, 18, 3)
+  const userGravyDisplayBalance = getFullDisplayBalance(userGravy, 18, 3)
 
   const TooltipComponent = () => (
     <>
@@ -118,47 +118,47 @@ const BuyTicketsModal: React.FC<BuyTicketsModalProps> = ({ onDismiss }) => {
 
   const getTicketCostAfterDiscount = useCallback(
     (numberTickets: BigNumber) => {
-      const totalAfterDiscount = priceTicketInCake
+      const totalAfterDiscount = priceTicketInGravy
         .times(numberTickets)
         .times(discountDivisor.plus(1).minus(numberTickets))
         .div(discountDivisor)
       return totalAfterDiscount
     },
-    [discountDivisor, priceTicketInCake],
+    [discountDivisor, priceTicketInGravy],
   )
 
   const getMaxTicketBuyWithDiscount = useCallback(
     (numberTickets: BigNumber) => {
       const costAfterDiscount = getTicketCostAfterDiscount(numberTickets)
-      const costBeforeDiscount = priceTicketInCake.times(numberTickets)
+      const costBeforeDiscount = priceTicketIngravy.times(numberTickets)
       const discountAmount = costBeforeDiscount.minus(costAfterDiscount)
-      const ticketsBoughtWithDiscount = discountAmount.div(priceTicketInCake)
+      const ticketsBoughtWithDiscount = discountAmount.div(priceTicketInGravy)
       const overallTicketBuy = numberTickets.plus(ticketsBoughtWithDiscount)
       return { overallTicketBuy, ticketsBoughtWithDiscount }
     },
-    [getTicketCostAfterDiscount, priceTicketInCake],
+    [getTicketCostAfterDiscount, priceTicketInGravy],
   )
 
   const validateInput = useCallback(
     (inputNumber: BigNumber) => {
       const limitedNumberTickets = limitNumberByMaxTicketsPerBuy(inputNumber)
-      const cakeCostAfterDiscount = getTicketCostAfterDiscount(limitedNumberTickets)
+      const gravyCostAfterDiscount = getTicketCostAfterDiscount(limitedNumberTickets)
 
-      if (cakeCostAfterDiscount.gt(userCake)) {
-        setUserNotEnoughCake(true)
+      if (gravyCostAfterDiscount.gt(userGravy)) {
+        setUserNotEnoughGravy(true)
       } else if (limitedNumberTickets.eq(maxNumberTicketsPerBuyOrClaim)) {
         setMaxTicketPurchaseExceeded(true)
       } else {
-        setUserNotEnoughCake(false)
+        setUserNotEnoughGravy(false)
         setMaxTicketPurchaseExceeded(false)
       }
     },
-    [limitNumberByMaxTicketsPerBuy, getTicketCostAfterDiscount, maxNumberTicketsPerBuyOrClaim, userCake],
+    [limitNumberByMaxTicketsPerBuy, getTicketCostAfterDiscount, maxNumberTicketsPerBuyOrClaim, userGravy],
   )
 
   useEffect(() => {
     const getMaxPossiblePurchase = () => {
-      const maxBalancePurchase = memoisedUserCake.div(priceTicketInCake)
+      const maxBalancePurchase = memoisedUsergravy.div(priceTicketInGravy)
       const limitedMaxPurchase = limitNumberByMaxTicketsPerBuy(maxBalancePurchase)
       let maxPurchase
 
@@ -178,9 +178,9 @@ const BuyTicketsModal: React.FC<BuyTicketsModalProps> = ({ onDismiss }) => {
       }
 
       if (hasFetchedBalance && maxPurchase.lt(1)) {
-        setUserNotEnoughCake(true)
+        setUserNotEnoughGravy(true)
       } else {
-        setUserNotEnoughCake(false)
+        setUserNotEnoughGravy(false)
       }
 
       setMaxPossibleTicketPurchase(maxPurchase)
@@ -188,8 +188,8 @@ const BuyTicketsModal: React.FC<BuyTicketsModalProps> = ({ onDismiss }) => {
     getMaxPossiblePurchase()
   }, [
     maxNumberTicketsPerBuyOrClaim,
-    priceTicketInCake,
-    memoisedUserCake,
+    priceTicketInGravy,
+    memoisedUserGravy,
     limitNumberByMaxTicketsPerBuy,
     getTicketCostAfterDiscount,
     getMaxTicketBuyWithDiscount,
@@ -199,12 +199,12 @@ const BuyTicketsModal: React.FC<BuyTicketsModalProps> = ({ onDismiss }) => {
   useEffect(() => {
     const numberOfTicketsToBuy = new BigNumber(ticketsToBuy)
     const costAfterDiscount = getTicketCostAfterDiscount(numberOfTicketsToBuy)
-    const costBeforeDiscount = priceTicketInCake.times(numberOfTicketsToBuy)
+    const costBeforeDiscount = priceTicketIngravy.times(numberOfTicketsToBuy)
     const discountBeingApplied = costBeforeDiscount.minus(costAfterDiscount)
     setTicketCostBeforeDiscount(costBeforeDiscount.gt(0) ? getFullDisplayBalance(costBeforeDiscount) : '0')
     setTotalCost(costAfterDiscount.gt(0) ? getFullDisplayBalance(costAfterDiscount) : '0')
     setDiscountValue(discountBeingApplied.gt(0) ? getFullDisplayBalance(discountBeingApplied, 18, 5) : '0')
-  }, [ticketsToBuy, priceTicketInCake, discountDivisor, getTicketCostAfterDiscount])
+  }, [ticketsToBuy, priceTicketInGravy, discountDivisor, getTicketCostAfterDiscount])
 
   const getNumTicketsByPercentage = (percentage: number): number => {
     const percentageOfMaxTickets = maxPossibleTicketPurchase.gt(0)
@@ -229,7 +229,7 @@ const BuyTicketsModal: React.FC<BuyTicketsModalProps> = ({ onDismiss }) => {
 
   const handleNumberButtonClick = (number: number) => {
     setTicketsToBuy(number.toFixed())
-    setUserNotEnoughCake(false)
+    setUserNotEnoughGravy(false)
     setMaxTicketPurchaseExceeded(false)
   }
 
@@ -242,7 +242,7 @@ const BuyTicketsModal: React.FC<BuyTicketsModalProps> = ({ onDismiss }) => {
     useApproveConfirmTransaction({
       onRequiresApproval: async () => {
         try {
-          const response = await cakeContract.allowance(account, lotteryContract.address)
+          const response = await gravyContract.allowance(account, lotteryContract.address)
           const currentAllowance = ethersToBigNumber(response)
           return currentAllowance.gt(0)
         } catch (error) {
@@ -250,7 +250,7 @@ const BuyTicketsModal: React.FC<BuyTicketsModalProps> = ({ onDismiss }) => {
         }
       },
       onApprove: () => {
-        return callWithGasPrice(cakeContract, 'approve', [lotteryContract.address, ethers.constants.MaxUint256])
+        return callWithGasPrice(gravyContract, 'approve', [lotteryContract.address, ethers.constants.MaxUint256])
       },
       onApproveSuccess: async ({ receipt }) => {
         toastSuccess(
@@ -270,7 +270,7 @@ const BuyTicketsModal: React.FC<BuyTicketsModalProps> = ({ onDismiss }) => {
     })
 
   const getErrorMessage = () => {
-    if (userNotEnoughCake) return t('Insufficient GRAVY balance')
+    if (userNotEnoughGravy) return t('Insufficient GRAVY balance')
     return t('The maximum number of tickets you can buy in one transaction is %maxTickets%', {
       maxTickets: maxNumberTicketsPerBuyOrClaim.toString(),
     })
@@ -287,7 +287,7 @@ const BuyTicketsModal: React.FC<BuyTicketsModalProps> = ({ onDismiss }) => {
   const disableBuying =
     !isApproved ||
     isConfirmed ||
-    userNotEnoughCake ||
+    userNotEnoughGravy ||
     !ticketsToBuy ||
     new BigNumber(ticketsToBuy).lte(0) ||
     getTicketsForPurchase().length !== parseInt(ticketsToBuy, 10)
@@ -320,20 +320,20 @@ const BuyTicketsModal: React.FC<BuyTicketsModalProps> = ({ onDismiss }) => {
         </Flex>
       </Flex>
       <BalanceInput
-        isWarning={account && (userNotEnoughCake || maxTicketPurchaseExceeded)}
+        isWarning={account && (userNotEnoughGravy || maxTicketPurchaseExceeded)}
         placeholder="0"
         value={ticketsToBuy}
         onUserInput={handleInputChange}
         currencyValue={
-          cakePriceBusd.gt(0) &&
+          gravyPriceBusd.gt(0) &&
           `~${
-            ticketsToBuy ? getFullDisplayBalance(priceTicketInCake.times(new BigNumber(ticketsToBuy))) : '0.00'
+            ticketsToBuy ? getFullDisplayBalance(priceTicketIngravy.times(new BigNumber(ticketsToBuy))) : '0.00'
           } GRAVY`
         }
       />
       <Flex alignItems="center" justifyContent="flex-end" mt="4px" mb="12px">
         <Flex justifyContent="flex-end" flexDirection="column">
-          {account && (userNotEnoughCake || maxTicketPurchaseExceeded) && (
+          {account && (userNotEnoughGravy || maxTicketPurchaseExceeded) && (
             <Text fontSize="12px" color="failure">
               {getErrorMessage()}
             </Text>
@@ -345,7 +345,7 @@ const BuyTicketsModal: React.FC<BuyTicketsModalProps> = ({ onDismiss }) => {
               </Text>
               {hasFetchedBalance ? (
                 <Text fontSize="12px" color="textSubtle">
-                  {userCakeDisplayBalance}
+                  {userGravyDisplayBalance}
                 </Text>
               ) : (
                 <Skeleton width={50} height={12} />
@@ -387,7 +387,7 @@ const BuyTicketsModal: React.FC<BuyTicketsModalProps> = ({ onDismiss }) => {
             {t('Cost')} (GRAVY)
           </Text>
           <Text color="textSubtle" fontSize="14px">
-            {priceTicketInCake && getFullDisplayBalance(priceTicketInCake.times(ticketsToBuy || 0))} GRAVY
+            {priceTicketInGravy && getFullDisplayBalance(priceTicketIngravy.times(ticketsToBuy || 0))} GRAVY
           </Text>
         </Flex>
         <Flex mb="8px" justifyContent="space-between">

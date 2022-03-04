@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { ChainId } from '@liquidslabs/gravyswap-sdk'
-import { useFarms, usePriceCakeBusd } from 'state/farms/hooks'
+import { useFarms, usePriceGravyBusd } from 'state/farms/hooks'
 import { useAppDispatch } from 'state'
 import { fetchFarmsPublicDataAsync, nonArchivedFarms } from 'state/farms'
 import { getFarmApr } from 'utils/apr'
@@ -20,7 +20,7 @@ const useGetTopFarmsByApr = (isIntersecting: boolean) => {
   const { data: farms } = useFarms()
   const [fetchStatus, setFetchStatus] = useState(FetchStatus.NOT_FETCHED)
   const [topFarms, setTopFarms] = useState<FarmWithStakedValue[]>([null, null, null, null, null])
-  const cakePriceBusd = usePriceCakeBusd()
+  const gravyPriceBusd = usePriceGravyBusd()
 
   useEffect(() => {
     const fetchFarmData = async () => {
@@ -52,13 +52,13 @@ const useGetTopFarmsByApr = (isIntersecting: boolean) => {
       )
       const farmsWithApr: FarmWithStakedValue[] = farmsWithPrices.map((farm) => {
         const totalLiquidity = farm.lpTotalInQuoteToken.times(farm.quoteTokenPriceBusd)
-        const { cakeRewardsApr, lpRewardsApr } = getFarmApr(
+        const { gravyRewardsApr, lpRewardsApr } = getFarmApr(
           farm.poolWeight,
-          cakePriceBusd,
+          gravyPriceBusd,
           totalLiquidity,
           farm.lpAddresses[ChainId.MAINNET],
         )
-        return { ...farm, apr: cakeRewardsApr, lpRewardsApr }
+        return { ...farm, apr: gravyRewardsApr, lpRewardsApr }
       })
 
       const sortedByApr = orderBy(farmsWithApr, (farm) => farm.apr + farm.lpRewardsApr, 'desc')
@@ -68,7 +68,7 @@ const useGetTopFarmsByApr = (isIntersecting: boolean) => {
     if (fetchStatus === FetchStatus.SUCCESS && !topFarms[0]) {
       getTopFarmsByApr(farms)
     }
-  }, [setTopFarms, farms, fetchStatus, cakePriceBusd, topFarms])
+  }, [setTopFarms, farms, fetchStatus, gravyPriceBusd, topFarms])
 
   return { topFarms }
 }

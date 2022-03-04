@@ -86,7 +86,7 @@ const TradingCompetition = () => {
     hasRegistered: false,
     hasUserClaimed: false,
     userRewardGroup: '0',
-    userCakeRewards: '0',
+    userGravyRewards: '0',
     userLazioRewards: '0',
     userPortoRewards: '0',
     userSantosRewards: '0',
@@ -104,7 +104,7 @@ const TradingCompetition = () => {
   const [team1LeaderboardInformation, setTeam1LeaderboardInformation] = useState({ teamId: 1, leaderboardData: null })
   // 2. Flippers
   const [team2LeaderboardInformation, setTeam2LeaderboardInformation] = useState({ teamId: 2, leaderboardData: null })
-  // 3. Cakers
+  // 3. Gravyrs
   const [team3LeaderboardInformation, setTeam3LeaderboardInformation] = useState({ teamId: 3, leaderboardData: null })
 
   const isCompetitionLive = currentPhase.state === LIVE
@@ -113,7 +113,7 @@ const TradingCompetition = () => {
 
   const {
     hasUserClaimed,
-    userCakeRewards,
+    userGravyRewards,
     userLazioRewards,
     userPortoRewards,
     userSantosRewards,
@@ -124,7 +124,7 @@ const TradingCompetition = () => {
   const userCanClaimPrizes =
     currentPhase.state === CLAIM &&
     !hasUserClaimed &&
-    (userCakeRewards !== '0' ||
+    (userGravyRewards !== '0' ||
       userLazioRewards !== '0' ||
       userPortoRewards !== '0' ||
       userSantosRewards !== '0' ||
@@ -154,7 +154,7 @@ const TradingCompetition = () => {
           hasRegistered: user[0],
           hasUserClaimed: user[1],
           userRewardGroup: user[2].toString(),
-          userCakeRewards: user[3].toString(),
+          userGravyRewards: user[3].toString(),
           userLazioRewards: user[4].toString(),
           userPortoRewards: user[5].toString(),
           userSantosRewards: user[6].toString(),
@@ -175,7 +175,7 @@ const TradingCompetition = () => {
         hasRegistered: false,
         hasUserClaimed: false,
         userRewardGroup: '0',
-        userCakeRewards: '0',
+        userGravyRewards: '0',
         userLazioRewards: '0',
         userPortoRewards: '0',
         userSantosRewards: '0',

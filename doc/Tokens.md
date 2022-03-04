@@ -4,6 +4,6 @@ All the tokens are in `/config/constans/tokens.md`. They are instances of tthe `
 Before adding a new **farm** or **pool** you need to make sure the Tokens are in this file.
 To add a Token to the exchange lists:
 
-- For the default list: `/config/constant/tokenLists/pancake-default.tokenlist.json`
-- For other lists, check the token-lists project in the `pancake-toolkit` repo
-- To blacklist a token: `/config/constant/tokenListspancake-unsupported.tokenlist.json`
+- For the default list: `/config/constant/tokenLists/gravy-default.tokenlist.json`
+- For other lists, check the token-lists project in the `gravy-toolkit` repo
+- To blacklist a token: `/config/constant/tokenListsgravy-unsupported.tokenlist.json`

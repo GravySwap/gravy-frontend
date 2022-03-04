@@ -104,8 +104,8 @@ export const whitelistedBidders: FarmAuctionBidderConfig[] = [
     farmName: 'BABYGRAVY-BNB',
     tokenAddress: '0xdB8D30b74bf098aF214e862C90E647bbB1fcC58c',
     quoteToken: tokens.wbnb,
-    tokenName: 'Babycake',
-    projectSite: 'https://babycake.app/',
+    tokenName: 'Babygravy',
+    projectSite: 'https://babygravy.app/',
   },
   {
     account: '0xCCcC0b22799E82A79007814Dbc6A194410DCcEA5',

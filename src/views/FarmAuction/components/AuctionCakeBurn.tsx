@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Text, Flex, Skeleton, Image } from '@gravyswap/uikit'
 import { useFarmAuctionContract } from 'hooks/useContract'
 import { useTranslation } from 'contexts/Localization'
-import { usePriceCakeBusd } from 'state/farms/hooks'
+import { usePriceGravyBusd } from 'state/farms/hooks'
 import { getBalanceNumber } from 'utils/formatBalance'
 import { ethersToBigNumber } from 'utils/bigNumber'
 import Balance from 'components/Balance'
@@ -16,33 +16,33 @@ const BurnedText = styled(Text)`
   }
 `
 
-const AuctionCakeBurn: React.FC = () => {
-  const [burnedCakeAmount, setBurnedCakeAmount] = useState(0)
+const AuctionGravyBurn: React.FC = () => {
+  const [burnedGravyAmount, setBurnedGravyAmount] = useState(0)
   const { t } = useTranslation()
   const farmAuctionContract = useFarmAuctionContract()
-  const cakePriceBusd = usePriceCakeBusd()
+  const gravyyPriceBusd = usePriceGravyBusd()
 
-  const burnedAmountAsUSD = cakePriceBusd.times(burnedCakeAmount)
+  const burnedAmountAsUSD = gravyyPriceBusd.times(burnedGravyAmount)
 
   useEffect(() => {
-    const fetchBurnedCakeAmount = async () => {
+    const fetchBurnedGravyAmount = async () => {
       try {
         const amount = await farmAuctionContract.totalCollected()
         const amountAsBN = ethersToBigNumber(amount)
-        setBurnedCakeAmount(getBalanceNumber(amountAsBN))
+        setBurnedGravyAmount(getBalanceNumber(amountAsBN))
       } catch (error) {
-        console.error('Failed to fetch burned auction cake', error)
+        console.error('Failed to fetch burned auction gravyy', error)
       }
     }
-    if (burnedCakeAmount === 0) {
-      fetchBurnedCakeAmount()
+    if (burnedGravyAmount === 0) {
+      fetchBurnedGravyAmount()
     }
-  }, [burnedCakeAmount, farmAuctionContract])
+  }, [burnedGravyAmount, farmAuctionContract])
   return (
     <Flex flexDirection={['column-reverse', null, 'row']}>
       <Flex flexDirection="column" flex="2">
-        {burnedCakeAmount !== 0 ? (
-          <Balance fontSize="64px" bold value={burnedCakeAmount} decimals={0} unit=" GRAVY" />
+        {burnedGravyAmount !== 0 ? (
+          <Balance fontSize="64px" bold value={burnedGravyAmount} decimals={0} unit=" GRAVY" />
         ) : (
           <Skeleton width="256px" height="64px" />
         )}
@@ -60,9 +60,9 @@ const AuctionCakeBurn: React.FC = () => {
           <Skeleton width="128px" />
         )}
       </Flex>
-      <Image width={350} height={320} src="/images/burnt-cake.png" alt={t('Burnt GRAVY')} />
+      <Image width={350} height={320} src="/images/burnt-gravy.png" alt={t('Burnt GRAVY')} />
     </Flex>
   )
 }
 
-export default AuctionCakeBurn
+export default AuctionGravyBurn

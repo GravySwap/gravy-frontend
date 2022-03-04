@@ -1,7 +1,7 @@
 import React from 'react'
 import { Flex, Grid, Text, Button, Link, BinanceIcon, LinkExternal, useModal } from '@gravyswap/uikit'
 import { useTranslation } from 'contexts/Localization'
-import { nftsBaseUrl, pancakeBunniesAddress } from 'views/Nft/market/constants'
+import { nftsBaseUrl, gravynniesAddress } from 'views/Nft/market/constants'
 import { NftToken } from 'state/nftMarket/types'
 import { getBscScanLinkForNft } from 'utils'
 import EditProfileModal from 'views/Nft/market/Profile/components/EditProfileModal'
@@ -25,7 +25,7 @@ const SellStage: React.FC<SellStageProps> = ({
   const { t } = useTranslation()
   const { hasProfile } = useProfile()
   const itemPageUrlId =
-    nftToSell.collectionAddress.toLowerCase() === pancakeBunniesAddress.toLowerCase()
+    nftToSell.collectionAddress.toLowerCase() === gravynniesAddress.toLowerCase()
       ? nftToSell.attributes[0].value
       : nftToSell.tokenId
 

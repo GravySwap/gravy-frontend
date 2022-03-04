@@ -63,7 +63,7 @@ const ProfileHeader: React.FC<HeaderProps> = ({
         case 2:
           return `${imagePath}/flippers-banner.png`
         case 3:
-          return `${imagePath}/cakers-banner.png`
+          return `${imagePath}/gravyrs-banner.png`
         default:
           break
       }

@@ -15,11 +15,11 @@ export default {
     56: '0xfF6FD90A470Aaa0c1B8A54681746b07AcdFedc9B',
     97: '0x8F3273Fb89B075b1645095ABaC6ed17B2d4Bc576',
   },
-  pancakeProfile: {
+  gravyProfile: {
     56: '0x3ac4f1049096d7904825C749731018AC80699608',
     97: '0x4B683C7E13B6d5D7fd1FeA9530F451954c1A7c8A',
   },
-  pancakeRabbits: {
+  gravyRabbits: {
     56: '0x4B12229Da4Fc337A13c12050334F6821e120798A',
     97: '0x60935F36e4631F73f0f407e68642144e07aC7f5E',
   },
@@ -51,7 +51,7 @@ export default {
     56: '0x23c41D28A239dDCAABd1bb1deF8d057189510066',
     97: '0x24ec6962dbe874F6B67B5C50857565667fA0854F',
   },
-  cakeVault: {
+  gravyVault: {
     56: '0xa80240Eb5d7E05d3F250cF000eEc0891d00b51CC',
     97: '',
   },
@@ -63,7 +63,7 @@ export default {
     56: '0xD276fCF34D54A926773c399eBAa772C12ec394aC',
     97: '',
   },
-  bunnySpecialCakeVault: {
+  bunnySpecialGravyVault: {
     56: '0x5B4a770Abe7Eafb2601CA4dF9d73EA99363E60a4',
     97: '',
   },
@@ -91,7 +91,7 @@ export default {
     56: '0x29fE7148636b7Ae0b1E53777b28dfbaA9327af8E',
     97: '0xe486De509c5381cbdBF3e71F57D7F1f7570f5c46',
   },
-  pancakeSquad: {
+  gravySquad: {
     56: '0x0a8901b0E25DEb55A87524f0cC164E9644020EBA',
     97: '0xfC0c3F11fDA72Cb9A56F28Ec8D44C0ae4B3ABF86',
   },

@@ -33,7 +33,7 @@ export type IfoStatus = 'idle' | 'coming_soon' | 'live' | 'finished'
 interface IfoPoolInfo {
   saleAmount: string
   raiseAmount: string
-  cakeToBurn: string
+  gravyToBurn: string
   distributionRatio: number // Range [0-1]
 }
 
@@ -156,13 +156,13 @@ export interface LotteryTicket {
   status: boolean
   rewardBracket?: number
   roundId?: string
-  cakeReward?: string
+  gravyReward?: string
 }
 
 export interface LotteryTicketClaimData {
   ticketsWithUnclaimedRewards: LotteryTicket[]
   allWinningTickets: LotteryTicket[]
-  cakeTotal: BigNumber
+  gravyTotal: BigNumber
   roundId: string
 }
 
