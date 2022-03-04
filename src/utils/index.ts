@@ -4,7 +4,7 @@ import { getAddress } from '@ethersproject/address'
 import { AddressZero } from '@ethersproject/constants'
 import { JsonRpcSigner, Web3Provider } from '@ethersproject/providers'
 import { BigNumber } from '@ethersproject/bignumber'
-import { abi as IUniswapV2Router02ABI } from '@uniswap/v2-periphery/build/IUniswapV2Router02.json'
+import IGravyV2Router02ABI from 'config/abi/IGravyRouter02.json'
 import { ChainId, JSBI, Percent, Token, CurrencyAmount, Currency, ETHER } from '@liquidslabs/gravyswap-sdk'
 import { ROUTER_ADDRESS } from '../config/constants'
 import { BASE_BSC_SCAN_URLS } from '../config'
@@ -93,7 +93,7 @@ export function getContract(address: string, ABI: any, signer?: ethers.Signer | 
 
 // account is optional
 export function getRouterContract(_: number, library: Web3Provider, account?: string): Contract {
-  return getContract(ROUTER_ADDRESS, IUniswapV2Router02ABI, getProviderOrSigner(library, account))
+  return getContract(ROUTER_ADDRESS, IGravyV2Router02ABI, getProviderOrSigner(library, account))
 }
 
 export function escapeRegExp(string: string): string {
