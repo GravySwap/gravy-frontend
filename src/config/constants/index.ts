@@ -1,7 +1,7 @@
 import { ChainId, JSBI, Percent, Token } from '@liquidslabs/gravyswap-sdk'
 import { mainnetTokens, testnetTokens } from './tokens'
 
-export const ROUTER_ADDRESS = '0xc03570A535Ba83b68Fce3d741A17aA28F0273326'
+export const ROUTER_ADDRESS = '0x34BD6c00B2E3A2eE74dae638716950D34e92B003'
 
 // a list of tokens by chain
 type ChainTokenList = {

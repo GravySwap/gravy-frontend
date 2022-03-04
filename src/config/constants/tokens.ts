@@ -31,14 +31,6 @@ export const mainnetTokens = {
     'GravySwap Token',
     'https://gravyswap.finance/',
   ),
-  gravy: new Token(
-    MAINNET,
-    '0x5eA26D0d36EAF02d63a3023521A7924e19c34454',
-    18,
-    'GRAVY',
-    'GravySwap Token',
-    'https://gravyswap.com/',
-  ),
   tlos: new Token(MAINNET, '0xb6C53431608E626AC81a9776ac3e999c5556717c', 18, 'TLOS', 'Telos', 'https://www.telos.net/'),
   beta: new Token(
     MAINNET,
@@ -1852,7 +1844,7 @@ export const mainnetTokens = {
 export const testnetTokens = {
   wbnb: new Token(
     TESTNET,
-    '0x094616F0BdFB0b526bD735Bf66Eca0Ad254ca81F',
+    '0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd',
     18,
     'WBNB',
     'Wrapped BNB',
@@ -1865,14 +1857,6 @@ export const testnetTokens = {
     'GRAVY',
     'GravySwap Token',
     'https://pancakeswap.finance/',
-  ),
-  gravy: new Token(
-    TESTNET,
-    '0x5eA26D0d36EAF02d63a3023521A7924e19c34454',
-    18,
-    'GRAVY',
-    'GravySwap Token',
-    'https://gravyswap.com/',
   ),
   busd: new Token(
     TESTNET,
