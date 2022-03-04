@@ -78,7 +78,10 @@ const Staked: React.FunctionComponent<StackedActionProps> = ({ pool, userDataLoa
   const { gravyAsBigNumber, gravyAsNumberBalance } = convertSharesToGravy(userShares, pricePerFullShare)
   const hasSharesStaked = userShares && userShares.gt(0)
   const isVaultWithShares = isAutoVault && hasSharesStaked
-  const stakedAutoDollarValue = getBalanceNumber(gravyAsBigNumber.multipliedBy(stakingTokenPrice), stakingToken.decimals)
+  const stakedAutoDollarValue = getBalanceNumber(
+    gravyAsBigNumber.multipliedBy(stakingTokenPrice),
+    stakingToken.decimals,
+  )
 
   const needsApproval = isAutoVault ? !isVaultApproved : !allowance.gt(0) && !isBnbPool
 
@@ -105,7 +108,9 @@ const Staked: React.FunctionComponent<StackedActionProps> = ({ pool, userDataLoa
     />,
   )
 
-  const [onPresentVaultUnstake] = useModal(<VaultStakeModal stakingMax={gravyAsBigNumber} pool={pool} isRemovingStake />)
+  const [onPresentVaultUnstake] = useModal(
+    <VaultStakeModal stakingMax={gravyAsBigNumber} pool={pool} isRemovingStake />,
+  )
 
   const onStake = () => {
     if (isAutoVault) {

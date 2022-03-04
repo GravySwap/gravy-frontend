@@ -69,7 +69,10 @@ export const useVaultApprove = (setLastUpdated: () => void) => {
   const gravyContract = useGravy()
 
   const handleApprove = async () => {
-    const tx = await callWithGasPrice(gravyContract, 'approve', [gravyVaultContract.address, ethers.constants.MaxUint256])
+    const tx = await callWithGasPrice(gravyContract, 'approve', [
+      gravyVaultContract.address,
+      ethers.constants.MaxUint256,
+    ])
     setRequestedApproval(true)
     const receipt = await tx.wait()
     if (receipt.status) {
