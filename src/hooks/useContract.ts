@@ -2,10 +2,10 @@ import { useMemo } from 'react'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import {
   getBep20Contract,
-  getCakeContract,
+  getGravyContract,
   getBunnyFactoryContract,
   getBunnySpecialContract,
-  getPancakeRabbitContract,
+  getGravyRabbitContract,
   getProfileContract,
   getIfoV1Contract,
   getIfoV2Contract,
@@ -17,19 +17,19 @@ import {
   getTradingCompetitionContractV2,
   getEasterNftContract,
   getErc721Contract,
-  getCakeVaultContract,
+  getGravyVaultContract,
   getPredictionsContract,
   getChainlinkOracleContract,
   getSouschefV2Contract,
   getLotteryV2Contract,
-  getBunnySpecialCakeVaultContract,
+  getBunnySpecialGravyVaultContract,
   getBunnySpecialPredictionContract,
   getFarmAuctionContract,
   getBunnySpecialLotteryContract,
   getAnniversaryAchievementContract,
   getNftMarketContract,
   getNftSaleContract,
-  getPancakeSquadContract,
+  getGravySquadContract,
   getErc721CollectionContract,
 } from 'utils/contractHelpers'
 import { getMulticallAddress } from 'utils/addressHelpers'
@@ -73,9 +73,9 @@ export const useERC721 = (address: string) => {
   return useMemo(() => getErc721Contract(address, library.getSigner()), [address, library])
 }
 
-export const useCake = () => {
+export const useGravy = () => {
   const { library } = useActiveWeb3React()
-  return useMemo(() => getCakeContract(library.getSigner()), [library])
+  return useMemo(() => getGravyContract(library.getSigner()), [library])
 }
 
 export const useBunnyFactory = () => {
@@ -83,9 +83,9 @@ export const useBunnyFactory = () => {
   return useMemo(() => getBunnyFactoryContract(library.getSigner()), [library])
 }
 
-export const usePancakeRabbits = () => {
+export const useGravyRabbits = () => {
   const { library } = useActiveWeb3React()
-  return useMemo(() => getPancakeRabbitContract(library.getSigner()), [library])
+  return useMemo(() => getGravyRabbitContract(library.getSigner()), [library])
 }
 
 export const useProfile = () => {
@@ -146,9 +146,9 @@ export const useEasterNftContract = () => {
   return useMemo(() => getEasterNftContract(library.getSigner()), [library])
 }
 
-export const useCakeVaultContract = () => {
+export const useGravyVaultContract = () => {
   const { library } = useActiveWeb3React()
-  return useMemo(() => getCakeVaultContract(library.getSigner()), [library])
+  return useMemo(() => getGravyVaultContract(library.getSigner()), [library])
 }
 
 export const usePredictionsContract = () => {
@@ -161,9 +161,9 @@ export const useChainlinkOracleContract = () => {
   return useMemo(() => getChainlinkOracleContract(library.getSigner()), [library])
 }
 
-export const useSpecialBunnyCakeVaultContract = () => {
+export const useSpecialBunnyGravyVaultContract = () => {
   const { library } = useActiveWeb3React()
-  return useMemo(() => getBunnySpecialCakeVaultContract(library.getSigner()), [library])
+  return useMemo(() => getBunnySpecialGravyVaultContract(library.getSigner()), [library])
 }
 
 export const useSpecialBunnyPredictionContract = () => {
@@ -186,9 +186,9 @@ export const useNftSaleContract = () => {
   return useMemo(() => getNftSaleContract(library.getSigner()), [library])
 }
 
-export const usePancakeSquadContract = () => {
+export const useGravySquadContract = () => {
   const { library } = useActiveWeb3React()
-  return useMemo(() => getPancakeSquadContract(library.getSigner()), [library])
+  return useMemo(() => getGravySquadContract(library.getSigner()), [library])
 }
 
 export const useFarmAuctionContract = () => {

@@ -7,8 +7,8 @@ import BunniesSection from './components/BunniesSection'
 import EventDescriptionSection from './components/EventDescriptionSection'
 import EventStepsSection from './components/EventStepsSection'
 import FaqSection from './components/FaqSection'
-import PancakeSquadHeader from './components/Header'
-import { PancakeSquadContext } from './context'
+import GravySquadHeader from './components/Header'
+import { GravySquadContext } from './context'
 import useEventInfos from './hooks/useEventInfos'
 import useUserInfos from './hooks/useUserInfos'
 import { StyledSquadContainer } from './styles'
@@ -17,7 +17,7 @@ import { getUserStatus } from './utils'
 
 const REFRESH_INTERVAL = 4000
 
-const PancakeSquad: React.FC = () => {
+const GravySquad: React.FC = () => {
   const { account } = useWeb3React()
   const { hasProfile, isInitialized } = useProfile()
   const [eventInfos, setEventInfo] = useState<EventInfos>()
@@ -50,9 +50,9 @@ const PancakeSquad: React.FC = () => {
   }, [account])
 
   return (
-    <PancakeSquadContext.Provider value={{ isUserEnabled, setIsUserEnabled }}>
+    <GravySquadContext.Provider value={{ isUserEnabled, setIsUserEnabled }}>
       <StyledSquadContainer>
-        <PancakeSquadHeader
+        <GravySquadHeader
           account={account}
           isLoading={isLoading}
           userInfos={userInfos}
@@ -71,8 +71,8 @@ const PancakeSquad: React.FC = () => {
         <ArtistSection />
         <FaqSection />
       </StyledSquadContainer>
-    </PancakeSquadContext.Provider>
+    </GravySquadContext.Provider>
   )
 }
 
-export default PancakeSquad
+export default GravySquad

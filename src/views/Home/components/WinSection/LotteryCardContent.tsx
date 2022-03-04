@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { useTranslation } from 'contexts/Localization'
 import useRefresh from 'hooks/useRefresh'
 import useIntersectionObserver from 'hooks/useIntersectionObserver'
-import { usePriceCakeBusd } from 'state/farms/hooks'
+import { usePriceGravyBusd } from 'state/farms/hooks'
 import Balance from 'components/Balance'
 import styled from 'styled-components'
 import { fetchCurrentLotteryIdAndMaxBuy, fetchLottery } from 'state/lottery/helpers'
@@ -28,14 +28,14 @@ const LotteryCardContent = () => {
   const { slowRefresh } = useRefresh()
   const [lotteryId, setLotteryId] = useState<string>(null)
   const [currentLotteryPrize, setCurrentLotteryPrize] = useState<BigNumber>(null)
-  const cakePriceBusdAsString = usePriceCakeBusd().toString()
+  const gravyPriceBusdAsString = usePriceGravyBusd().toString()
 
-  const cakePrizesText = t('%cakePrizeInUsd% in GRAVY prizes this round', { cakePrizeInUsd: cakePriceBusdAsString })
-  const [pretext, prizesThisRound] = cakePrizesText.split(cakePriceBusdAsString)
+  const gravyPrizesText = t('%gravyPrizeInUsd% in GRAVY prizes this round', { gravyPrizeInUsd: gravyPriceBusdAsString })
+  const [pretext, prizesThisRound] = gravyPrizesText.split(gravyPriceBusdAsString)
 
-  const cakePriceBusd = useMemo(() => {
-    return new BigNumber(cakePriceBusdAsString)
-  }, [cakePriceBusdAsString])
+  const gravyPriceBusd = useMemo(() => {
+    return new BigNumber(gravyPriceBusdAsString)
+  }, [gravyPriceBusdAsString])
 
   useEffect(() => {
     if (isIntersecting) {
@@ -58,15 +58,15 @@ const LotteryCardContent = () => {
   useEffect(() => {
     // get public data for current lottery
     const fetchCurrentLotteryPrize = async () => {
-      const { amountCollectedInCake } = await fetchLottery(lotteryId)
-      const prizeInBusd = cakePriceBusd.times(amountCollectedInCake)
+      const { amountCollectedInGravy } = await fetchLottery(lotteryId)
+      const prizeInBusd = gravyPriceBusd.times(amountCollectedInGravy)
       setCurrentLotteryPrize(prizeInBusd)
     }
 
     if (lotteryId) {
       fetchCurrentLotteryPrize()
     }
-  }, [lotteryId, slowRefresh, setCurrentLotteryPrize, cakePriceBusd])
+  }, [lotteryId, slowRefresh, setCurrentLotteryPrize, gravyPriceBusd])
 
   return (
     <>

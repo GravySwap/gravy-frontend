@@ -4,7 +4,7 @@ import { AutoRenewIcon, Button, Card, CardBody, Flex, Skeleton, Text, ArrowForwa
 import { Link } from 'react-router-dom'
 import BigNumber from 'bignumber.js'
 import { useTranslation } from 'contexts/Localization'
-import { usePriceCakeBusd } from 'state/farms/hooks'
+import { usePriceGravyBusd } from 'state/farms/hooks'
 import useToast from 'hooks/useToast'
 import { useMasterchef } from 'hooks/useContract'
 import { harvestFarm } from 'utils/calls'
@@ -24,13 +24,13 @@ const HarvestCard = () => {
   const { farmsWithStakedBalance, earningsSum: farmEarningsSum } = useFarmsWithBalance()
 
   const masterChefContract = useMasterchef()
-  const cakePriceBusd = usePriceCakeBusd()
-  const earningsBusd = new BigNumber(farmEarningsSum).multipliedBy(cakePriceBusd)
+  const gravyPriceBusd = usePriceGravyBusd()
+  const earningsBusd = new BigNumber(farmEarningsSum).multipliedBy(gravyPriceBusd)
   const numTotalToCollect = farmsWithStakedBalance.length
   const numFarmsToCollect = farmsWithStakedBalance.filter((value) => value.pid !== 0).length
-  const hasCakePoolToCollect = numTotalToCollect - numFarmsToCollect > 0
+  const hasGravyPoolToCollect = numTotalToCollect - numFarmsToCollect > 0
 
-  const earningsText = getEarningsText(numFarmsToCollect, hasCakePoolToCollect, earningsBusd, t)
+  const earningsText = getEarningsText(numFarmsToCollect, hasGravyPoolToCollect, earningsBusd, t)
   const [preText, toCollectText] = earningsText.split(earningsBusd.toString())
 
   const harvestAllFarms = useCallback(async () => {

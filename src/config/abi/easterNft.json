@@ -8,12 +8,12 @@
       },
       {
         "internalType": "contract IBEP20",
-        "name": "_cakeToken",
+        "name": "_gravyToken",
         "type": "address"
       },
       {
-        "internalType": "contract PancakeProfile",
-        "name": "_pancakeProfile",
+        "internalType": "contract GravyProfile",
+        "name": "_gravyProfile",
         "type": "address"
       },
       {
@@ -163,7 +163,7 @@
   },
   {
     "inputs": [],
-    "name": "cakeToken",
+    "name": "gravyToken",
     "outputs": [
       {
         "internalType": "contract IBEP20",
@@ -260,10 +260,10 @@
   },
   {
     "inputs": [],
-    "name": "pancakeProfile",
+    "name": "gravyProfile",
     "outputs": [
       {
-        "internalType": "contract PancakeProfile",
+        "internalType": "contract GravyProfile",
         "name": "",
         "type": "address"
       }

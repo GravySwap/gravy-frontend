@@ -17,20 +17,20 @@ const processViewLotterySuccessResponse = (response, lotteryId: string): Lottery
     status,
     startTime,
     endTime,
-    priceTicketInCake,
+    priceTicketInGravy,
     discountDivisor,
     treasuryFee,
     firstTicketId,
     lastTicketId,
-    amountCollectedInCake,
+    amountCollectedInGravy,
     finalNumber,
-    cakePerBracket,
+    gravyPerBracket,
     countWinnersPerBracket,
     rewardsBreakdown,
   } = response
 
   const statusKey = Object.keys(LotteryStatus)[status]
-  const serializedCakePerBracket = cakePerBracket.map((cakeInBracket) => ethersToSerializedBigNumber(cakeInBracket))
+  const serializedGravyPerBracket = gravyPerBracket.map((gravyInBracket) => ethersToSerializedBigNumber(gravyInBracket))
   const serializedCountWinnersPerBracket = countWinnersPerBracket.map((winnersInBracket) =>
     ethersToSerializedBigNumber(winnersInBracket),
   )
@@ -42,14 +42,14 @@ const processViewLotterySuccessResponse = (response, lotteryId: string): Lottery
     status: LotteryStatus[statusKey],
     startTime: startTime?.toString(),
     endTime: endTime?.toString(),
-    priceTicketInCake: ethersToSerializedBigNumber(priceTicketInCake),
+    priceTicketInGravy: ethersToSerializedBigNumber(priceTicketInGravy),
     discountDivisor: discountDivisor?.toString(),
     treasuryFee: treasuryFee?.toString(),
     firstTicketId: firstTicketId?.toString(),
     lastTicketId: lastTicketId?.toString(),
-    amountCollectedInCake: ethersToSerializedBigNumber(amountCollectedInCake),
+    amountCollectedInGravy: ethersToSerializedBigNumber(amountCollectedInGravy),
     finalNumber,
-    cakePerBracket: serializedCakePerBracket,
+    gravyPerBracket: serializedGravyPerBracket,
     countWinnersPerBracket: serializedCountWinnersPerBracket,
     rewardsBreakdown: serializedRewardsBreakdown,
   }
@@ -62,14 +62,14 @@ const processViewLotteryErrorResponse = (lotteryId: string): LotteryResponse => 
     status: LotteryStatus.PENDING,
     startTime: '',
     endTime: '',
-    priceTicketInCake: '',
+    priceTicketInGravy: '',
     discountDivisor: '',
     treasuryFee: '',
     firstTicketId: '',
     lastTicketId: '',
-    amountCollectedInCake: '',
+    amountCollectedInGravy: '',
     finalNumber: null,
-    cakePerBracket: [],
+    gravyPerBracket: [],
     countWinnersPerBracket: [],
     rewardsBreakdown: [],
   }
@@ -138,22 +138,22 @@ export const useProcessLotteryResponse = (
   lotteryData: LotteryResponse & { userTickets?: LotteryRoundUserTickets },
 ): LotteryRound => {
   const {
-    priceTicketInCake: priceTicketInCakeAsString,
+    priceTicketInGravy: priceTicketInGravyAsString,
     discountDivisor: discountDivisorAsString,
-    amountCollectedInCake: amountCollectedInCakeAsString,
+    amountCollectedInGravy: amountCollectedInGravyAsString,
   } = lotteryData
 
   const discountDivisor = useMemo(() => {
     return new BigNumber(discountDivisorAsString)
   }, [discountDivisorAsString])
 
-  const priceTicketInCake = useMemo(() => {
-    return new BigNumber(priceTicketInCakeAsString)
-  }, [priceTicketInCakeAsString])
+  const priceTicketInGravy = useMemo(() => {
+    return new BigNumber(priceTicketInGravyAsString)
+  }, [priceTicketInGravyAsString])
 
-  const amountCollectedInCake = useMemo(() => {
-    return new BigNumber(amountCollectedInCakeAsString)
-  }, [amountCollectedInCakeAsString])
+  const amountCollectedInGravy = useMemo(() => {
+    return new BigNumber(amountCollectedInGravyAsString)
+  }, [amountCollectedInGravyAsString])
 
   return {
     isLoading: lotteryData.isLoading,
@@ -162,14 +162,14 @@ export const useProcessLotteryResponse = (
     status: lotteryData.status,
     startTime: lotteryData.startTime,
     endTime: lotteryData.endTime,
-    priceTicketInCake,
+    priceTicketInGravy,
     discountDivisor,
     treasuryFee: lotteryData.treasuryFee,
     firstTicketId: lotteryData.firstTicketId,
     lastTicketId: lotteryData.lastTicketId,
-    amountCollectedInCake,
+    amountCollectedInGravy,
     finalNumber: lotteryData.finalNumber,
-    cakePerBracket: lotteryData.cakePerBracket,
+    gravyPerBracket: lotteryData.gravyPerBracket,
     countWinnersPerBracket: lotteryData.countWinnersPerBracket,
     rewardsBreakdown: lotteryData.rewardsBreakdown,
   }

@@ -3,14 +3,14 @@ import { Text, TooltipText, useTooltip } from '@gravyswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 import Balance from 'components/Balance'
 
-interface RecentCakeProfitBalanceProps {
-  cakeToDisplay: number
+interface RecentGravyProfitBalanceProps {
+  gravyToDisplay: number
   dollarValueToDisplay: number
   dateStringToDisplay: string
 }
 
-const RecentCakeProfitBalance: React.FC<RecentCakeProfitBalanceProps> = ({
-  cakeToDisplay,
+const RecentGravyProfitBalance: React.FC<RecentGravyProfitBalanceProps> = ({
+  gravyToDisplay,
   dollarValueToDisplay,
   dateStringToDisplay,
 }) => {
@@ -18,7 +18,7 @@ const RecentCakeProfitBalance: React.FC<RecentCakeProfitBalanceProps> = ({
 
   const { targetRef, tooltip, tooltipVisible } = useTooltip(
     <>
-      <Balance fontSize="16px" value={cakeToDisplay} decimals={3} bold unit=" GRAVY" />
+      <Balance fontSize="16px" value={gravyToDisplay} decimals={3} bold unit=" GRAVY" />
       <Balance fontSize="16px" value={dollarValueToDisplay} decimals={2} bold prefix="~$" />
       {t('Earned since your last action')}
       <Text>{dateStringToDisplay}</Text>
@@ -32,10 +32,10 @@ const RecentCakeProfitBalance: React.FC<RecentCakeProfitBalanceProps> = ({
     <>
       {tooltipVisible && tooltip}
       <TooltipText ref={targetRef} small>
-        <Balance fontSize="14px" value={cakeToDisplay} />
+        <Balance fontSize="14px" value={gravyToDisplay} />
       </TooltipText>
     </>
   )
 }
 
-export default RecentCakeProfitBalance
+export default RecentGravyProfitBalance

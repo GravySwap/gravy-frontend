@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box, Button, Flex, Text } from '@gravyswap/uikit'
 import { useTranslation } from 'contexts/Localization'
-import { LandingBodyWrapper, StyledWaveContainer } from 'views/PancakeSquad/styles'
+import { LandingBodyWrapper, StyledWaveContainer } from 'views/GravySquad/styles'
 import { useTheme } from 'styled-components'
 import artistConfigBuilder from './config'
 import { StyledArtistBioContainer, StyledArtistSectionContainer, StyledSocialButton } from './styles'

@@ -3,7 +3,7 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_pancakeSquad",
+        "name": "_gravySquad",
         "type": "address"
       },
       {
@@ -18,12 +18,12 @@
       },
       {
         "internalType": "address",
-        "name": "_cakeToken",
+        "name": "_gravyToken",
         "type": "address"
       },
       {
         "internalType": "address",
-        "name": "_pancakeProfile",
+        "name": "_gravyProfile",
         "type": "address"
       },
       {
@@ -277,7 +277,7 @@
   },
   {
     "inputs": [],
-    "name": "cakeToken",
+    "name": "gravyToken",
     "outputs": [
       {
         "internalType": "contract IERC20",
@@ -334,7 +334,7 @@
         "type": "address"
       }
     ],
-    "name": "changeOwnershipPancakeSquad",
+    "name": "changeOwnershipGravySquad",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -556,10 +556,10 @@
   },
   {
     "inputs": [],
-    "name": "pancakeProfile",
+    "name": "gravyProfile",
     "outputs": [
       {
-        "internalType": "contract IPancakeProfile",
+        "internalType": "contract IGravyProfile",
         "name": "",
         "type": "address"
       }
@@ -569,10 +569,10 @@
   },
   {
     "inputs": [],
-    "name": "pancakeSquad",
+    "name": "gravySquad",
     "outputs": [
       {
-        "internalType": "contract PancakeSquad",
+        "internalType": "contract GravySquad",
         "name": "",
         "type": "address"
       }

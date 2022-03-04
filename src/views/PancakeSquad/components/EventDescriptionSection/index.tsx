@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box, Button, Flex, Link, Text } from '@gravyswap/uikit'
 import { useTranslation } from 'contexts/Localization'
-import { LandingBodyWrapper } from 'views/PancakeSquad/styles'
+import { LandingBodyWrapper } from 'views/GravySquad/styles'
 import eventDescriptionConfigBuilder from './config'
 import {
   StyledBodyTextElement,

@@ -1,5 +1,5 @@
 import { ContextApi } from 'contexts/Localization/types'
-import { SaleStatusEnum } from 'views/PancakeSquad/types'
+import { SaleStatusEnum } from 'views/GravySquad/types'
 import { BuyButtonsEnum } from './types'
 
 type getBuyButtonTextProps = {

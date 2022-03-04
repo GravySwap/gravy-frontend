@@ -4,15 +4,15 @@ import { request, gql } from 'graphql-request'
 import { INFO_CLIENT } from 'config/constants/endpoints'
 import { PCS_V2_START } from 'config/constants/info'
 import { ChartEntry } from 'state/info/types'
-import { PancakeDayDatasResponse } from '../types'
+import { GravyDayDatasResponse } from '../types'
 import { fetchChartData, mapDayData } from '../helpers'
 
 /**
  * Data for displaying Liquidity and Volume charts on Overview page
  */
-const PANGRAVY_DAY_DATAS = gql`
+const GRAVY_DAY_DATAS = gql`
   query overviewCharts($startTime: Int!, $skip: Int!) {
-    pancakeDayDatas(first: 1000, skip: $skip, where: { date_gt: $startTime }, orderBy: date, orderDirection: asc) {
+    gravyDayDatas(first: 1000, skip: $skip, where: { date_gt: $startTime }, orderBy: date, orderDirection: asc) {
       date
       dailyVolumeUSD
       totalLiquidityUSD
@@ -22,11 +22,11 @@ const PANGRAVY_DAY_DATAS = gql`
 
 const getOverviewChartData = async (skip: number): Promise<{ data?: ChartEntry[]; error: boolean }> => {
   try {
-    const { pancakeDayDatas } = await request<PancakeDayDatasResponse>(INFO_CLIENT, PANGRAVY_DAY_DATAS, {
+    const { gravyDayDatas } = await request<GravyDayDatasResponse>(INFO_CLIENT, GRAVY_DAY_DATAS, {
       startTime: PCS_V2_START,
       skip,
     })
-    const data = pancakeDayDatas.map(mapDayData)
+    const data = gravyDayDatas.map(mapDayData)
     return { data, error: false }
   } catch (error) {
     console.error('Failed to fetch overview chart data', error)

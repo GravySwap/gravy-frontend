@@ -11,30 +11,30 @@ import PageLoader from 'components/Loader/PageLoader'
 import usePreviousValue from 'hooks/usePreviousValue'
 import useRefresh from 'hooks/useRefresh'
 import useIsWindowVisible from 'hooks/useIsWindowVisible'
-import { PANGRAVY_BUNNIES_UPDATE_FREQUENCY } from 'config'
+import { GRAVY_BUNNIES_UPDATE_FREQUENCY } from 'config'
 import { useGetCollectionDistributionPB } from 'views/Nft/market/hooks/useGetCollectionDistribution'
-import MainPancakeBunnyCard from './MainPancakeBunnyCard'
-import ManagePancakeBunniesCard from './ManagePancakeBunniesCard'
+import MainGravyBunnyCard from './MainGravyBunnyCard'
+import ManageGravyBunniesCard from './ManageGravyBunniesCard'
 import PropertiesCard from '../shared/PropertiesCard'
 import DetailsCard from '../shared/DetailsCard'
 import MoreFromThisCollection from '../shared/MoreFromThisCollection'
 import ForSaleTableCard from './ForSaleTableCard'
-import { pancakeBunniesAddress } from '../../../constants'
+import { gravyBunniesAddress } from '../../../constants'
 import { sortNFTsByPriceBuilder } from './ForSaleTableCard/utils'
 import { SortType } from '../../../types'
 import { TwoColumnsContainer } from '../shared/styles'
 
-interface IndividualPancakeBunnyPageProps {
+interface IndividualGravyBunnyPageProps {
   bunnyId: string
 }
 
-const IndividualPancakeBunnyPage: React.FC<IndividualPancakeBunnyPageProps> = ({ bunnyId }) => {
+const IndividualGravyBunnyPage: React.FC<IndividualGravyBunnyPageProps> = ({ bunnyId }) => {
   const { account } = useWeb3React()
   const [nothingForSaleBunny, setNothingForSaleBunny] = useState<NftToken>(null)
   const allBunnies = useGetAllBunniesByBunnyId(bunnyId)
   const [priceSort, setPriceSort] = useState<SortType>('asc')
   const previousPriceSort = usePreviousValue(priceSort)
-  const { isUpdatingPancakeBunnies, latestPancakeBunniesUpdateAt, fetchMorePancakeBunnies } =
+  const { isUpdatingGravyBunnies, latestGravyBunniesUpdateAt, fetchMoreGravyBunnies } =
     useFetchByBunnyIdAndUpdate(bunnyId)
   const { fastRefresh } = useRefresh()
   const isWindowVisible = useIsWindowVisible()
@@ -50,19 +50,19 @@ const IndividualPancakeBunnyPage: React.FC<IndividualPancakeBunnyPageProps> = ({
   useEffect(() => {
     // Fetch first 30 NFTs on page load
     // And then query every FETCH_NEW_NFTS_INTERVAL_MS in case some new (cheaper) NFTs were listed
-    const msSinceLastUpdate = Date.now() - latestPancakeBunniesUpdateAt
-    // Check for last update is here to prevent too many request due to fetchMorePancakeBunnies updating too often
+    const msSinceLastUpdate = Date.now() - latestGravyBunniesUpdateAt
+    // Check for last update is here to prevent too many request due to fetchMoreGravyBunnies updating too often
     // (it can't be reasonably wrapper in useCallback because the tokens are updated every time you call it, which is the whole point)
     // Since fastRefresh is 10 seconds and FETCH_NEW_NFTS_INTERVAL_MS is 8 seconds it fires every 10 seconds
     // The difference in 2 seconds is just to prevent some edge cases when request takes too long
-    if (msSinceLastUpdate > PANGRAVY_BUNNIES_UPDATE_FREQUENCY && !isUpdatingPancakeBunnies && isWindowVisible) {
-      fetchMorePancakeBunnies(priceSort)
+    if (msSinceLastUpdate > GRAVY_BUNNIES_UPDATE_FREQUENCY && !isUpdatingGravyBunnies && isWindowVisible) {
+      fetchMoreGravyBunnies(priceSort)
     }
   }, [
     priceSort,
-    fetchMorePancakeBunnies,
-    isUpdatingPancakeBunnies,
-    latestPancakeBunniesUpdateAt,
+    fetchMoreGravyBunnies,
+    isUpdatingGravyBunnies,
+    latestGravyBunniesUpdateAt,
     fastRefresh,
     isWindowVisible,
   ])
@@ -70,20 +70,20 @@ const IndividualPancakeBunnyPage: React.FC<IndividualPancakeBunnyPageProps> = ({
   useEffect(() => {
     // Fetch most expensive items if user selects other sorting
     if (previousPriceSort && previousPriceSort !== priceSort) {
-      fetchMorePancakeBunnies(priceSort)
+      fetchMoreGravyBunnies(priceSort)
     }
-  }, [fetchMorePancakeBunnies, priceSort, previousPriceSort])
+  }, [fetchMoreGravyBunnies, priceSort, previousPriceSort])
 
   useEffect(() => {
     const fetchBasicBunnyData = async () => {
-      const { data } = await getNftsFromCollectionApi(pancakeBunniesAddress)
+      const { data } = await getNftsFromCollectionApi(gravyBunniesAddress)
       setNothingForSaleBunny({
         // In this case tokenId doesn't matter, this token can't be bought
         tokenId: data[bunnyId].name,
         name: data[bunnyId].name,
         description: data[bunnyId].description,
         collectionName: data[bunnyId].collection.name,
-        collectionAddress: pancakeBunniesAddress,
+        collectionAddress: gravyBunniesAddress,
         image: data[bunnyId].image,
         attributes: [
           {
@@ -135,17 +135,17 @@ const IndividualPancakeBunnyPage: React.FC<IndividualPancakeBunnyPageProps> = ({
 
   return (
     <Page>
-      <MainPancakeBunnyCard
+      <MainGravyBunnyCard
         cheapestNft={cheapestBunny}
         cheapestNftFromOtherSellers={cheapestBunnyFromOtherSellers}
         nothingForSaleBunny={nothingForSaleBunny}
       />
       <TwoColumnsContainer flexDirection={['column', 'column', 'row']}>
         <Flex flexDirection="column" width="100%">
-          <ManagePancakeBunniesCard bunnyId={bunnyId} lowestPrice={cheapestBunny?.marketData?.currentAskPrice} />
+          <ManageGravyBunniesCard bunnyId={bunnyId} lowestPrice={cheapestBunny?.marketData?.currentAskPrice} />
           <PropertiesCard properties={properties} rarity={propertyRarity} />
           <DetailsCard
-            contractAddress={pancakeBunniesAddress}
+            contractAddress={gravyBunniesAddress}
             ipfsJson={cheapestBunny?.marketData?.metadataUrl}
             rarity={propertyRarity?.bunnyId}
             count={getBunnyIdCount()}
@@ -155,18 +155,18 @@ const IndividualPancakeBunnyPage: React.FC<IndividualPancakeBunnyPageProps> = ({
           nftsForSale={sortedNfts}
           bunnyId={bunnyId}
           totalForSale={allBunnies.length}
-          loadMore={fetchMorePancakeBunnies}
+          loadMore={fetchMoreGravyBunnies}
           priceSort={priceSort}
           togglePriceSort={togglePriceSort}
-          isFetchingMoreNfts={isUpdatingPancakeBunnies}
+          isFetchingMoreNfts={isUpdatingGravyBunnies}
         />
       </TwoColumnsContainer>
       <MoreFromThisCollection
-        collectionAddress={pancakeBunniesAddress}
+        collectionAddress={gravyBunniesAddress}
         currentTokenName={cheapestBunny?.name || nothingForSaleBunny?.name}
       />
     </Page>
   )
 }
 
-export default IndividualPancakeBunnyPage
+export default IndividualGravyBunnyPage

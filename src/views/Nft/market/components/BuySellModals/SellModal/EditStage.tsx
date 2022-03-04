@@ -1,7 +1,7 @@
 import React from 'react'
 import { Flex, Grid, Text, Button, Link, LinkExternal, BinanceIcon } from '@gravyswap/uikit'
 import { useTranslation } from 'contexts/Localization'
-import { nftsBaseUrl, pancakeBunniesAddress } from 'views/Nft/market/constants'
+import { nftsBaseUrl, gravyBunniesAddress } from 'views/Nft/market/constants'
 import { NftToken } from 'state/nftMarket/types'
 import { getBscScanLinkForNft } from 'utils'
 import { Divider, HorizontalDivider, RoundedImage } from '../shared/styles'
@@ -22,7 +22,7 @@ const EditStage: React.FC<EditStageProps> = ({
 }) => {
   const { t } = useTranslation()
   const itemPageUrlId =
-    nftToSell.collectionAddress.toLowerCase() === pancakeBunniesAddress.toLowerCase()
+    nftToSell.collectionAddress.toLowerCase() === gravyBunniesAddress.toLowerCase()
       ? nftToSell.attributes[0].value
       : nftToSell.tokenId
 

@@ -3,11 +3,11 @@ import styled from 'styled-components'
 import BigNumber from 'bignumber.js'
 import { Text, useMatchBreakpoints } from '@gravyswap/uikit'
 import { useTranslation } from 'contexts/Localization'
-import { useCakeVault } from 'state/pools/hooks'
+import { useGravyVault } from 'state/pools/hooks'
 import { DeserializedPool } from 'state/types'
 import { BIG_ZERO } from 'utils/bigNumber'
 import { TokenPairImage } from 'components/TokenImage'
-import CakeVaultTokenPairImage from '../../CakeVaultCard/CakeVaultTokenPairImage'
+import GravyVaultTokenPairImage from '../../GravyVaultCard/GravyVaultTokenPairImage'
 import BaseCell, { CellContent } from './BaseCell'
 
 interface NameCellProps {
@@ -30,7 +30,7 @@ const NameCell: React.FC<NameCellProps> = ({ pool }) => {
   const { sousId, stakingToken, earningToken, userData, isFinished, isAutoVault } = pool
   const {
     userData: { userShares },
-  } = useCakeVault()
+  } = useGravyVault()
   const hasVaultShares = userShares && userShares.gt(0)
 
   const stakingTokenSymbol = stakingToken.symbol
@@ -38,7 +38,7 @@ const NameCell: React.FC<NameCellProps> = ({ pool }) => {
 
   const stakedBalance = userData?.stakedBalance ? new BigNumber(userData.stakedBalance) : BIG_ZERO
   const isStaked = stakedBalance.gt(0)
-  const isManualCakePool = sousId === 0
+  const isManualGravyPool = sousId === 0
 
   const showStakedTag = isAutoVault ? hasVaultShares : isStaked
 
@@ -49,7 +49,7 @@ const NameCell: React.FC<NameCellProps> = ({ pool }) => {
   if (isAutoVault) {
     title = t('Auto GRAVY')
     subtitle = t('Automatic restaking')
-  } else if (isManualCakePool) {
+  } else if (isManualGravyPool) {
     title = t('Manual GRAVY')
     subtitle = `${t('Earn')} GRAVY ${t('Stake').toLocaleLowerCase()} GRAVY`
   }
@@ -57,7 +57,7 @@ const NameCell: React.FC<NameCellProps> = ({ pool }) => {
   return (
     <StyledCell role="cell">
       {isAutoVault ? (
-        <CakeVaultTokenPairImage mr="8px" width={40} height={40} />
+        <GravyVaultTokenPairImage mr="8px" width={40} height={40} />
       ) : (
         <TokenPairImage primaryToken={earningToken} secondaryToken={stakingToken} mr="8px" width={40} height={40} />
       )}

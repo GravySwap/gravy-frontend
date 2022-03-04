@@ -19,10 +19,10 @@ const PauseProfilePage: React.FC<PauseProfilePageProps> = ({ onDismiss }) => {
   const [isConfirming, setIsConfirming] = useState(false)
   const { profile } = useProfile()
   const {
-    costs: { numberCakeToReactivate },
+    costs: { numberGravyToReactivate },
   } = useGetProfileCosts()
   const { t } = useTranslation()
-  const pancakeProfileContract = useProfileContract()
+  const gravyProfileContract = useProfileContract()
   const { callWithGasPrice } = useCallWithGasPrice()
   const { account } = useWeb3React()
   const { toastSuccess, toastError } = useToast()
@@ -31,7 +31,7 @@ const PauseProfilePage: React.FC<PauseProfilePageProps> = ({ onDismiss }) => {
   const handleChange = () => setIsAcknowledged(!isAcknowledged)
 
   const handleDeactivateProfile = async () => {
-    const tx = await callWithGasPrice(pancakeProfileContract, 'pauseProfile')
+    const tx = await callWithGasPrice(gravyProfileContract, 'pauseProfile')
     setIsConfirming(true)
     const receipt = await tx.wait()
     if (receipt.status) {
@@ -60,7 +60,7 @@ const PauseProfilePage: React.FC<PauseProfilePageProps> = ({ onDismiss }) => {
         )}
       </Text>
       <Text as="p" color="textSubtle" mb="24px">
-        {t('Cost to reactivate in the future: %cost% GRAVY', { cost: formatBigNumber(numberCakeToReactivate) })}
+        {t('Cost to reactivate in the future: %cost% GRAVY', { cost: formatBigNumber(numberGravyToReactivate) })}
       </Text>
       <label htmlFor="acknowledgement" style={{ cursor: 'pointer', display: 'block', marginBottom: '24px' }}>
         <Flex alignItems="center">

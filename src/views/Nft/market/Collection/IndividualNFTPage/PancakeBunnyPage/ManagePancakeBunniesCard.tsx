@@ -127,12 +127,12 @@ const CollectiblesByLocation: React.FC<CollectiblesByLocationProps> = ({ locatio
   )
 }
 
-interface ManagePancakeBunniesCardProps {
+interface ManageGravyBunniesCardProps {
   bunnyId: string
   lowestPrice?: string
 }
 
-const ManagePancakeBunniesCard: React.FC<ManagePancakeBunniesCardProps> = ({ bunnyId, lowestPrice }) => {
+const ManageGravyBunniesCard: React.FC<ManageGravyBunniesCardProps> = ({ bunnyId, lowestPrice }) => {
   const { t } = useTranslation()
   const { account } = useWeb3React()
   const { userNftsInitializationState, nfts: userNfts } = useUserNfts()
@@ -191,4 +191,4 @@ const ManagePancakeBunniesCard: React.FC<ManagePancakeBunniesCardProps> = ({ bun
   return <ExpandableCard title={t('Manage Yours')} icon={<CogIcon width="24px" height="24px" />} content={content} />
 }
 
-export default ManagePancakeBunniesCard
+export default ManageGravyBunniesCard

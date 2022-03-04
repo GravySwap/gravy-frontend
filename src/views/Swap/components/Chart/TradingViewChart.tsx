@@ -60,7 +60,7 @@ const TradingViewChart = ({
     if (!(inputCurrency?.symbol && outputCurrency?.symbol)) {
       return null
     }
-    const prefix = 'PANGRAVYSWAP:'
+    const prefix = 'GRAVYSWAP:'
     const input = bnbToWBNBSymbol(inputCurrency.symbol)
     const output = bnbToWBNBSymbol(outputCurrency.symbol)
     return `${prefix}${input}${output}`

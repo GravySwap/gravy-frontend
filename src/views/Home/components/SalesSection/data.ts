@@ -10,7 +10,7 @@ export const swapSectionData: SalesSectionProps = {
     external: false,
   },
   secondaryButton: {
-    to: 'https://docs.pancakeswap.finance/',
+    to: 'https://docs.gravyswap.com/',
     text: 'Learn',
     external: true,
   },
@@ -34,7 +34,7 @@ export const earnSectionData: SalesSectionProps = {
     external: false,
   },
   secondaryButton: {
-    to: 'https://docs.pancakeswap.finance/products/yield-farming',
+    to: 'https://docs.gravyswap.com/products/yield-farming',
     text: 'Learn',
     external: true,
   },
@@ -47,7 +47,7 @@ export const earnSectionData: SalesSectionProps = {
   },
 }
 
-export const cakeSectionData: SalesSectionProps = {
+export const gravySectionData: SalesSectionProps = {
   headingText: 'GRAVY makes our world go round.',
   bodyText:
     'GRAVY token is at the heart of the GravySwap ecosystem. Buy it, win it, farm it, spend it, stake it... heck, you can even vote with it!',
@@ -58,13 +58,13 @@ export const cakeSectionData: SalesSectionProps = {
     external: false,
   },
   secondaryButton: {
-    to: 'https://docs.pancakeswap.finance/tokenomics/cake',
+    to: 'https://docs.gravyswap.com/tokenomics/gravy',
     text: 'Learn',
     external: true,
   },
 
   images: {
-    path: '/images/home/cake/',
+    path: '/images/home/gravy/',
     attributes: [{ src: 'coin', alt: 'GRAVY token' }],
   },
 }

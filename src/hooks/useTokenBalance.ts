@@ -3,7 +3,7 @@ import { ethers } from 'ethers'
 import BigNumber from 'bignumber.js'
 import { useWeb3React } from '@web3-react/core'
 import tokens from 'config/constants/tokens'
-import { getBep20Contract, getCakeContract } from 'utils/contractHelpers'
+import { getBep20Contract, getGravyContract } from 'utils/contractHelpers'
 import { BIG_ZERO } from 'utils/bigNumber'
 import { simpleRpcProvider } from 'utils/providers'
 import useRefresh from './useRefresh'
@@ -58,8 +58,8 @@ export const useTotalSupply = () => {
 
   useEffect(() => {
     async function fetchTotalSupply() {
-      const cakeContract = getCakeContract()
-      const supply = await cakeContract.totalSupply()
+      const gravyContract = getGravyContract()
+      const supply = await gravyContract.totalSupply()
       setTotalSupply(new BigNumber(supply.toString()))
     }
 
@@ -111,8 +111,8 @@ export const useGetBnbBalance = () => {
   return { balance, fetchStatus, refresh: setLastUpdated }
 }
 
-export const useGetCakeBalance = () => {
-  const { balance, fetchStatus } = useTokenBalance(tokens.cake.address)
+export const useGetGravyBalance = () => {
+  const { balance, fetchStatus } = useTokenBalance(tokens.gravy.address)
 
   // TODO: Remove ethers conversion once useTokenBalance is converted to ethers.BigNumber
   return { balance: ethers.BigNumber.from(balance.toString()), fetchStatus }

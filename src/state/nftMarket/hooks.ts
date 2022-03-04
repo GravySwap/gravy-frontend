@@ -1,7 +1,7 @@
 import { useEffect, useMemo } from 'react'
 import { useSelector } from 'react-redux'
 import { useAppDispatch } from 'state'
-import { pancakeBunniesAddress } from 'views/Nft/market/constants'
+import { gravyBunniesAddress } from 'views/Nft/market/constants'
 import { isAddress } from 'utils'
 import { fetchCollection, fetchCollections, fetchNewPBAndUpdateExisting } from './reducer'
 import { State } from '../types'
@@ -25,11 +25,11 @@ export const useFetchCollection = (collectionAddress: string) => {
 
 // Returns a function that fetches more NFTs for specified bunny id
 // as well as updating existing PB NFTs in state
-// Note: PancakeBunny specific
+// Note: GravyBunny specific
 export const useFetchByBunnyIdAndUpdate = (bunnyId: string) => {
   const dispatch = useAppDispatch()
 
-  const { latestPancakeBunniesUpdateAt, isUpdatingPancakeBunnies } = useSelector(
+  const { latestGravyBunniesUpdateAt, isUpdatingGravyBunnies } = useSelector(
     (state: State) => state.nftMarket.data.loadingState,
   )
 
@@ -38,8 +38,8 @@ export const useFetchByBunnyIdAndUpdate = (bunnyId: string) => {
   const existingBunniesInState = useGetAllBunniesByBunnyId(bunnyId)
   const existingTokensWithBunnyId = existingBunniesInState ? existingBunniesInState.map((nft) => nft.tokenId) : []
 
-  const allPancakeBunnies = useNftsFromCollection(pancakeBunniesAddress)
-  const allExistingPBTokenIds = allPancakeBunnies ? allPancakeBunnies.map((nft) => nft.tokenId) : []
+  const allGravyBunnies = useNftsFromCollection(gravyBunniesAddress)
+  const allExistingPBTokenIds = allGravyBunnies ? allGravyBunnies.map((nft) => nft.tokenId) : []
 
   const firstBunny = existingBunniesInState.length > 0 ? existingBunniesInState[0] : null
 
@@ -56,7 +56,7 @@ export const useFetchByBunnyIdAndUpdate = (bunnyId: string) => {
   }, [firstBunny])
 
   // This fetches more bunnies when called
-  const fetchMorePancakeBunnies = (orderDirection: 'asc' | 'desc') => {
+  const fetchMoreGravyBunnies = (orderDirection: 'asc' | 'desc') => {
     dispatch(
       fetchNewPBAndUpdateExisting({
         bunnyId,
@@ -68,7 +68,7 @@ export const useFetchByBunnyIdAndUpdate = (bunnyId: string) => {
     )
   }
 
-  return { isUpdatingPancakeBunnies, latestPancakeBunniesUpdateAt, fetchMorePancakeBunnies }
+  return { isUpdatingGravyBunnies, latestGravyBunniesUpdateAt, fetchMoreGravyBunnies }
 }
 
 export const useLoadingState = () => {
@@ -92,7 +92,7 @@ export const useNftsFromCollection = (collectionAddress: string) => {
 }
 
 export const useGetAllBunniesByBunnyId = (bunnyId: string) => {
-  const nfts: NftToken[] = useSelector((state: State) => state.nftMarket.data.nfts[pancakeBunniesAddress])
+  const nfts: NftToken[] = useSelector((state: State) => state.nftMarket.data.nfts[gravyBunniesAddress])
   return nfts ? nfts.filter((nft) => nft.attributes[0].value === bunnyId && nft.marketData.isTradable) : []
 }
 

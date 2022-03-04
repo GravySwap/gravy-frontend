@@ -25,7 +25,7 @@ const EndsInCell: React.FC<FinishCellProps> = ({ pool }) => {
   const { shouldShowBlockCountdown, blocksUntilStart, blocksRemaining, hasPoolStarted, blocksToDisplay } =
     getPoolBlockInfo(pool, currentBlock)
 
-  const isCakePool = sousId === 0
+  const isGravyPool = sousId === 0
 
   const renderBlocks = shouldShowBlockCountdown ? (
     <Flex alignItems="center">
@@ -54,7 +54,7 @@ const EndsInCell: React.FC<FinishCellProps> = ({ pool }) => {
   // anywhere else
   const isLoadingBlockData = !currentBlock || (!blocksRemaining && !blocksUntilStart)
   const isLoadingPublicData = hasPoolStarted ? !totalStaked.gt(0) || isLoadingBlockData : isLoadingBlockData
-  const showLoading = isLoadingPublicData && !isCakePool && !isFinished
+  const showLoading = isLoadingPublicData && !isGravyPool && !isFinished
   return (
     <StyledCell role="cell">
       <CellContent>

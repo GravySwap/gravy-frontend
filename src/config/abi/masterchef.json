@@ -2,8 +2,8 @@
   {
     "inputs": [
       {
-        "internalType": "contract CakeToken",
-        "name": "_cake",
+        "internalType": "contract GravyToken",
+        "name": "_gravy",
         "type": "address"
       },
       {
@@ -18,7 +18,7 @@
       },
       {
         "internalType": "uint256",
-        "name": "_cakePerBlock",
+        "name": "_gravyPerBlock",
         "type": "uint256"
       },
       {
@@ -162,10 +162,10 @@
   },
   {
     "inputs": [],
-    "name": "cake",
+    "name": "gravy",
     "outputs": [
       {
-        "internalType": "contract CakeToken",
+        "internalType": "contract GravyToken",
         "name": "",
         "type": "address"
       }
@@ -175,7 +175,7 @@
   },
   {
     "inputs": [],
-    "name": "cakePerBlock",
+    "name": "gravyPerBlock",
     "outputs": [
       {
         "internalType": "uint256",
@@ -352,7 +352,7 @@
         "type": "address"
       }
     ],
-    "name": "pendingCake",
+    "name": "pendingGravy",
     "outputs": [
       {
         "internalType": "uint256",
@@ -390,7 +390,7 @@
       },
       {
         "internalType": "uint256",
-        "name": "accCakePerShare",
+        "name": "accGravyPerShare",
         "type": "uint256"
       }
     ],

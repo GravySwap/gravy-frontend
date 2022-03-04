@@ -4,7 +4,7 @@ import { ethers, Contract } from 'ethers'
 import { useAppDispatch } from 'state'
 import { updateUserAllowance } from 'state/actions'
 import { useTranslation } from 'contexts/Localization'
-import { useCake, useSousChef, useCakeVaultContract } from 'hooks/useContract'
+import { useGravy, useSousChef, useGravyVaultContract } from 'hooks/useContract'
 import useToast from 'hooks/useToast'
 import useLastUpdated from 'hooks/useLastUpdated'
 import { useCallWithGasPrice } from 'hooks/useCallWithGasPrice'
@@ -64,12 +64,12 @@ export const useVaultApprove = (setLastUpdated: () => void) => {
   const [requestedApproval, setRequestedApproval] = useState(false)
   const { t } = useTranslation()
   const { toastSuccess, toastError } = useToast()
-  const cakeVaultContract = useCakeVaultContract()
+  const gravyVaultContract = useGravyVaultContract()
   const { callWithGasPrice } = useCallWithGasPrice()
-  const cakeContract = useCake()
+  const gravyContract = useGravy()
 
   const handleApprove = async () => {
-    const tx = await callWithGasPrice(cakeContract, 'approve', [cakeVaultContract.address, ethers.constants.MaxUint256])
+    const tx = await callWithGasPrice(gravyContract, 'approve', [gravyVaultContract.address, ethers.constants.MaxUint256])
     setRequestedApproval(true)
     const receipt = await tx.wait()
     if (receipt.status) {
@@ -93,13 +93,13 @@ export const useVaultApprove = (setLastUpdated: () => void) => {
 export const useCheckVaultApprovalStatus = () => {
   const [isVaultApproved, setIsVaultApproved] = useState(false)
   const { account } = useWeb3React()
-  const cakeContract = useCake()
-  const cakeVaultContract = useCakeVaultContract()
+  const gravyContract = useGravy()
+  const gravyVaultContract = useGravyVaultContract()
   const { lastUpdated, setLastUpdated } = useLastUpdated()
   useEffect(() => {
     const checkApprovalStatus = async () => {
       try {
-        const currentAllowance = await cakeContract.allowance(account, cakeVaultContract.address)
+        const currentAllowance = await gravyContract.allowance(account, gravyVaultContract.address)
         setIsVaultApproved(currentAllowance.gt(0))
       } catch (error) {
         setIsVaultApproved(false)
@@ -107,7 +107,7 @@ export const useCheckVaultApprovalStatus = () => {
     }
 
     checkApprovalStatus()
-  }, [account, cakeContract, cakeVaultContract, lastUpdated])
+  }, [account, gravyContract, gravyVaultContract, lastUpdated])
 
   return { isVaultApproved, setLastUpdated }
 }

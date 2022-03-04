@@ -3,7 +3,7 @@ import { Grid } from '@gravyswap/uikit'
 import orderBy from 'lodash/orderBy'
 import { Collection } from 'state/nftMarket/types'
 import { CollectibleLinkCard } from '../../components/CollectibleCard'
-import useAllPancakeBunnyNfts from '../../hooks/useAllPancakeBunnyNfts'
+import useAllGravyBunnyNfts from '../../hooks/useAllGravyBunnyNfts'
 import GridPlaceholder from '../../components/GridPlaceholder'
 
 interface CollectionNftsProps {
@@ -11,12 +11,12 @@ interface CollectionNftsProps {
   sortBy?: string
 }
 
-const PancakeBunniesCollectionNfts: React.FC<CollectionNftsProps> = ({ collection, sortBy = 'updatedAt' }) => {
+const GravyBunniesCollectionNfts: React.FC<CollectionNftsProps> = ({ collection, sortBy = 'updatedAt' }) => {
   const { address } = collection
-  const allPancakeBunnyNfts = useAllPancakeBunnyNfts(address)
+  const allGravyBunnyNfts = useAllGravyBunnyNfts(address)
 
-  const sortedNfts = allPancakeBunnyNfts
-    ? orderBy(allPancakeBunnyNfts, (nft) => (nft.meta[sortBy] ? Number(nft?.meta[sortBy]) : 0), [
+  const sortedNfts = allGravyBunnyNfts
+    ? orderBy(allGravyBunnyNfts, (nft) => (nft.meta[sortBy] ? Number(nft?.meta[sortBy]) : 0), [
         sortBy === 'currentAskPrice' ? 'asc' : 'desc',
       ])
     : []
@@ -40,4 +40,4 @@ const PancakeBunniesCollectionNfts: React.FC<CollectionNftsProps> = ({ collectio
   )
 }
 
-export default PancakeBunniesCollectionNfts
+export default GravyBunniesCollectionNfts

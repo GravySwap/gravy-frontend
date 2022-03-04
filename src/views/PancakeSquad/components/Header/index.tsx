@@ -2,10 +2,10 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Box, Flex, lightColors, Spinner, Text, Timeline } from '@gravyswap/uikit'
 import { useTranslation } from 'contexts/Localization'
-import { useGetCakeBalance } from 'hooks/useTokenBalance'
+import { useGetGravyBalance } from 'hooks/useTokenBalance'
 import useTheme from 'hooks/useTheme'
-import { StyledWaveContainer } from 'views/PancakeSquad/styles'
-import { UserStatusEnum } from 'views/PancakeSquad/types'
+import { StyledWaveContainer } from 'views/GravySquad/styles'
+import { UserStatusEnum } from 'views/GravySquad/types'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import HeaderBottomWave from '../../assets/HeaderBottomWave'
 import nftSaleConfigBuilder from '../../config'
@@ -19,12 +19,12 @@ import {
   StyledSquadHeaderContainer,
   StyledSquadTitle,
 } from './styles'
-import { PancakeSquadHeaderType } from './types'
+import { GravySquadHeaderType } from './types'
 
 const DEFAULT_GRAVY_COST = 15
 const DEFAULT_MAX_TICKETS = 10
 
-const PancakeSquadHeader: React.FC<PancakeSquadHeaderType> = ({
+const GravySquadHeader: React.FC<GravySquadHeaderType> = ({
   userInfos,
   eventInfos,
   account,
@@ -33,7 +33,7 @@ const PancakeSquadHeader: React.FC<PancakeSquadHeaderType> = ({
 }) => {
   const { t } = useTranslation()
   const { theme, isDark } = useTheme()
-  const { balance: cakeBalance } = useGetCakeBalance()
+  const { balance: gravyBalance } = useGetGravyBalance()
   const displayEventBlock = !!eventInfos || isLoading
   const {
     ticketsOfUser,
@@ -68,7 +68,7 @@ const PancakeSquadHeader: React.FC<PancakeSquadHeaderType> = ({
         </Link>
       </Flex>
       <StyledSquadTitle my="32px" color={lightColors.invertedContrast} bold textAlign="center">
-        {t('Pancake Squad')}
+        {t('Gravy Squad')}
       </StyledSquadTitle>
       <Text color={lightColors.warning} textAlign="center" bold>
         {`${t('Presale:')} 04:00 UTC, Oct. 7`}
@@ -141,7 +141,7 @@ const PancakeSquadHeader: React.FC<PancakeSquadHeaderType> = ({
                         numberTicketsOfUser={numberTicketsOfUser}
                         numberTicketsUsedForGen0={numberTicketsUsedForGen0}
                         totalSupplyMinted={totalSupplyMinted}
-                        cakeBalance={cakeBalance}
+                        gravyBalance={gravyBalance}
                         maxPerTransaction={maxPerTransaction}
                         numberTicketsForGen0={numberTicketsForGen0}
                         pricePerTicket={pricePerTicket}
@@ -169,4 +169,4 @@ const PancakeSquadHeader: React.FC<PancakeSquadHeaderType> = ({
   )
 }
 
-export default PancakeSquadHeader
+export default GravySquadHeader

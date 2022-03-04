@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
-import { pancakeBunniesAddress } from 'views/Nft/market/constants'
+import { gravyBunniesAddress } from 'views/Nft/market/constants'
 import isEmpty from 'lodash/isEmpty'
 import {
   getNftsFromCollectionApi,
@@ -15,7 +15,7 @@ import {
   getNftsByBunnyIdSg,
   getMarketDataForTokenIds,
   getMetadataWithFallback,
-  getPancakeBunniesAttributesField,
+  getGravyBunniesAttributesField,
   combineApiAndSgResponseToNftToken,
   fetchNftsFiltered,
 } from './helpers'
@@ -58,8 +58,8 @@ const initialState: State = {
     filters: {},
     activityFilters: {},
     loadingState: {
-      isUpdatingPancakeBunnies: false,
-      latestPancakeBunniesUpdateAt: 0,
+      isUpdatingGravyBunnies: false,
+      latestGravyBunniesUpdateAt: 0,
     },
     users: {},
     user: {
@@ -108,8 +108,8 @@ export const fetchNftsFromCollections = createAsyncThunk<
   { collectionAddress: string; page: number; size: number }
 >('nft/fetchNftsFromCollections', async ({ collectionAddress, page, size }) => {
   try {
-    if (collectionAddress === pancakeBunniesAddress) {
-      // PancakeBunnies don't need to pre-fetch "all nfts" from the collection
+    if (collectionAddress === gravyBunniesAddress) {
+      // GravyBunnies don't need to pre-fetch "all nfts" from the collection
       // When user visits IndividualNFTPage required nfts will be fetched via bunny id
       return []
     }
@@ -187,7 +187,7 @@ export const filterNftsFromCollection = createAsyncThunk<
 })
 
 /**
- * This action keeps data on the individual PancakeBunny page up-to-date. Operation is a twofold
+ * This action keeps data on the individual GravyBunny page up-to-date. Operation is a twofold
  * 1. Update existing NFTs in the state in case some were sold or got price modified
  * 2. Fetch 30 more NFTs with specified bunny id
  */
@@ -206,8 +206,8 @@ export const fetchNewPBAndUpdateExisting = createAsyncThunk<
     try {
       // 1. Update existing NFTs in the state in case some were sold or got price modified
       const [updatedNfts, updatedNftsMarket] = await Promise.all([
-        getNftsFromCollectionApi(pancakeBunniesAddress),
-        getMarketDataForTokenIds(pancakeBunniesAddress, allExistingPBTokenIds),
+        getNftsFromCollectionApi(gravyBunniesAddress),
+        getMarketDataForTokenIds(gravyBunniesAddress, allExistingPBTokenIds),
       ])
 
       if (!updatedNfts?.data) {
@@ -215,7 +215,7 @@ export const fetchNewPBAndUpdateExisting = createAsyncThunk<
       }
       const updatedTokens = updatedNftsMarket.map((marketData) => {
         const apiMetadata = getMetadataWithFallback(updatedNfts.data, marketData.otherId)
-        const attributes = getPancakeBunniesAttributesField(marketData.otherId)
+        const attributes = getGravyBunniesAttributesField(marketData.otherId)
         return combineApiAndSgResponseToNftToken(apiMetadata, marketData, attributes)
       })
 
@@ -223,7 +223,7 @@ export const fetchNewPBAndUpdateExisting = createAsyncThunk<
       let newNfts = { data: { [bunnyId]: existingMetadata } }
 
       if (!existingMetadata) {
-        newNfts = await getNftsFromCollectionApi(pancakeBunniesAddress)
+        newNfts = await getNftsFromCollectionApi(gravyBunniesAddress)
       }
       const nftsMarket = await getNftsByBunnyIdSg(bunnyId, existingTokensWithBunnyId, orderDirection)
 
@@ -233,12 +233,12 @@ export const fetchNewPBAndUpdateExisting = createAsyncThunk<
 
       const moreTokensWithRequestedBunnyId = nftsMarket.map((marketData) => {
         const apiMetadata = getMetadataWithFallback(newNfts.data, marketData.otherId)
-        const attributes = getPancakeBunniesAttributesField(marketData.otherId)
+        const attributes = getGravyBunniesAttributesField(marketData.otherId)
         return combineApiAndSgResponseToNftToken(apiMetadata, marketData, attributes)
       })
       return [...updatedTokens, ...moreTokensWithRequestedBunnyId]
     } catch (error) {
-      console.error(`Failed to update PancakeBunnies NFTs`, error)
+      console.error(`Failed to update GravyBunnies NFTs`, error)
       return []
     }
   },
@@ -407,18 +407,18 @@ export const NftMarket = createSlice({
       state.data.nfts[collectionAddress] = [...existingNftsWithoutNewOnes, ...action.payload]
     })
     builder.addCase(fetchNewPBAndUpdateExisting.pending, (state) => {
-      state.data.loadingState.isUpdatingPancakeBunnies = true
+      state.data.loadingState.isUpdatingGravyBunnies = true
     })
     builder.addCase(fetchNewPBAndUpdateExisting.fulfilled, (state, action) => {
       if (action.payload.length > 0) {
-        state.data.nfts[pancakeBunniesAddress] = action.payload
+        state.data.nfts[gravyBunniesAddress] = action.payload
       }
-      state.data.loadingState.isUpdatingPancakeBunnies = false
-      state.data.loadingState.latestPancakeBunniesUpdateAt = Date.now()
+      state.data.loadingState.isUpdatingGravyBunnies = false
+      state.data.loadingState.latestGravyBunniesUpdateAt = Date.now()
     })
     builder.addCase(fetchNewPBAndUpdateExisting.rejected, (state) => {
-      state.data.loadingState.isUpdatingPancakeBunnies = false
-      state.data.loadingState.latestPancakeBunniesUpdateAt = Date.now()
+      state.data.loadingState.isUpdatingGravyBunnies = false
+      state.data.loadingState.latestGravyBunniesUpdateAt = Date.now()
     })
     builder.addCase(fetchUserNfts.rejected, (state) => {
       state.data.user.userNftsInitializationState = UserNftInitializationState.ERROR

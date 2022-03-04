@@ -24,8 +24,8 @@ export const getCustomMeta = (path: string, t: ContextApi['t']): PageMeta => {
     basePath = '/nfts/collections'
   } else if (path.startsWith('/nfts/profile')) {
     basePath = '/nfts/profile'
-  } else if (path.startsWith('/pancake-squad')) {
-    basePath = '/pancake-squad'
+  } else if (path.startsWith('/gravy-squad')) {
+    basePath = '/gravy-squad'
   } else {
     basePath = path
   }
@@ -106,17 +106,17 @@ export const getCustomMeta = (path: string, t: ContextApi['t']): PageMeta => {
     case '/info':
       return {
         title: `${t('Overview')} | ${t('GravySwap Info & Analytics')}`,
-        description: 'View statistics for Pancakeswap exchanges.',
+        description: 'View statistics for Gravyswap exchanges.',
       }
     case '/info/pools':
       return {
         title: `${t('Pools')} | ${t('GravySwap Info & Analytics')}`,
-        description: 'View statistics for Pancakeswap exchanges.',
+        description: 'View statistics for Gravyswap exchanges.',
       }
     case '/info/tokens':
       return {
         title: `${t('Tokens')} | ${t('GravySwap Info & Analytics')}`,
-        description: 'View statistics for Pancakeswap exchanges.',
+        description: 'View statistics for Gravyswap exchanges.',
       }
     case '/nfts':
       return {
@@ -130,9 +130,9 @@ export const getCustomMeta = (path: string, t: ContextApi['t']): PageMeta => {
       return {
         title: `${t('Your Profile')} | ${t('GravySwap')}`,
       }
-    case '/pancake-squad':
+    case '/gravy-squad':
       return {
-        title: `${t('Pancake Squad')} | ${t('GravySwap')}`,
+        title: `${t('Gravy Squad')} | ${t('GravySwap')}`,
       }
     default:
       return null

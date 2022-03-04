@@ -3,7 +3,7 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_cakeVault",
+        "name": "_gravyVault",
         "type": "address"
       },
       {
@@ -13,7 +13,7 @@
       },
       {
         "internalType": "address",
-        "name": "_pancakeProfile",
+        "name": "_gravyProfile",
         "type": "address"
       },
       {
@@ -169,10 +169,10 @@
   },
   {
     "inputs": [],
-    "name": "cakeVault",
+    "name": "gravyVault",
     "outputs": [
       {
-        "internalType": "contract CakeVault",
+        "internalType": "contract GravyVault",
         "name": "",
         "type": "address"
       }
@@ -331,10 +331,10 @@
   },
   {
     "inputs": [],
-    "name": "pancakeProfile",
+    "name": "gravyProfile",
     "outputs": [
       {
-        "internalType": "contract PancakeProfile",
+        "internalType": "contract GravyProfile",
         "name": "",
         "type": "address"
       }

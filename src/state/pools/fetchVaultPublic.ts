@@ -1,8 +1,8 @@
 import BigNumber from 'bignumber.js'
-import { convertSharesToCake } from 'views/Pools/helpers'
+import { convertSharesToGravy } from 'views/Pools/helpers'
 import { multicallv2 } from 'utils/multicall'
-import cakeVaultAbi from 'config/abi/cakeVault.json'
-import { getCakeVaultAddress } from 'utils/addressHelpers'
+import gravyVaultAbi from 'config/abi/gravyVault.json'
+import { getGravyVaultAddress } from 'utils/addressHelpers'
 import { BIG_ZERO } from 'utils/bigNumber'
 
 export const fetchPublicVaultData = async () => {
@@ -10,35 +10,35 @@ export const fetchPublicVaultData = async () => {
     const calls = [
       'getPricePerFullShare',
       'totalShares',
-      'calculateHarvestCakeRewards',
-      'calculateTotalPendingCakeRewards',
+      'calculateHarvestGravyRewards',
+      'calculateTotalPendingGravyRewards',
     ].map((method) => ({
-      address: getCakeVaultAddress(),
+      address: getGravyVaultAddress(),
       name: method,
     }))
 
-    const [[sharePrice], [shares], [estimatedCakeBountyReward], [totalPendingCakeHarvest]] = await multicallv2(
-      cakeVaultAbi,
+    const [[sharePrice], [shares], [estimatedGravyBountyReward], [totalPendingGravyHarvest]] = await multicallv2(
+      gravyVaultAbi,
       calls,
     )
 
     const totalSharesAsBigNumber = shares ? new BigNumber(shares.toString()) : BIG_ZERO
     const sharePriceAsBigNumber = sharePrice ? new BigNumber(sharePrice.toString()) : BIG_ZERO
-    const totalCakeInVaultEstimate = convertSharesToCake(totalSharesAsBigNumber, sharePriceAsBigNumber)
+    const totalGravyInVaultEstimate = convertSharesToGravy(totalSharesAsBigNumber, sharePriceAsBigNumber)
     return {
       totalShares: totalSharesAsBigNumber.toJSON(),
       pricePerFullShare: sharePriceAsBigNumber.toJSON(),
-      totalCakeInVault: totalCakeInVaultEstimate.cakeAsBigNumber.toJSON(),
-      estimatedCakeBountyReward: new BigNumber(estimatedCakeBountyReward.toString()).toJSON(),
-      totalPendingCakeHarvest: new BigNumber(totalPendingCakeHarvest.toString()).toJSON(),
+      totalGravyInVault: totalGravyInVaultEstimate.gravyAsBigNumber.toJSON(),
+      estimatedGravyBountyReward: new BigNumber(estimatedGravyBountyReward.toString()).toJSON(),
+      totalPendingGravyHarvest: new BigNumber(totalPendingGravyHarvest.toString()).toJSON(),
     }
   } catch (error) {
     return {
       totalShares: null,
       pricePerFullShare: null,
-      totalCakeInVault: null,
-      estimatedCakeBountyReward: null,
-      totalPendingCakeHarvest: null,
+      totalGravyInVault: null,
+      estimatedGravyBountyReward: null,
+      totalPendingGravyHarvest: null,
     }
   }
 }
@@ -46,11 +46,11 @@ export const fetchPublicVaultData = async () => {
 export const fetchVaultFees = async () => {
   try {
     const calls = ['performanceFee', 'callFee', 'withdrawFee', 'withdrawFeePeriod'].map((method) => ({
-      address: getCakeVaultAddress(),
+      address: getGravyVaultAddress(),
       name: method,
     }))
 
-    const [[performanceFee], [callFee], [withdrawalFee], [withdrawalFeePeriod]] = await multicallv2(cakeVaultAbi, calls)
+    const [[performanceFee], [callFee], [withdrawalFee], [withdrawalFeePeriod]] = await multicallv2(gravyVaultAbi, calls)
 
     return {
       performanceFee: performanceFee.toNumber(),

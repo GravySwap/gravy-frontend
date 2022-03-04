@@ -10,13 +10,13 @@ import SellModal from '../../../components/BuySellModals/SellModal'
 import { nftsBaseUrl } from '../../../constants'
 import { Container, CollectionLink } from '../shared/styles'
 
-interface MainPancakeBunnyCardProps {
+interface MainGravyBunnyCardProps {
   cheapestNft: NftToken
   cheapestNftFromOtherSellers?: NftToken
   nothingForSaleBunny?: NftToken
 }
 
-const MainPancakeBunnyCard: React.FC<MainPancakeBunnyCardProps> = ({
+const MainGravyBunnyCard: React.FC<MainGravyBunnyCardProps> = ({
   cheapestNft,
   cheapestNftFromOtherSellers,
   nothingForSaleBunny,
@@ -100,4 +100,4 @@ const MainPancakeBunnyCard: React.FC<MainPancakeBunnyCardProps> = ({
   )
 }
 
-export default MainPancakeBunnyCard
+export default MainGravyBunnyCard

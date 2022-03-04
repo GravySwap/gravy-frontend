@@ -16,11 +16,11 @@ export const getMulticallAddress = () => {
 export const getLotteryV2Address = () => {
   return getAddress(addresses.lotteryV2)
 }
-export const getPancakeProfileAddress = () => {
-  return getAddress(addresses.pancakeProfile)
+export const getGravyProfileAddress = () => {
+  return getAddress(addresses.gravyProfile)
 }
-export const getPancakeRabbitsAddress = () => {
-  return getAddress(addresses.pancakeRabbits)
+export const getGravyRabbitsAddress = () => {
+  return getAddress(addresses.gravyRabbits)
 }
 export const getBunnyFactoryAddress = () => {
   return getAddress(addresses.bunnyFactory)
@@ -43,8 +43,8 @@ export const getTradingCompetitionAddressV2 = () => {
 export const getEasterNftAddress = () => {
   return getAddress(addresses.easterNft)
 }
-export const getCakeVaultAddress = () => {
-  return getAddress(addresses.cakeVault)
+export const getGravyVaultAddress = () => {
+  return getAddress(addresses.gravyVault)
 }
 export const getPredictionsAddress = () => {
   return getAddress(addresses.predictions)
@@ -52,8 +52,8 @@ export const getPredictionsAddress = () => {
 export const getChainlinkOracleAddress = () => {
   return getAddress(addresses.chainlinkOracle)
 }
-export const getBunnySpecialCakeVaultAddress = () => {
-  return getAddress(addresses.bunnySpecialCakeVault)
+export const getBunnySpecialGravyVaultAddress = () => {
+  return getAddress(addresses.bunnySpecialGravyVault)
 }
 export const getBunnySpecialPredictionAddress = () => {
   return getAddress(addresses.bunnySpecialPrediction)
@@ -73,6 +73,6 @@ export const getNftMarketAddress = () => {
 export const getNftSaleAddress = () => {
   return getAddress(addresses.nftSale)
 }
-export const getPancakeSquadAddress = () => {
-  return getAddress(addresses.pancakeSquad)
+export const getGravySquadAddress = () => {
+  return getAddress(addresses.gravySquad)
 }

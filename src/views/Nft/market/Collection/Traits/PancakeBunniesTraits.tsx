@@ -15,7 +15,7 @@ import { nftsBaseUrl } from '../../constants'
 import { SortType } from '../../types'
 import { ClickableRow, NftName, StyledSortButton, TableWrapper } from './styles'
 
-interface PancakeBunniesTraitsProps {
+interface GravyBunniesTraitsProps {
   collectionAddress: string
 }
 
@@ -37,7 +37,7 @@ const LowestPriceCell: React.FC<{ bunnyId: string }> = ({ bunnyId }) => {
   return <BNBAmountLabel justifyContent="flex-end" amount={lowestPrice} width="100px" />
 }
 
-const PancakeBunniesTraits: React.FC<PancakeBunniesTraitsProps> = ({ collectionAddress }) => {
+const GravyBunniesTraits: React.FC<GravyBunniesTraitsProps> = ({ collectionAddress }) => {
   const [tokenApiResponse, setTokenApiResponse] = useState<ApiResponseCollectionTokens>(null)
   const [raritySort, setRaritySort] = useState<SortType>('asc')
   const { t } = useTranslation()
@@ -151,4 +151,4 @@ const PancakeBunniesTraits: React.FC<PancakeBunniesTraitsProps> = ({ collectionA
   )
 }
 
-export default PancakeBunniesTraits
+export default GravyBunniesTraits

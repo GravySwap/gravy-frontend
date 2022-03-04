@@ -1,9 +1,9 @@
-import { SaleStatusEnum } from 'views/PancakeSquad/types'
-import { getAltText, getEventStepStatus, getEventText } from 'views/PancakeSquad/utils'
+import { SaleStatusEnum } from 'views/GravySquad/types'
+import { getAltText, getEventStepStatus, getEventText } from 'views/GravySquad/utils'
 
 const HOUR_IN_MS = 3600 * 1000
 
-describe('PancakeSquad/utils/getEventStepStatus', () => {
+describe('GravySquad/utils/getEventStepStatus', () => {
   it('Should return past status', () => {
     // Given
     const eventStatus = [SaleStatusEnum.Presale, SaleStatusEnum.Sale]
@@ -57,7 +57,7 @@ describe('PancakeSquad/utils/getEventStepStatus', () => {
   })
 })
 
-describe('PancakeSquad/utils/getEventText', () => {
+describe('GravySquad/utils/getEventText', () => {
   it('Should return past status', () => {
     // Given
     const eventStatus = [SaleStatusEnum.Presale, SaleStatusEnum.Sale]
@@ -111,7 +111,7 @@ describe('PancakeSquad/utils/getEventText', () => {
   })
 })
 
-describe('PancakeSquad/utils/getEventText', () => {
+describe('GravySquad/utils/getEventText', () => {
   it('Should return DrawingRandomness live text', () => {
     // Given
     const eventStatus = [SaleStatusEnum.DrawingRandomness]
@@ -169,7 +169,7 @@ describe('PancakeSquad/utils/getEventText', () => {
   })
 })
 
-describe('PancakeSquad/utils/getAltText', () => {
+describe('GravySquad/utils/getAltText', () => {
   it('Should return upcoming claim phase text', () => {
     // Given
     const eventStatus = [SaleStatusEnum.Claim]

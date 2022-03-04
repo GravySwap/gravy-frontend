@@ -5,8 +5,8 @@ import { useAppDispatch } from 'state'
 import { useGetCollection } from 'state/nftMarket/hooks'
 import { fetchCollection } from 'state/nftMarket/reducer'
 import Header from '../Header'
-import PancakeBunniesTraits from './PancakeBunniesTraits'
-import { pancakeBunniesAddress } from '../../constants'
+import GravyBunniesTraits from './GravyBunniesTraits'
+import { gravyBunniesAddress } from '../../constants'
 import CollectionTraits from './CollectionTraits'
 
 const Traits = () => {
@@ -24,8 +24,8 @@ const Traits = () => {
     <>
       <Header collection={collection} />
       <Container py="40px">
-        {collectionAddress === pancakeBunniesAddress ? (
-          <PancakeBunniesTraits collectionAddress={collectionAddress} />
+        {collectionAddress === gravyBunniesAddress ? (
+          <GravyBunniesTraits collectionAddress={collectionAddress} />
         ) : (
           <CollectionTraits collectionAddress={collectionAddress} />
         )}

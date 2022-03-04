@@ -5,36 +5,36 @@ import { useTranslation } from 'contexts/Localization'
 import { useWeb3React } from '@web3-react/core'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import tokens from 'config/constants/tokens'
-import { useCakeVault } from 'state/pools/hooks'
+import { useGravyVault } from 'state/pools/hooks'
 import { DeserializedPool } from 'state/types'
-import { convertSharesToCake } from 'views/Pools/helpers'
+import { convertSharesToGravy } from 'views/Pools/helpers'
 import AprRow from '../PoolCard/AprRow'
 import { StyledCard } from '../PoolCard/StyledCard'
 import CardFooter from '../PoolCard/CardFooter'
 import StyledCardHeader from '../PoolCard/StyledCardHeader'
 import VaultCardActions from './VaultCardActions'
 import UnstakingFeeCountdownRow from './UnstakingFeeCountdownRow'
-import RecentCakeProfitRow from './RecentCakeProfitRow'
+import RecentGravyProfitRow from './RecentGravyProfitRow'
 
 const StyledCardBody = styled(CardBody)<{ isLoading: boolean }>`
   min-height: ${({ isLoading }) => (isLoading ? '0' : '254px')};
 `
 
-interface CakeVaultProps {
+interface GravyVaultProps {
   pool: DeserializedPool
   showStakedOnly: boolean
 }
 
-const CakeVaultCard: React.FC<CakeVaultProps> = ({ pool, showStakedOnly }) => {
+const GravyVaultCard: React.FC<GravyVaultProps> = ({ pool, showStakedOnly }) => {
   const { t } = useTranslation()
   const { account } = useWeb3React()
   const {
     userData: { userShares, isLoading: isVaultUserDataLoading },
     fees: { performanceFee },
     pricePerFullShare,
-  } = useCakeVault()
+  } = useGravyVault()
 
-  const { cakeAsBigNumber } = convertSharesToCake(userShares, pricePerFullShare)
+  const { gravyAsBigNumber } = convertSharesToGravy(userShares, pricePerFullShare)
 
   const accountHasSharesStaked = userShares && userShares.gt(0)
   const isLoading = !pool.userData || isVaultUserDataLoading
@@ -49,13 +49,13 @@ const CakeVaultCard: React.FC<CakeVaultProps> = ({ pool, showStakedOnly }) => {
       <StyledCardHeader
         isStaking={accountHasSharesStaked}
         isAutoVault
-        earningToken={tokens.cake}
-        stakingToken={tokens.cake}
+        earningToken={tokens.gravy}
+        stakingToken={tokens.gravy}
       />
       <StyledCardBody isLoading={isLoading}>
-        <AprRow pool={pool} stakedBalance={cakeAsBigNumber} performanceFee={performanceFeeAsDecimal} />
+        <AprRow pool={pool} stakedBalance={gravyAsBigNumber} performanceFee={performanceFeeAsDecimal} />
         <Box mt="24px">
-          <RecentCakeProfitRow />
+          <RecentGravyProfitRow />
         </Box>
         <Box mt="8px">
           <UnstakingFeeCountdownRow />
@@ -83,4 +83,4 @@ const CakeVaultCard: React.FC<CakeVaultProps> = ({ pool, showStakedOnly }) => {
   )
 }
 
-export default CakeVaultCard
+export default GravyVaultCard

@@ -16,7 +16,7 @@ import AuctionTimer from './components/AuctionTimer'
 import ReclaimBidCard from './components/ReclaimBidCard'
 import NotWhitelistedNotice from './components/NotWhitelistedNotice'
 import CongratulationsCard from './components/CongratulationsCard'
-import AuctionCakeBurn from './components/AuctionCakeBurn'
+import AuctionGravyBurn from './components/AuctionGravyBurn'
 
 const StyledHeader = styled(PageHeader)`
   max-height: max-content;
@@ -146,7 +146,7 @@ const FarmAuction = () => {
           dividerPosition="top"
           dividerFill={{ light: GRAVY_BURN_TOP_FILL_LIGHT, dark: GRAVY_BURN_TOP_FILL_DARK }}
         >
-          <AuctionCakeBurn />
+          <AuctionGravyBurn />
         </PageSection>
         <PageSection
           background={theme.isDark ? FAQ_BG_DARK : FAQS_BG_LIGHT}

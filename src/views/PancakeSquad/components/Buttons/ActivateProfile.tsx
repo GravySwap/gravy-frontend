@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Button } from '@gravyswap/uikit'
 import { ContextApi } from 'contexts/Localization/types'
-import { UserStatusEnum } from 'views/PancakeSquad/types'
+import { UserStatusEnum } from 'views/GravySquad/types'
 
 type ActivateProfileButtonProps = {
   t: ContextApi['t']

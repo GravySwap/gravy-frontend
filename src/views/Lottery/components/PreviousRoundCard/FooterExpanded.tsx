@@ -4,7 +4,7 @@ import BigNumber from 'bignumber.js'
 import { Flex, Skeleton, Heading, Box, Text } from '@gravyswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 import { LotteryRound, LotteryRoundGraphEntity } from 'state/types'
-import { usePriceCakeBusd } from 'state/farms/hooks'
+import { usePriceGravyBusd } from 'state/farms/hooks'
 import { useGetLotteryGraphDataById } from 'state/lottery/hooks'
 import { getGraphLotteries } from 'state/lottery/getLotteriesData'
 import { formatNumber, getBalanceNumber } from 'utils/formatBalance'
@@ -28,7 +28,7 @@ const PreviousRoundCardFooter: React.FC<{ lotteryNodeData: LotteryRound; lottery
   const { t } = useTranslation()
   const [fetchedLotteryGraphData, setFetchedLotteryGraphData] = useState<LotteryRoundGraphEntity>()
   const lotteryGraphDataFromState = useGetLotteryGraphDataById(lotteryId)
-  const cakePriceBusd = usePriceCakeBusd()
+  const gravyPriceBusd = usePriceGravyBusd()
 
   useEffect(() => {
     const getGraphData = async () => {
@@ -42,8 +42,8 @@ const PreviousRoundCardFooter: React.FC<{ lotteryNodeData: LotteryRound; lottery
 
   let prizeInBusd = new BigNumber(NaN)
   if (lotteryNodeData) {
-    const { amountCollectedInCake } = lotteryNodeData
-    prizeInBusd = amountCollectedInCake.times(cakePriceBusd)
+    const { amountCollectedInGravy } = lotteryNodeData
+    prizeInBusd = amountCollectedInGravy.times(gravyPriceBusd)
   }
 
   const getTotalUsers = (): string => {
@@ -75,7 +75,7 @@ const PreviousRoundCardFooter: React.FC<{ lotteryNodeData: LotteryRound; lottery
             fontSize="14px"
             color="textSubtle"
             unit=" GRAVY"
-            value={getBalanceNumber(lotteryNodeData?.amountCollectedInCake)}
+            value={getBalanceNumber(lotteryNodeData?.amountCollectedInGravy)}
             decimals={0}
           />
         )}

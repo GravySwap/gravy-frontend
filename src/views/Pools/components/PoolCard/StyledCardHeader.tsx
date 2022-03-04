@@ -4,7 +4,7 @@ import { Token } from '@liquidslabs/gravyswap-sdk'
 import styled from 'styled-components'
 import { useTranslation } from 'contexts/Localization'
 import { TokenPairImage } from 'components/TokenImage'
-import CakeVaultTokenPairImage from '../CakeVaultCard/CakeVaultTokenPairImage'
+import GravyVaultTokenPairImage from '../GravyVaultCard/GravyVaultTokenPairImage'
 
 const Wrapper = styled(CardHeader)<{ isFinished?: boolean; background?: string }>`
   background: ${({ isFinished, background, theme }) =>
@@ -20,7 +20,7 @@ const StyledCardHeader: React.FC<{
   isStaking?: boolean
 }> = ({ earningToken, stakingToken, isFinished = false, isAutoVault = false, isStaking = false }) => {
   const { t } = useTranslation()
-  const isCakePool = earningToken.symbol === 'GRAVY' && stakingToken.symbol === 'GRAVY'
+  const isGravyPool = earningToken.symbol === 'GRAVY' && stakingToken.symbol === 'GRAVY'
   const background = isStaking ? 'bubblegum' : 'cardHeader'
 
   const getHeadingPrefix = () => {
@@ -28,8 +28,8 @@ const StyledCardHeader: React.FC<{
       // vault
       return t('Auto')
     }
-    if (isCakePool) {
-      // manual cake
+    if (isGravyPool) {
+      // manual gravy
       return t('Manual')
     }
     // all other pools
@@ -40,7 +40,7 @@ const StyledCardHeader: React.FC<{
     if (isAutoVault) {
       return t('Automatic restaking')
     }
-    if (isCakePool) {
+    if (isGravyPool) {
       return t('Earn GRAVY, stake GRAVY')
     }
     return t('Stake %symbol%', { symbol: stakingToken.symbol })
@@ -56,7 +56,7 @@ const StyledCardHeader: React.FC<{
           <Text color={isFinished ? 'textDisabled' : 'textSubtle'}>{getSubHeading()}</Text>
         </Flex>
         {isAutoVault ? (
-          <CakeVaultTokenPairImage width={64} height={64} />
+          <GravyVaultTokenPairImage width={64} height={64} />
         ) : (
           <TokenPairImage primaryToken={earningToken} secondaryToken={stakingToken} width={64} height={64} />
         )}

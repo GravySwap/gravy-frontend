@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { useTotalSupply, useBurnedBalance } from 'hooks/useTokenBalance'
 import { getBalanceNumber, formatLocalisedCompactNumber } from 'utils/formatBalance'
-import { usePriceCakeBusd } from 'state/farms/hooks'
+import { usePriceGravyBusd } from 'state/farms/hooks'
 import { Flex, Text, Heading, Skeleton } from '@gravyswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 import Balance from 'components/Balance'
@@ -43,21 +43,21 @@ const Grid = styled.div`
 
 const emissionsPerBlock = 14.25
 
-const CakeDataRow = () => {
+const GravyDataRow = () => {
   const { t } = useTranslation()
   const totalSupply = useTotalSupply()
-  const burnedBalance = getBalanceNumber(useBurnedBalance(tokens.cake.address))
-  const cakeSupply = totalSupply ? getBalanceNumber(totalSupply) - burnedBalance : 0
-  const cakePriceBusd = usePriceCakeBusd()
-  const mcap = cakePriceBusd.times(cakeSupply)
+  const burnedBalance = getBalanceNumber(useBurnedBalance(tokens.gravy.address))
+  const gravySupply = totalSupply ? getBalanceNumber(totalSupply) - burnedBalance : 0
+  const gravyPriceBusd = usePriceGravyBusd()
+  const mcap = gravyPriceBusd.times(gravySupply)
   const mcapString = formatLocalisedCompactNumber(mcap.toNumber())
 
   return (
     <Grid>
       <Flex flexDirection="column">
         <Text color="textSubtle">{t('Total supply')}</Text>
-        {cakeSupply ? (
-          <Balance decimals={0} lineHeight="1.1" fontSize="24px" bold value={cakeSupply} />
+        {gravySupply ? (
+          <Balance decimals={0} lineHeight="1.1" fontSize="24px" bold value={gravySupply} />
         ) : (
           <Skeleton height={24} width={126} my="4px" />
         )}
@@ -81,10 +81,10 @@ const CakeDataRow = () => {
       <StyledColumn>
         <Text color="textSubtle">{t('Current emissions')}</Text>
 
-        <Heading scale="lg">{t('%cakeEmissions%/block', { cakeEmissions: emissionsPerBlock })}</Heading>
+        <Heading scale="lg">{t('%gravyEmissions%/block', { gravyEmissions: emissionsPerBlock })}</Heading>
       </StyledColumn>
     </Grid>
   )
 }
 
-export default CakeDataRow
+export default GravyDataRow

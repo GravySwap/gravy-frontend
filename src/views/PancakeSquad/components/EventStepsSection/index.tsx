@@ -2,9 +2,9 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Box, Button, Card, CardBody, Flex, Step, Stepper, Text } from '@gravyswap/uikit'
 import { useTranslation } from 'contexts/Localization'
-import { StyledWaveContainer, LandingBodyWrapper } from 'views/PancakeSquad/styles'
+import { StyledWaveContainer, LandingBodyWrapper } from 'views/GravySquad/styles'
 import useTheme from 'hooks/useTheme'
-import { useGetCakeBalance } from 'hooks/useTokenBalance'
+import { useGetGravyBalance } from 'hooks/useTokenBalance'
 import EventStepsBottomWave from '../../assets/EventStepsBottomWave'
 import EventStepsTopWave from '../../assets/EventStepsTopWave'
 import stepsConfigBuilder from './config'
@@ -14,8 +14,8 @@ import { EventStepsProps } from './types'
 const EventStepsSection: React.FC<EventStepsProps> = ({ eventInfos, userInfos, isLoading, userStatus, account }) => {
   const { t } = useTranslation()
   const { theme, isDark } = useTheme()
-  const { balance: cakeBalance } = useGetCakeBalance()
-  const stepsConfig = stepsConfigBuilder({ t, eventInfos, userInfos, userStatus, account, theme, cakeBalance })
+  const { balance: gravyBalance } = useGetGravyBalance()
+  const stepsConfig = stepsConfigBuilder({ t, eventInfos, userInfos, userStatus, account, theme, gravyBalance })
   const isMintingFinished = userInfos && eventInfos && eventInfos.maxSupply === eventInfos.totalSupplyMinted
   return (
     <StyledEventStepsSectionContainer justifyContent="center" $isDark={isDark}>
@@ -73,7 +73,7 @@ const EventStepsSection: React.FC<EventStepsProps> = ({ eventInfos, userInfos, i
       </LandingBodyWrapper>
       <StyledWaveContainer bottom="-3px">
         <Flex justifyContent="center">
-          <StyledBunniesSquadImg src="/images/pancakeSquad/squadRow.png" alt="pancake bunnies squad" />
+          <StyledBunniesSquadImg src="/images/gravySquad/squadRow.png" alt="gravy bunnies squad" />
         </Flex>
         <EventStepsBottomWave isDark={isDark} />
       </StyledWaveContainer>

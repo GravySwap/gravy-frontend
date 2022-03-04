@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { AutoRenewIcon, Button, Card, CardBody, Heading, Text } from '@gravyswap/uikit'
 import { useWeb3React } from '@web3-react/core'
 import { Link as RouterLink } from 'react-router-dom'
-import { getPancakeProfileAddress } from 'utils/addressHelpers'
+import { getGravyProfileAddress } from 'utils/addressHelpers'
 import { getErc721Contract } from 'utils/contractHelpers'
 import { useTranslation } from 'contexts/Localization'
 import { useUserNfts } from 'state/nftMarket/hooks'
@@ -39,7 +39,7 @@ const ProfilePicture: React.FC = () => {
 
   const handleApprove = async () => {
     const contract = getErc721Contract(selectedNft.collectionAddress, library.getSigner())
-    const tx = await callWithGasPrice(contract, 'approve', [getPancakeProfileAddress(), selectedNft.tokenId])
+    const tx = await callWithGasPrice(contract, 'approve', [getGravyProfileAddress(), selectedNft.tokenId])
     setIsApproving(true)
     const receipt = await tx.wait()
     if (receipt.status) {
@@ -59,11 +59,11 @@ const ProfilePicture: React.FC = () => {
           {t('Oops!')}
         </Heading>
         <Text bold fontSize="20px" mb="24px">
-          {t('We couldn’t find any Pancake Collectibles in your wallet.')}
+          {t('We couldn’t find any Gravy Collectibles in your wallet.')}
         </Text>
         <Text as="p">
           {t(
-            'You need a Pancake Collectible to finish setting up your profile. If you sold or transferred your starter collectible to another wallet, you’ll need to get it back or acquire a new one somehow. You can’t make a new starter with this wallet address.',
+            'You need a Gravy Collectible to finish setting up your profile. If you sold or transferred your starter collectible to another wallet, you’ll need to get it back or acquire a new one somehow. You can’t make a new starter with this wallet address.',
           )}
         </Text>
       </>
@@ -87,7 +87,7 @@ const ProfilePicture: React.FC = () => {
             {t('Choose a profile picture from the eligible collectibles (NFT) in your wallet, shown below.')}
           </Text>
           <Text as="p" color="textSubtle" mb="24px">
-            {t('Only approved Pancake Collectibles can be used.')}
+            {t('Only approved Gravy Collectibles can be used.')}
             <Link to={`${nftsBaseUrl}/collections`} style={{ marginLeft: '4px' }}>
               {t('See the list >')}
             </Link>
