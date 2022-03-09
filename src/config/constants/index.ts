@@ -1,7 +1,7 @@
 import { ChainId, JSBI, Percent, Token } from '@liquidslabs/gravyswap-sdk'
 import { mainnetTokens, testnetTokens } from './tokens'
 
-export const ROUTER_ADDRESS = process.env['ROUTER_ADDRESS ']
+export const ROUTER_ADDRESS = process.env.REACT_APP_ROUTER_ADDRESS
 
 // a list of tokens by chain
 type ChainTokenList = {
