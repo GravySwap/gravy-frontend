@@ -2275,10 +2275,10 @@
   resolved "https://registry.yarnpkg.com/@ledgerhq/logs/-/logs-5.50.0.tgz#29c6419e8379d496ab6d0426eadf3c4d100cd186"
   integrity sha512-swKHYCOZUGyVt4ge0u8a7AwNcA//h4nx5wIi0sruGye1IJ5Cva0GyK9L2/WdX+kWVTKp92ZiEo1df31lrWGPgA==
 
-"@liquidslabs/gravyswap-sdk@npm:@gravyswap/testnet-sdk@2.4.98":
-  version "2.4.98"
-  resolved "https://registry.yarnpkg.com/@gravyswap/testnet-sdk/-/testnet-sdk-2.4.98.tgz#b3cd8b755e683e19cd18ce00d01db4a9876abb3e"
-  integrity sha512-DKFv7ZN93GQFOMM+E0RiMDWQkn9BBSZVMvnY+62pVlbox7Btxn/TysCD4KbEcPGQT98ompMbdX90NOKmQOaCiw==
+"@liquidslabs/gravyswap-sdk@npm:@gravyswap/testnet-sdk@2.5.2":
+  version "2.5.2"
+  resolved "https://registry.yarnpkg.com/@gravyswap/testnet-sdk/-/testnet-sdk-2.5.2.tgz#76ad31aa025c908bf4bf439194e7f6ef9c5d1619"
+  integrity sha512-IUANMevcVgQyJaHM2WUUOI4RlZPKuYSvF1ceezQumT62yTAa1Vb2Y+KCkgZhFU1uknD/xR7S6HNnEIiJkOvWJw==
   dependencies:
     "@gravyswap/gravy-swap-core" "^0.1.2"
     big.js "^5.2.2"

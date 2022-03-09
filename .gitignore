@@ -35,3 +35,5 @@ yarn-debug.log*
 yarn-error.log*
 debug.log*
 
+.env.production
+.env.development
