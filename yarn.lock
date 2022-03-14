@@ -2053,10 +2053,10 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@liquidslabs/gravyswap-sdk@npm:@gravyswap/sdk@2.4.3":
-  version "2.4.3"
-  resolved "https://registry.yarnpkg.com/@gravyswap/sdk/-/sdk-2.4.3.tgz#cfcb72cbccb39fed55c08a5e57a0abed75a7dc02"
-  integrity sha512-aLZuAsxp34aFXE6YboMSb5E+t3jkGC5YHxrzfC8l7+/1v4XHIDbr/gIhBQpkuczu8DsLLMiQQb3D78xf9VpXtg==
+"@liquidslabs/gravyswap-sdk@npm:@gravyswap/sdk@2.4.8":
+  version "2.4.8"
+  resolved "https://registry.yarnpkg.com/@gravyswap/sdk/-/sdk-2.4.8.tgz#47e4dd27535d323e08f4c7adb6992cb44348b675"
+  integrity sha512-fky8mFT2ahfTY6VORBDE5PAU+5+qaC7THLqXIH4RyvefxRtdIbwIfhNE5bJxZVNmBQ4vrvt+LAR4rziTZurifA==
   dependencies:
     big.js "^5.2.2"
     decimal.js-light "^2.5.0"
