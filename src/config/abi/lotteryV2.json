@@ -3,7 +3,7 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_gravyTokenAddress",
+        "name": "_cakeTokenAddress",
         "type": "address"
       },
       {
@@ -121,7 +121,7 @@
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "priceTicketInGravy",
+        "name": "priceTicketInCake",
         "type": "uint256"
       },
       {
@@ -325,7 +325,7 @@
   },
   {
     "inputs": [],
-    "name": "gravyToken",
+    "name": "cakeToken",
     "outputs": [
       {
         "internalType": "contract IERC20",
@@ -504,7 +504,7 @@
   },
   {
     "inputs": [],
-    "name": "maxPriceTicketInGravy",
+    "name": "maxPriceTicketInCake",
     "outputs": [
       {
         "internalType": "uint256",
@@ -517,7 +517,7 @@
   },
   {
     "inputs": [],
-    "name": "minPriceTicketInGravy",
+    "name": "minPriceTicketInCake",
     "outputs": [
       {
         "internalType": "uint256",
@@ -622,16 +622,16 @@
     "inputs": [
       {
         "internalType": "uint256",
-        "name": "_minPriceTicketInGravy",
+        "name": "_minPriceTicketInCake",
         "type": "uint256"
       },
       {
         "internalType": "uint256",
-        "name": "_maxPriceTicketInGravy",
+        "name": "_maxPriceTicketInCake",
         "type": "uint256"
       }
     ],
-    "name": "setMinAndMaxTicketPriceInGravy",
+    "name": "setMinAndMaxTicketPriceInCake",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -668,7 +668,7 @@
       },
       {
         "internalType": "uint256",
-        "name": "_priceTicketInGravy",
+        "name": "_priceTicketInCake",
         "type": "uint256"
       },
       {
@@ -744,7 +744,7 @@
       {
         "components": [
           {
-            "internalType": "struct GravySwapLottery.Lottery",
+            "internalType": "enum PancakeSwapLottery.Status",
             "name": "status",
             "type": "uint8"
           },
@@ -760,7 +760,7 @@
           },
           {
             "internalType": "uint256",
-            "name": "priceTicketInGravy",
+            "name": "priceTicketInCake",
             "type": "uint256"
           },
           {
@@ -780,7 +780,7 @@
           },
           {
             "internalType": "uint256[6]",
-            "name": "gravyPerBracket",
+            "name": "cakePerBracket",
             "type": "uint256[6]"
           },
           {
@@ -800,7 +800,7 @@
           },
           {
             "internalType": "uint256",
-            "name": "amountCollectedInGravy",
+            "name": "amountCollectedInCake",
             "type": "uint256"
           },
           {
@@ -809,7 +809,7 @@
             "type": "uint32"
           }
         ],
-        "internalType": "struct GravySwapLottery.Lottery",
+        "internalType": "struct PancakeSwapLottery.Lottery",
         "name": "",
         "type": "tuple"
       }
