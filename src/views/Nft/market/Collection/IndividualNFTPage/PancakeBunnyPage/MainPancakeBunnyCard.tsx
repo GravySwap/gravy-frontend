@@ -66,7 +66,7 @@ const MainPancakeBunnyCard: React.FC<MainPancakeBunnyCardProps> = ({
               <Text fontSize="40px" bold mt="12px">
                 {nftToDisplay.name}
               </Text>
-              <Text mt={['16px', '16px', '48px']}>{t(nftToDisplay.description)}</Text>
+              <Text mt={['16px', '16px', '48px']}>{nftToDisplay.description}</Text>
               {(cheapestNft || cheapestNftFromOtherSellers) && (
                 <>
                   <Text color="textSubtle" mt={['16px', '16px', '48px']}>
