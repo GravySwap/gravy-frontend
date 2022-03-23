@@ -6,7 +6,7 @@ const collections: Collections = {
     slug: 'gravy-conductors',
     address: {
       56: '0x4B12229Da4Fc337A13c12050334F6821e120798A',
-      97: '0xDED3E51783808AF2Eff5fCB28e71AD209402Ad58',
+      97: '0x457d930b36016955Dc84a15721A5c0172754bE0f',
     },
   },
   [CollectionKey.SQUAD]: {
