@@ -21,7 +21,7 @@ export default {
   },
   pancakeRabbits: {
     56: '0x4B12229Da4Fc337A13c12050334F6821e120798A',
-    97: '0x457d930b36016955Dc84a15721A5c0172754bE0f',
+    97: '0x7EDE37bdd4348e9E7c69BAc1dCEb395D793899FE',
   },
   bunnyFactory: {
     56: '0x2A76aa5c69F5A9A807f72599372002abb4539e98',
