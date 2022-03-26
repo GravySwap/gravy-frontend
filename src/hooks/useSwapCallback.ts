@@ -118,7 +118,7 @@ export function useSwapCallback(
       state: SwapCallbackState.VALID,
       callback: async function onSwap(): Promise<string> {
         const estimatedCalls: EstimatedSwapCall[] = await Promise.all(
-          swapCalls.map((call) => {
+          swapCalls.map(async (call) => {
             const {
               parameters: { methodName, args, value },
               contract,
@@ -133,6 +133,7 @@ export function useSwapCallback(
                 }
               })
               .catch((gasError) => {
+                console.log(gasError)
                 console.error('Gas estimate failed, trying eth_call to extract error', call)
 
                 return contract.callStatic[methodName](...args, options)

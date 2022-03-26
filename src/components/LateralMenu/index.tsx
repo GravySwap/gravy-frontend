@@ -63,7 +63,7 @@ const LateralMenu: React.FC<{ open: boolean; onClose?: (value: boolean) => void 
         <StyledCloseIcon onClick={() => onClose(false)} />
       </RemoveContainer>
       <TabContainer>
-        <Tab to="/">
+        <Tab onClick={() => onClose(false)} to="/">
           <HomeIcon width={24} />
           <TextTab>Home</TextTab>
         </Tab>
@@ -76,20 +76,20 @@ const LateralMenu: React.FC<{ open: boolean; onClose?: (value: boolean) => void 
             </>
           }
         >
-          <Tab to="/swap">
+          <Tab onClick={() => onClose(false)} to="/swap">
             <MaterialIcon className="material-icons-outlined">swap_horiz</MaterialIcon>
             <TextTab>Exchange</TextTab>
           </Tab>
-          <Tab to="/liquidity">
+          <Tab onClick={() => onClose(false)} to="/liquidity">
             <MaterialIcon className="material-icons-outlined">group_add</MaterialIcon>
             <TextTab>Liquidity</TextTab>
           </Tab>
         </Submenu>
-        <Tab to="/farms">
+        <Tab onClick={() => onClose(false)} to="/farms">
           <MaterialIcon className="material-icons-outlined">agriculture</MaterialIcon>
           <TextTab>Farms</TextTab>
         </Tab>
-        <Tab to="/pools">
+        <Tab onClick={() => onClose(false)} to="/pools">
           <MaterialIcon className="material-icons-outlined">savings</MaterialIcon>
           <TextTab>Pools</TextTab>
         </Tab>
@@ -102,18 +102,18 @@ const LateralMenu: React.FC<{ open: boolean; onClose?: (value: boolean) => void 
             </>
           }
         >
-          <Tab to="/lottery">
+          <Tab onClick={() => onClose(false)} to="/lottery">
             <MaterialIcon className="material-icons-outlined">local_activity</MaterialIcon>
             <TextTab>Lottery</TextTab>
           </Tab>
-          <Tab to="#">
+          <Tab onClick={() => onClose(false)} to="#">
             <MaterialIcon className="material-icons-outlined">emoji_events</MaterialIcon>
             <TextTab>
               Horse Races
               <TextSup>soon</TextSup>
             </TextTab>
           </Tab>
-          <Tab to="#">
+          <Tab onClick={() => onClose(false)} to="#">
             <MaterialIcon className="material-icons-outlined">app_registration</MaterialIcon>
             <TextTab>
               Bingo
@@ -121,7 +121,7 @@ const LateralMenu: React.FC<{ open: boolean; onClose?: (value: boolean) => void 
             </TextTab>
           </Tab>
         </Submenu>
-        <Tab to="/nfts">
+        <Tab onClick={() => onClose(false)} to="/nfts">
           <MaterialIcon className="material-icons-outlined">wallpaper</MaterialIcon>
           <TextTab>NFT</TextTab>
         </Tab>
@@ -135,18 +135,18 @@ const LateralMenu: React.FC<{ open: boolean; onClose?: (value: boolean) => void 
             </>
           }
         >
-          <Tab to="/info">
+          <Tab onClick={() => onClose(false)} to="/info">
             <ChartIcon width={24} />
             <TextTab>Stats</TextTab>
           </Tab>
-          <Tab to="#">
+          <Tab onClick={() => onClose(false)} to="#">
             <MaterialIcon className="material-icons-outlined">local_offer</MaterialIcon>
             <TextTab>
               IFO
               <TextSup>soon</TextSup>
             </TextTab>
           </Tab>
-          <Tab to="/voting">
+          <Tab onClick={() => onClose(false)} to="/voting">
             <MaterialIcon className="material-icons-outlined">how_to_vote</MaterialIcon>
             <TextTab>Voting</TextTab>
           </Tab>
