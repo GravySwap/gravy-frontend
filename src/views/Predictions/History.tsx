@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Flex, Spinner, Text } from '@gravyswap/uikit'
+import { Flex, Text } from '@gravyswap/uikit'
+import LoaderImage from 'components/LoaderImage'
 import { useWeb3React } from '@web3-react/core'
 import styled from 'styled-components'
 import ConnectWalletButton from 'components/ConnectWalletButton'
@@ -93,7 +94,7 @@ const History = () => {
       <BetWrapper>
         {isFetchingHistory && currentHistoryPage === 1 ? (
           <SpinnerWrapper>
-            <Spinner size={72} />
+            <LoaderImage size={72} />
           </SpinnerWrapper>
         ) : (
           activeTabComponent

@@ -1,4 +1,5 @@
-import { Spinner, Text } from '@gravyswap/uikit'
+import { Text } from '@gravyswap/uikit'
+import LoaderImage from 'components/LoaderImage'
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
 
@@ -45,7 +46,7 @@ interface CountdownCircleProps {
 
 const CountdownCircle: React.FC<CountdownCircleProps> = ({ secondsRemaining, isUpdating }) => {
   if (secondsRemaining < 1 || isUpdating) {
-    return <Spinner size={42} />
+    return <LoaderImage size={42} />
   }
   return (
     <CountdownContainer>

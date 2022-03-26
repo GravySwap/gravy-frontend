@@ -13,10 +13,10 @@ import {
   Breadcrumbs,
   Link as UIKitLink,
   LinkExternal,
-  Spinner,
   Image,
   useMatchBreakpoints,
 } from '@gravyswap/uikit'
+import LoaderImage from 'components/LoaderImage'
 import Page from 'components/Layout/Page'
 import { getBscScanLink } from 'utils'
 import truncateHash from 'utils/truncateHash'
@@ -245,7 +245,7 @@ const TokenPage: React.FC<RouteComponentProps<{ address: string }>> = ({
         )
       ) : (
         <Flex mt="80px" justifyContent="center">
-          <Spinner />
+          <LoaderImage />
         </Flex>
       )}
     </Page>

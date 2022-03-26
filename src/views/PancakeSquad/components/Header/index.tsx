@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Box, Flex, lightColors, Spinner, Text, Timeline } from '@gravyswap/uikit'
+import { Box, Flex, lightColors, Text, Timeline } from '@gravyswap/uikit'
+import LoaderImage from 'components/LoaderImage'
 import { useTranslation } from 'contexts/Localization'
 import { useGetCakeBalance } from 'hooks/useTokenBalance'
 import useTheme from 'hooks/useTheme'
@@ -155,7 +156,7 @@ const PancakeSquadHeader: React.FC<PancakeSquadHeaderType> = ({
                   (userStatus === UserStatusEnum.UNCONNECTED ? (
                     <ConnectWalletButton userStatus={userStatus} />
                   ) : (
-                    <Spinner />
+                    <LoaderImage />
                   ))}
               </Flex>
             </Flex>

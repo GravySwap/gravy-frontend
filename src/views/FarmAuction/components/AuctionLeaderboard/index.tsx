@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { Text, Card, Flex, Box, Spinner } from '@gravyswap/uikit'
+import { Text, Card, Flex, Box } from '@gravyswap/uikit'
+import LoaderImage from 'components/LoaderImage'
 import { useTranslation } from 'contexts/Localization'
 import { Auction, AuctionStatus, Bidder } from 'config/constants/types'
 import { TabToggleGroup, TabToggle } from 'components/TabToggle'
@@ -50,7 +51,7 @@ const CurrentAuctionCard: React.FC<AuctionLeaderboardProps> = ({ auction, bidder
           </TabToggle>
         </TabToggleGroup>
         <Flex justifyContent="center" alignItems="center" flexDirection="column" height="320px">
-          <Spinner />
+          <LoaderImage />
         </Flex>
       </AuctionLeaderboardCard>
     )

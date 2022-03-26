@@ -10,9 +10,9 @@ import {
   ArrowLastIcon,
   IconButton,
   BunnyPlaceholderIcon,
-  Spinner,
   useMatchBreakpoints,
 } from '@gravyswap/uikit'
+import LoaderImage from 'components/LoaderImage'
 import { useTranslation } from 'contexts/Localization'
 import useAuctionHistory from '../hooks/useAuctionHistory'
 import AuctionLeaderboardTable from './AuctionLeaderboard/AuctionLeaderboardTable'
@@ -61,7 +61,7 @@ const AuctionHistory: React.FC<AuctionHistoryProps> = ({ mostRecentClosedAuction
     <AuctionLeaderboardTable bidders={selectedAuction.bidders} noBidsText="No bids were placed in this auction" />
   ) : (
     <Flex justifyContent="center" alignItems="center" p="24px" height="250px">
-      <Spinner />
+      <LoaderImage />
     </Flex>
   )
 

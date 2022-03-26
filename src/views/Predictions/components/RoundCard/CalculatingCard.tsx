@@ -1,5 +1,6 @@
 import React from 'react'
-import { Card, CardBody, Flex, Spinner, WaitIcon, TooltipText, useTooltip, InfoIcon } from '@gravyswap/uikit'
+import { Card, CardBody, Flex, WaitIcon, TooltipText, useTooltip, InfoIcon } from '@gravyswap/uikit'
+import LoaderImage from 'components/LoaderImage'
 import { useTranslation } from 'contexts/Localization'
 import { NodeRound, BetPosition } from 'state/types'
 import useTheme from 'hooks/useTheme'
@@ -34,7 +35,7 @@ const CalculatingCard: React.FC<CalculatingCardProps> = ({ round, hasEnteredUp, 
           <MultiplierArrow isDisabled hasEntered={hasEnteredUp} />
           <RoundResultBox>
             <Flex alignItems="center" justifyContent="center" flexDirection="column">
-              <Spinner size={96} />
+              <LoaderImage size={96} />
               <Flex mt="8px" ref={targetRef}>
                 <TooltipText>{t('Calculating')}</TooltipText>
                 <InfoIcon ml="4px" />

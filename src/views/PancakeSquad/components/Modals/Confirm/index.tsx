@@ -13,9 +13,9 @@ import {
   ModalHeader,
   ModalProps,
   ModalTitle,
-  Spinner,
   Text,
 } from '@gravyswap/uikit'
+import LoaderImage from 'components/LoaderImage'
 import { useTranslation } from 'contexts/Localization'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import useTheme from 'hooks/useTheme'
@@ -75,7 +75,7 @@ const ConfirmModal: React.FC<ConfirmModalProps> = ({
                     {loadingText}
                   </Text>
                 </Box>
-                <Spinner size={50} />
+                <LoaderImage size={50} />
               </Flex>
               <Button width="100%" variant="secondary" disabled>
                 {loadingButtonLabel}

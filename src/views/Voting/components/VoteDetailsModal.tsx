@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { Box, Flex, InjectedModalProps, Modal, Button, Spinner } from '@gravyswap/uikit'
+import { Box, Flex, InjectedModalProps, Modal, Button } from '@gravyswap/uikit'
+import LoaderImage from 'components/LoaderImage'
 import { useTranslation } from 'contexts/Localization'
 import useTheme from 'hooks/useTheme'
 import useGetVotingPower from '../hooks/useGetVotingPower'
@@ -26,7 +27,7 @@ const VoteDetailsModal: React.FC<VoteDetailsModalProps> = ({ block, onDismiss })
       <Box mb="24px" width="320px">
         {isLoading ? (
           <Flex height="450px" alignItems="center" justifyContent="center">
-            <Spinner size={80} />
+            <LoaderImage size={80} />
           </Flex>
         ) : (
           <>

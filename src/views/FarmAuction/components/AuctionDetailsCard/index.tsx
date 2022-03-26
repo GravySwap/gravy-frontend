@@ -7,13 +7,13 @@ import {
   CardHeader,
   CardBody,
   Flex,
-  Spinner,
   Skeleton,
   Tag,
   Button,
   CheckmarkCircleIcon,
   useModal,
 } from '@gravyswap/uikit'
+import LoaderImage from 'components/LoaderImage'
 import { useTranslation } from 'contexts/Localization'
 import { Auction, AuctionStatus, ConnectedBidder } from 'config/constants/types'
 import { getBalanceNumber } from 'utils/formatBalance'
@@ -51,7 +51,7 @@ const AuctionDetails: React.FC<AuctionDetailsProps> = ({ auction, connectedBidde
         </CardHeader>
         <CardBody>
           <Flex justifyContent="center" alignItems="center" height="100%">
-            <Spinner />
+            <LoaderImage />
           </Flex>
         </CardBody>
       </AuctionDetailsCard>

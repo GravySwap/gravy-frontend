@@ -12,8 +12,8 @@ import {
   ArrowUpIcon,
   ArrowDownIcon,
   Button,
-  Spinner,
 } from '@gravyswap/uikit'
+import LoaderImage from 'components/LoaderImage'
 import { useTranslation } from 'contexts/Localization'
 import useTheme from 'hooks/useTheme'
 import { NftToken } from 'state/nftMarket/types'
@@ -87,7 +87,7 @@ const ForSaleTableCard: React.FC<ForSaleTableCardProps> = ({
 
   const loadMoreButton = isFetchingMoreNfts ? (
     <Flex width="96px" justifyContent="center">
-      <Spinner size={32} />
+      <LoaderImage size={32} />
     </Flex>
   ) : (
     <Button variant="primary" scale="xs" ml="12px" onClick={loadMoreHandler}>

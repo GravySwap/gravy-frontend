@@ -9,7 +9,6 @@ import {
   Card,
   Breadcrumbs,
   Heading,
-  Spinner,
   LinkExternal,
   useMatchBreakpoints,
   ButtonMenu,
@@ -17,6 +16,7 @@ import {
   HelpIcon,
   useTooltip,
 } from '@gravyswap/uikit'
+import LoaderImage from 'components/LoaderImage'
 import styled from 'styled-components'
 import Page from 'components/Layout/Page'
 import { getBscScanLink } from 'utils'
@@ -266,7 +266,7 @@ const PoolPage: React.FC<RouteComponentProps<{ address: string }>> = ({
         </>
       ) : (
         <Flex mt="80px" justifyContent="center">
-          <Spinner />
+          <LoaderImage />
         </Flex>
       )}
     </Page>

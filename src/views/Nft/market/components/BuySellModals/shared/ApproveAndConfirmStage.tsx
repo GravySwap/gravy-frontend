@@ -1,5 +1,6 @@
 import React from 'react'
-import { Flex, Text, Button, Spinner } from '@gravyswap/uikit'
+import { Flex, Text, Button } from '@gravyswap/uikit'
+import LoaderImage from 'components/LoaderImage'
 import { useTranslation } from 'contexts/Localization'
 import { StepIndicator } from './styles'
 
@@ -49,7 +50,7 @@ const ApproveAndConfirmStage: React.FC<ApproveAndConfirmStageProps> = ({
           )}
         </Flex>
         <Flex flex="0 0 64px" width="64px">
-          {isApproving && <Spinner size={64} />}
+          {isApproving && <LoaderImage size={64} />}
         </Flex>
       </Flex>
       {!isApproved && (
@@ -74,7 +75,7 @@ const ApproveAndConfirmStage: React.FC<ApproveAndConfirmStageProps> = ({
           </Text>
         </Flex>
         <Flex flex="0 0 64px" width="64px">
-          {isConfirming && <Spinner size={64} />}
+          {isConfirming && <LoaderImage size={64} />}
         </Flex>
       </Flex>
       <Button mt="16px" disabled={!isApproved || isConfirming} onClick={handleConfirm} variant="secondary">

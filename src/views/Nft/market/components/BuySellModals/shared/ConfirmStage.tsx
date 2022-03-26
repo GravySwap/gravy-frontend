@@ -1,5 +1,6 @@
 import React from 'react'
-import { Flex, Text, Button, Spinner } from '@gravyswap/uikit'
+import { Flex, Text, Button } from '@gravyswap/uikit'
+import LoaderImage from 'components/LoaderImage'
 import { useTranslation } from 'contexts/Localization'
 
 interface ConfirmStageProps {
@@ -28,7 +29,7 @@ const ConfirmStage: React.FC<ConfirmStageProps> = ({ isConfirming, handleConfirm
           </Text>
         </Flex>
         <Flex flex="0 0 64px" height="72px" width="64px">
-          {isConfirming && <Spinner size={64} />}
+          {isConfirming && <LoaderImage size={64} />}
         </Flex>
       </Flex>
       <Button mt="24px" disabled={isConfirming} onClick={handleConfirm} variant="secondary">

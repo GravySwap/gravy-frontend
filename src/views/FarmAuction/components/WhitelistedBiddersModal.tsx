@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { Modal, Box, Text, Flex, Input, OpenNewIcon, useMatchBreakpoints, Spinner } from '@gravyswap/uikit'
+import { Modal, Box, Text, Flex, Input, OpenNewIcon, useMatchBreakpoints } from '@gravyswap/uikit'
+import LoaderImage from 'components/LoaderImage'
 import { useTranslation } from 'contexts/Localization'
 import useTheme from 'hooks/useTheme'
 import { FarmAuctionBidderConfig } from 'config/constants/types'
@@ -76,7 +77,7 @@ const WhitelistedBiddersModal: React.FC<WhitelistedBiddersModalProps> = ({ onDis
     filteredBidders.map((bidder) => <AddressRow key={bidder.account} bidder={bidder} isMobile={isMobile} />)
   ) : (
     <Flex justifyContent="center" alignItems="center" py="24px">
-      <Spinner />
+      <LoaderImage />
     </Flex>
   )
 
