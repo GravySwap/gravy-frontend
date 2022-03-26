@@ -59,11 +59,11 @@ const ProfileHeader: React.FC<HeaderProps> = ({
     if (profile) {
       switch (profile.teamId) {
         case 1:
-          return `${imagePath}/storm-banner.png`
+          return `${imagePath}/monster-mashers-banner.png`
         case 2:
-          return `${imagePath}/flippers-banner.png`
+          return `${imagePath}/monster-banner.png`
         case 3:
-          return `${imagePath}/cakers-banner.png`
+          return `${imagePath}/stuffing-stuffers-banner.png`
         default:
           break
       }
