@@ -10,7 +10,7 @@ const collections: Collections = {
     },
   },
   [CollectionKey.SQUAD]: {
-    name: 'Pancake Squad',
+    name: 'Gravy Squad',
     description: "GravySwap's first official generative NFT collection.. Join the squad.",
     slug: 'pancake-squad',
     address: {

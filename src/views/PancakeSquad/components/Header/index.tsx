@@ -69,7 +69,7 @@ const PancakeSquadHeader: React.FC<PancakeSquadHeaderType> = ({
         </Link>
       </Flex>
       <StyledSquadTitle my="32px" color={lightColors.invertedContrast} bold textAlign="center">
-        {t('Pancake Squad')}
+        {t('Gravy Squad')}
       </StyledSquadTitle>
       <Text color={lightColors.warning} textAlign="center" bold>
         {`${t('Presale:')} 04:00 UTC, Oct. 7`}

@@ -106,17 +106,17 @@ export const getCustomMeta = (path: string, t: ContextApi['t']): PageMeta => {
     case '/info':
       return {
         title: `${t('Overview')} | ${t('GravySwap Info & Analytics')}`,
-        description: 'View statistics for Pancakeswap exchanges.',
+        description: 'View statistics for Gravyswap exchanges.',
       }
     case '/info/pools':
       return {
         title: `${t('Pools')} | ${t('GravySwap Info & Analytics')}`,
-        description: 'View statistics for Pancakeswap exchanges.',
+        description: 'View statistics for Gravyswap exchanges.',
       }
     case '/info/tokens':
       return {
         title: `${t('Tokens')} | ${t('GravySwap Info & Analytics')}`,
-        description: 'View statistics for Pancakeswap exchanges.',
+        description: 'View statistics for Gravyswap exchanges.',
       }
     case '/nfts':
       return {
@@ -132,7 +132,7 @@ export const getCustomMeta = (path: string, t: ContextApi['t']): PageMeta => {
       }
     case '/pancake-squad':
       return {
-        title: `${t('Pancake Squad')} | ${t('GravySwap')}`,
+        title: `${t('Gravy Squad')} | ${t('GravySwap')}`,
       }
     default:
       return null
