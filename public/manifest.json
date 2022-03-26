@@ -1,8 +1,8 @@
 {
   "short_name": "GravySwap",
   "name": "GravySwap",
-  "description": "Farm GRAVY with Pancake LP Tokens",
-  "homepage_url": "https://pancakeswap.finance",
+  "description": "Farm GRAVY with Sauce Tokens",
+  "homepage_url": "https://gravyswap.com",
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#1FC7D4",
@@ -10,8 +10,8 @@
   "orientation": "portrait",
   "icons": [
     {
-      "src": "favicon.ico",
-      "type": "image/x-icon",
+      "src": "favicon.svg",
+      "type": "image/svg+xml",
       "sizes": "256x256"
     },
     {
