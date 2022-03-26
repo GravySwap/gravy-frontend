@@ -13,6 +13,7 @@ import {
   Modal,
   InjectedModalProps,
 } from '@gravyswap/uikit'
+import Sounds from 'components/Sounds'
 import LoaderImage from 'components/LoaderImage'
 import { registerToken } from 'utils/wallet'
 import { useTranslation } from 'contexts/Localization'
@@ -75,6 +76,7 @@ function TransactionSubmittedContent({
   return (
     <Wrapper>
       <Section>
+        <Sounds />
         <ConfirmedIcon>
           <ArrowUpIcon strokeWidth={0.5} width="90px" color="primary" />
         </ConfirmedIcon>
