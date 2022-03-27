@@ -11,7 +11,7 @@ const farms: SerializedFarmConfig[] = [
     pid: 0,
     lpSymbol: 'GRAVY',
     lpAddresses: {
-      97: '0x9C21123D94b93361a29B2C2EFB3d5CD8B17e0A9e',
+      97: '0x5eA26D0d36EAF02d63a3023521A7924e19c34454',
       56: '0x5eA26D0d36EAF02d63a3023521A7924e19c34454',
     },
     token: serializedTokens.syrup,
