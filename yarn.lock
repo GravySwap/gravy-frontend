@@ -1796,10 +1796,10 @@
     "@ethersproject/properties" "^5.4.0"
     "@ethersproject/strings" "^5.4.0"
 
-"@gravyswap/uikit@^0.79.0":
-  version "0.79.0"
-  resolved "https://registry.yarnpkg.com/@gravyswap/uikit/-/uikit-0.79.0.tgz#d4f6dd5bb6a883cc43a9cbdd06686242bccbfe14"
-  integrity sha512-HgKxW3Iptchs9kdKOgDuFTUBqz1e/ciQLUdNLsXwHOF7bvQAg9g8NPzzoKWKPgi7IENJxuIWt/kYqR2MzuPHfA==
+"@gravyswap/uikit@^0.80.0":
+  version "0.80.0"
+  resolved "https://registry.yarnpkg.com/@gravyswap/uikit/-/uikit-0.80.0.tgz#1e422dc0c9e2e21ef07ad7071b9d9f7d66b16011"
+  integrity sha512-M52zqfoDEY8l3Y1QtrHCIt7hSNnosFLkGw3sPZOvb9i20Sq9lo8DRTleLekvR2bkVzm+VHWkHhSvCRXbTgLF/A==
   dependencies:
     "@popperjs/core" "^2.9.2"
     "@types/lodash" "^4.14.168"

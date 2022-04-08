@@ -94,7 +94,8 @@ export const UserMenuContainer = styled.div`
   display: none;
 
   ${({ theme }) => theme.mediaQueries.lg} {
-    display: block;
+    display: flex;
+    align-items: center;
   }
 `
 

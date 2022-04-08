@@ -8,6 +8,7 @@ import { LogoWithTextIcon } from '@gravyswap/uikit'
 import LateralMenu from 'components/LateralMenu'
 import UserMenu from 'components/Menu/UserMenu'
 import ConnectWalletButton from 'components/ConnectWalletButton'
+import LangSelector from 'components/LangSelector'
 
 // styles
 import { Container, Svg, LinkLogo, UserMenuContainer, Pinned, LateralSpacing } from './style'
@@ -57,6 +58,7 @@ const Header: React.FC = () => {
                 <LogoWithTextIcon isDark={false} />
               </LinkLogo>
               <UserMenuContainer>
+                <LangSelector />
                 {!account && <ConnectWalletButton />}
                 {account && <UserMenu />}
               </UserMenuContainer>
@@ -83,6 +85,7 @@ const Header: React.FC = () => {
               <LogoWithTextIcon isDark={false} />
             </LinkLogo>
             <UserMenuContainer>
+              <LangSelector />
               {!account && <ConnectWalletButton />}
               {account && <UserMenu />}
             </UserMenuContainer>

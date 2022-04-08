@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { useTheme } from 'styled-components'
 import { Link } from 'react-router-dom'
 import { useWeb3React } from '@web3-react/core'
+
 // contexts
 import { useTranslation } from 'contexts/Localization'
 
@@ -11,6 +12,7 @@ import LateralMenu from 'components/LateralMenu'
 import UserMenu from 'components/Menu/UserMenu'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import { Heading, Button } from '@gravyswap/uikit'
+import LangSelector from 'components/LangSelector'
 
 // styles
 import {
@@ -74,6 +76,7 @@ const DividerSectionHero: React.FC = () => {
           <LogoWhite isDark={false} />
           <LogoDark isDark />
           <UserMenuContainer>
+            <LangSelector />
             {!account && <ConnectWalletButton />}
             {account && <UserMenu />}
           </UserMenuContainer>
